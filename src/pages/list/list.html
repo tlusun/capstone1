@@ -1,23 +1,29 @@
-<ion-header>
-  <ion-navbar>
-    <button ion-button menuToggle>
-      <ion-icon name="menu"></ion-icon>
-    </button>
-    <ion-title>My First List</ion-title>
-  </ion-navbar>
-</ion-header>
+<ion-content class="has-header" padding="50px">
 
-<ion-content>
+
+  <ion-searchbar class="pad100" (ionInput)="getItems($event)"></ion-searchbar>
   <ion-list>
-    <button ion-item *ngFor="let item of items" (click)="itemTapped($event, item)">
-      <ion-icon name="{{item.icon}}" item-left></ion-icon>
-      {{item.title}}
-      <div class="item-note" item-right>
-        {{item.note}}
-      </div>
+
+    <button class="pad100" ion-item *ngFor="let item of items" (click)="itemTapped($event, item)">
+      <ion-grid>
+        <ion-row>
+          <ion-col width-33>
+            <img src="/assets/house.JPG" item-left />
+
+          </ion-col>
+          <ion-col width-50 center>
+
+            <h1>{{item.title}}</h1>
+            <p>{{item.note}}</p>
+          </ion-col>
+            <ion-col item-right align="end" center>
+              <li>Service: {{item.service}}</li>
+              <li>Rating: {{item.rating}}</li>
+            </ion-col>
+
+        </ion-row>
+      </ion-grid>
     </button>
   </ion-list>
-  <div *ngIf="selectedItem" padding>
-    You navigated here from <b>{{selectedItem.title}}</b>
-  </div>
+
 </ion-content>

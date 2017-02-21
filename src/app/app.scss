@@ -14,3 +14,64 @@
 // To declare rules for a specific mode, create a child rule
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
+.has-header{
+
+  top: 70px;
+
+}
+.title{
+
+  color: #9e24c3;
+  font-size: 50px;
+
+}
+.pad100{
+
+  padding-left: 100px;
+  padding-right: 100px;
+}
+
+img {
+
+}
+
+
+.card-background-page {
+  padding-bottom: 5%;
+  padding-left: 5%;
+  padding-right: 5%;
+
+  ion-card {
+
+    position: center;
+    text-align: center;
+
+    display: flex;
+    flex-direction: column;
+  }
+
+  .card-title {
+    position: absolute;
+    top: 36%;
+    font-size: 2.0rem;
+    width: 100%;
+    font-weight: bold;
+    color: #ffffff;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+  }
+
+  .card-subtitle {
+    font-size: 1.0rem;
+    position: absolute;
+    top: 52%;
+    width: 100%;
+    color: #ffffff;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+  }
+
+  .image{
+    background-size: 100%;
+  }
+
+
+}
