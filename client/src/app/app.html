@@ -1,0 +1,25 @@
+<ion-header>
+
+  <ion-navbar>
+
+    <!--<button ion-button icon-only menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+-->
+
+    <ion-segment>
+    <H1 class="title" padding-right="20px">
+    BLIP
+    </H1>
+      <button ion-button clear (click)="openPage(pages[1])">Featured</button>
+      <button ion-button clear (click)="openPage(pages[2])">Categories</button>
+      <button ion-button clear (click)="openPage(pages[0])">Profile</button>
+
+
+      <button ion-button style="color: white; background-color: #2d2d2d" >Sign In</button>
+    </ion-segment>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>
