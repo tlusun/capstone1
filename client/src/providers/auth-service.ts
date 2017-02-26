@@ -6,35 +6,54 @@ import 'rxjs/add/operator/map';
 import { Http, Response , Headers, RequestOptions} from '@angular/http';
 
 export class User {
-  name: string;
   email: string;
+  password: string;
 
-  constructor(name: string, email: string) {
-    this.name = name;
+  constructor(email: string, password: string) {
     this.email = email;
+    this.password = password;
   }
 }
 
 @Injectable()
 export class AuthService {
   currentUser: User;
-  posts: any; //TODO
 
   constructor(public http: Http) {
     this.currentUser = null;
   }
 
   public login(credentials) {
+    var access = false;
     if (credentials.email === null || credentials.password === null) {
       return Observable.throw("Please insert credentials");
     } else {
       return Observable.create(observer => {
-        //TODO
-        //At this point make a request to your backend to make a real check!
-        let access = (credentials.password === "pass" && credentials.email === "email");
-        this.currentUser = new User('Simon', 'saimon@devdactic.com');
-        observer.next(access);
-        observer.complete();
+        let headers = new Headers({ 'Content-Type': 'application/json' });
+        let options = new RequestOptions({ headers: headers });
+        this.http.post('http://localhost:8080/api/authenticate',credentials, options).map(res => res.json()).subscribe(
+          data => {
+            console.log(data.success);
+            console.log(!data.success);
+            console.log(data.token);
+
+            if (data.success) {
+              access = true;
+              console.log('access: ', access);
+              this.currentUser = new User(credentials.email,credentials.password);
+              console.log(this.currentUser);
+            }
+            console.log('access1: ', access);
+            observer.next(access);
+            observer.complete();  
+          },
+          err => {
+            console.log('This has failed quite horribly. err: ', err);
+          }
+        );
+        console.log('ACCESS: ', access);
+        //observer.next(access);
+        //observer.complete();
       });
     }
   }
@@ -43,18 +62,6 @@ export class AuthService {
     if (credentials.email === null || credentials.password === null) {
       return Observable.throw("Please insert credentials");
     } else {
-
-      //TODO: testing
-      /*
-      var response = this.http.get('http://localhost:8080/').map(res => res.json()).subscribe(
-        data => {
-          console.log('data', data.message);
-        },
-        err => {
-          console.log('This has failed quite horribly. err: ', err);
-        }
-      );
-      */
       let headers = new Headers({ 'Content-Type': 'application/json' });
       let options = new RequestOptions({ headers: headers });
       this.http.post('http://localhost:8080/api/signup',credentials, options).map(res => res.json()).subscribe(
