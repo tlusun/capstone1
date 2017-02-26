@@ -7,8 +7,8 @@ import { StatusBar, Splashscreen } from 'ionic-native';
 import { UserProfilePage } from '../pages/userprofile/userprofile';
 import { ListPage } from '../pages/list/list';
 import { CategoriesPage  } from '../pages/categories/categories';
-import {RegisterPage} from '../pages/register/register';
-import {LoginPage} from '../pages/login/login';
+import { RequestServicePage } from '../pages/requestservice/requestservice'
+
 
 @Component({
   templateUrl: 'app.html'
@@ -17,23 +17,20 @@ export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
   // make HelloIonicPage the root (or first) page
-  //rootPage: any = ListPage;
-  rootPage: any = LoginPage;
+  rootPage: any = ListPage;
   pages: Array<{title: string, component: any}>;
 
   constructor(
     public platform: Platform,
-    //public menu: MenuController
+    public menu: MenuController
   ) {
     this.initializeApp();
 
     // set our app's pages
     this.pages = [
       { title: 'User Profile', component: UserProfilePage },
-      { title: 'My First List', component: ListPage },
-      { title: 'Categories', component: CategoriesPage},
-      { title: 'Log In', component: LoginPage},
-      { title: 'Register', component: RegisterPage}
+      { title: 'Services List', component: ListPage },
+      { title: 'Categories', component: CategoriesPage}
     ];
   }
 
@@ -50,7 +47,7 @@ export class MyApp {
     // close the menu when clicking a link from the menu
     //this.menu.close();
     // navigate to the new page if it is not the current page
-    this.nav.push(page.component);
+    //this.nav.push(page.component);
     this.nav.setRoot(page.component);
   }
 }

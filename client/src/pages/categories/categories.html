@@ -4,11 +4,25 @@
   See http://ionicframework.com/docs/v2/components/#navigation for more info on
   Ionic pages and navigation.
 -->
-<ion-content class="has-header" style="font-size: 100%" >
+
+<ion-header>
+  <ion-navbar text-center>
+    <H1 class="title">
+      BLIP
+    </H1>
+    <button ion-button clear >Featured</button>
+    <button ion-button clear >Categories</button>
+    <button ion-button clear >Profile</button>
+    <button ion-button style="color: white; background-color: #2d2d2d" >Sign In</button>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content >
 
   <ion-grid class="card-background-page">
 
-    <ion-row responsive-sm *ngFor="let service of services">
+    <ion-row responsive-sm *ngFor="let service of services" class="main-content">
       <ion-col >
         <ion-card (click)="openPage()" >
           <img src="/assets/house.JPG" class ="image"/>

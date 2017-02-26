@@ -14,28 +14,28 @@ export class ListPage {
   initializeItems() {
 
     for(let i = 1; i < 15; i++) {
+      this.details = [['first service','$1500+'],['service2','Contact'],['third service','$1000-$5000']];
       this.items.push({
         title: 'Company  #' + i,
         service: this.services[Math.floor(Math.random() * this.services.length)],
-        note: 'This is service #' + i,
+        note: 'This iaj s;lf jsldjffsdfskaldfjlsdjfl;sdjkfl;fasdfsad f fs fasd fasd fasd fsad fasd fasd fasd fasd fasdf asd fasd fasd fasd fasdasdjfl;dsjafl;sdjfl;kjdsal;fjsdl;fjsladkfj;sadjfl;ksdjfl;askdjf;lasdjfl;sdjafl;sdjl;fjsdfkjsda;lfjka;sdfj;lsd sl',
         rating: Math.floor(Math.random()*10),
-        icon: this.icons[Math.floor(Math.random() * this.icons.length)]
+        image: '/assets/house.JPG',
+        listpricing: this.details
+
       });
     }
   }
   selectedItem: any;
   icons: string[];
   services: string[];
-  items: Array<{title: string, service: string, note: string, rating: number, icon: string}>;
+  items: Array<{title: string, service: string, note: string, rating: number, image: string, listpricing: string[][]}>;
   searchQuery: string = '';
-
+  details: string[][];
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     // If we navigated to this page, we will have an item available as a nav param
     this.selectedItem = navParams.get('item');
-
-    this.icons = ['flask', 'wifi', 'beer', 'football', 'basketball', 'paper-plane',
-      'american-football', 'boat', 'bluetooth', 'build'];
     this.services = ['Plumbing','Indoor Renovations','Painting','Other','Garden'];
     this.items = [];
     this.initializeItems();

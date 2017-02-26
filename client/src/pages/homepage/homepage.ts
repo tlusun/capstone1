@@ -1,7 +1,5 @@
 import { Component } from '@angular/core';
 import {ListPage} from "../list/list";
-import { NavController, NavParams } from 'ionic-angular';
-
 /*
   Generated class for the Homepage page.
 
@@ -16,9 +14,10 @@ export class HomePage {
   searchQuery: string = '';
   items: string[];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor() {
 
   }
+
 
 
 }

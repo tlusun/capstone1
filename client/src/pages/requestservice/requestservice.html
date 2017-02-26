@@ -1,0 +1,39 @@
+<!--
+  Generated template for the Requestservice page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+
+
+<ion-header>
+  <ion-navbar text-center>
+    <H1 class="title">
+      BLIP
+    </H1>
+    <button ion-button clear>Featured</button>
+    <button ion-button clear>Categories</button>
+    <button ion-button clear>Profile</button>
+    <button ion-button style="color: white; background-color: #2d2d2d">Sign In</button>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+<div class="form-content">
+  <ion-item>
+    <ion-label>Choose Service</ion-label>
+    <p></p>
+    <ion-select [(ngModel)]="requestedservice">
+      <ion-option *ngFor="let service of selectedItem.listpricing">{{service[0]}}</ion-option>
+    </ion-select>
+    <p></p>
+  </ion-item>
+  <ion-item>
+    <ion-label floating>Additional Note/Comments</ion-label>
+
+    <ion-textarea rows="3" [(ngModel)]="usernote" name="description"></ion-textarea>
+  </ion-item>
+  <button ion-button (click)="submit()">Submit</button>
+  <button ion-button (click)="cancel()">Cancel</button>
+</div>
+</ion-content>

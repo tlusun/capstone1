@@ -1,18 +1,88 @@
+<ion-header>
+  <ion-navbar text-center>
+    <H1 class="title">
+      BLIP
+    </H1>
+    <button ion-button clear>Featured</button>
+    <button ion-button clear>Categories</button>
+    <button ion-button clear>Profile</button>
+    <button ion-button style="color: white; background-color: #2d2d2d">Sign In</button>
+  </ion-navbar>
+</ion-header>
+
+<ion-content >
 
 
-<ion-content class="has-header" padding="50px">
+  <ion-grid class="main-content">
+    <ion-row>
+      <ion-col>
+      <button ion-button (click)="back()">Back</button>
+      <p></p>
+      </ion-col>
+      <ion-col item-right>
+
+        <button ion-button item-left (click)="requestService()">Request Service</button>
+
+      </ion-col>
+    </ion-row>
 
 
-<button ion-button (click)="back()">Back</button>
-  <h3 text-center *ngIf="selectedItem">
-    {{selectedItem.title}}
-    <ion-icon [name]="selectedItem.icon"></ion-icon>
-  </h3>
-  <h4 text-center *ngIf="selectedItem">
-    You navigated here from <b>{{selectedItem.title}}</b>
-  </h4>
-  <p>{{selectedItem.note}}</p>
+    <ion-row responsive-sm>
+      <ion-col width-50>
+        <h1>
+          {{selectedItem.title}}
+        </h1>
+        <p></p>
+        <h3>
+          Description
+        </h3>
+        <p>{{selectedItem.note}}</p>
+      </ion-col>
+
+    </ion-row>
+    <ion-row responsive-sm>
+
+      <ion-col width-50>
+        <ion-row>
+          <ion-col>
+            <h4>Service</h4>
+          </ion-col>
+          <ion-col text-right>
+            <h4>Pricing</h4>
+          </ion-col>
+        </ion-row>
+
+        <ion-row *ngFor="let item of selectedItem.listpricing">
+          <ion-col>
+            <p>{{item[0]}} </p>
+          </ion-col>
+          <ion-col text-right>
+            <p>{{item[1]}}</p>
+          </ion-col>
+        </ion-row>
+      </ion-col>
+      <ion-col>
+        <img src={{selectedItem.image}}/>
+      </ion-col>
+    </ion-row>
+
+    <ion-row responsive-sm>
+      <h2>Rating: {{selectedItem.rating}}</h2>
+    </ion-row>
 
 
+    <ion-row responsive-sm>
+
+        <ion-item>
+          <ion-label floating>Ask the service provider a question!</ion-label>
+
+          <ion-textarea rows="3"[(ngModel)]="question"></ion-textarea>
+        </ion-item>
+
+    </ion-row>
+    <ion-row>
+    <button ion-button item-left (click)="message()">Submit Inquiry</button>
+    </ion-row>
+  </ion-grid>
 
 </ion-content>

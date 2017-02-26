@@ -6,10 +6,8 @@ import { ListPage } from '../pages/list/list';
 import { HomePage  } from '../pages/homepage/homepage';
 import {CategoriesPage} from "../pages/categories/categories";
 import {UserProfilePage} from "../pages/userprofile/userprofile";
-import {RegisterPage} from '../pages/register/register';
-import {LoginPage} from '../pages/login/login';
-
-import { AuthService } from '../providers/auth-service';
+import {RequestServicePage} from "../pages/requestservice/requestservice";
+import { UserOrdersPage } from "../pages/userorders/userorders"
 
 @NgModule({
   declarations: [
@@ -19,8 +17,8 @@ import { AuthService } from '../providers/auth-service';
     HomePage,
     CategoriesPage,
     UserProfilePage,
-    RegisterPage,
-    LoginPage
+    RequestServicePage,
+    UserOrdersPage
   ],
   imports: [
     IonicModule.forRoot(MyApp)
@@ -33,9 +31,9 @@ import { AuthService } from '../providers/auth-service';
     HomePage,
     CategoriesPage,
     UserProfilePage,
-    RegisterPage,
-    LoginPage
+    RequestServicePage,
+    UserOrdersPage
   ],
-  providers: [AuthService, {provide: ErrorHandler, useClass: IonicErrorHandler}]
+  providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}]
 })
 export class AppModule {}

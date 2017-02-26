@@ -1,0 +1,53 @@
+<!--
+  Generated template for the Userorders page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar text-center>
+    <H1 class="title">
+      BLIP
+    </H1>
+    <button ion-button clear >Featured</button>
+    <button ion-button clear >Categories</button>
+    <button ion-button clear >Profile</button>
+    <button ion-button style="color: white; background-color: #2d2d2d" >Sign In</button>
+  </ion-navbar>
+</ion-header>
+
+<ion-content >
+
+  <div class="form-content">
+  <button ion-button (click)="back()">
+    Back
+  </button>
+  <ion-grid>
+
+    <ion-row ion-item responsive-sm *ngFor="let order of orders">
+
+      <ion-col width-33>
+        <h1>{{order.ordername}}</h1>
+        <h2>Company #{{order.companyid}}</h2>
+        <h3>Date: {{order.date}}</h3>
+
+      </ion-col>
+      <ion-col width-33>
+        <p>Invoice: {{order.invoice}}</p>
+        <h4>Total: {{order.cost}}</h4>
+
+      </ion-col>
+      <ion-col width-33>
+        <h3>{{order.status}}</h3>
+        <button ion-button (click)="requestcancel()">
+          Request Cancellation
+        </button>
+      </ion-col>
+
+    </ion-row>
+
+
+  </ion-grid>
+
+  </div>
+</ion-content>
