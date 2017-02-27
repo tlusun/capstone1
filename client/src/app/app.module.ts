@@ -12,6 +12,8 @@ import {LoginPage} from '../pages/login/login';
 import {RegisterPage} from '../pages/register/register';
 
 import { AuthService } from '../providers/auth-service';
+import { BusinessProfilePage } from '../pages/business-profile/business-profile';
+import { BusinessOrdersPage } from '../pages/business-orders/business-orders';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,9 @@ import { AuthService } from '../providers/auth-service';
     RequestServicePage,
     UserOrdersPage,
     RegisterPage,
-    LoginPage
+    LoginPage,
+    BusinessProfilePage,
+    BusinessOrdersPage
   ],
   imports: [
     IonicModule.forRoot(MyApp)
@@ -40,7 +44,9 @@ import { AuthService } from '../providers/auth-service';
     RequestServicePage,
     UserOrdersPage,
     RegisterPage,
-    LoginPage
+    LoginPage,
+    BusinessProfilePage,
+    BusinessOrdersPage
   ],
   providers: [AuthService, {provide: ErrorHandler, useClass: IonicErrorHandler}]
 })

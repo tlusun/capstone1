@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import {ListPage} from "../list/list";
 import { NavController, NavParams } from 'ionic-angular';
+import { HomePage} from '../homepage/homepage';
 
 /*
   Generated class for the Categories page.

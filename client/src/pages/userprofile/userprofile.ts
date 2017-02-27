@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { UserOrdersPage } from "../userorders/userorders";
+import { HomePage} from '../homepage/homepage';
+
 /*
   Generated class for the Userprofile page.
 

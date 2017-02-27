@@ -4,57 +4,47 @@
   See http://ionicframework.com/docs/v2/components/#navigation for more info on
   Ionic pages and navigation.
 -->
-<ion-header>
-  <ion-navbar text-center>
-    <H1 class="title">
-      BLIP
-    </H1>
-    <button ion-button clear >Featured</button>
-    <button ion-button clear >Categories</button>
-    <button ion-button clear >Profile</button>
-    <button ion-button style="color: white; background-color: #2d2d2d" >Sign In</button>
-  </ion-navbar>
-</ion-header>
 
 
-<ion-content  padding>
+<ion-content >
+
+  <page-homepage></page-homepage>
 
 
+  <div class="main-content">
+    <h1>{{user.username}}'s profile</h1>
+    <p></p>
 
-<div class="main-content">
-  <h1 >{{user.username}}'s profile</h1>
-  <p></p>
+    <ion-list>
 
-  <ion-list >
+      <ion-avatar item-left>
+        <img src="assets/icon/favicon.ico">
+      </ion-avatar>
+      <ion-item>
 
-    <ion-avatar item-left>
-      <img src="assets/icon/favicon.ico">
-    </ion-avatar>
-    <ion-item>
-
-      <h2>name</h2>
-      <p>{{user.fullname}}</p>
-    </ion-item>
-    <ion-item>
-      <h2> email </h2>
-      <p>{{user.email}}</p>
-    </ion-item>
-    <ion-item>
-      <h2>address </h2>
-      <p>{{user.address}}</p>
-    </ion-item>
-    <ion-item>
-      <h2>phone</h2>
-      <p>{{user.phone}}</p>
-    </ion-item>
+        <h2>name</h2>
+        <p>{{user.fullname}}</p>
+      </ion-item>
+      <ion-item>
+        <h2> email </h2>
+        <p>{{user.email}}</p>
+      </ion-item>
+      <ion-item>
+        <h2>address </h2>
+        <p>{{user.address}}</p>
+      </ion-item>
+      <ion-item>
+        <h2>phone</h2>
+        <p>{{user.phone}}</p>
+      </ion-item>
 
 
-  </ion-list>
+    </ion-list>
 
-  <p >
-    <button ion-button color="secondary" menuToggle>Edit Profile</button>
-  </p>
-  <button ion-button (click)="openPage()">Your Orders</button>
-</div>
+    <p>
+      <button ion-button color="secondary" menuToggle>Edit Profile</button>
+    </p>
+    <button ion-button (click)="openPage()">Your Orders</button>
+  </div>
 </ion-content>
 

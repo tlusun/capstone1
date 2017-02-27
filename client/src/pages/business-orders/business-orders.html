@@ -1,0 +1,50 @@
+<!--
+  Generated template for the BusinessOrders page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+
+
+<ion-content>
+  <page-homepage></page-homepage>
+
+  <div class="form-content">
+    <button ion-button (click)="back()">Back</button>
+    <ion-grid padding responsive-sm>
+
+
+      <ion-row>
+
+        <h1>Your Orders</h1>
+        <p></p>
+      </ion-row>
+      <ion-list>
+        <ion-item *ngFor="let order of company.orders" text-wrap>
+          <ion-col width-33>
+            <h2>{{order.ordername}}</h2>
+            <h2>User #{{order.userid}}</h2>
+            <h3>Date: {{order.date}}</h3>
+
+          </ion-col>
+          <ion-col width-33>
+            <p>Invoice: {{order.invoice}}</p>
+            <h4>Total: {{order.cost}}</h4>
+
+          </ion-col>
+          <ion-col>
+            <h3>Status: {{order.status}}</h3>
+            <ion-buttons>
+            <button ion-button small (click)="changeStatus()">
+              Change Order Status
+            </button>
+            <button ion-button small (click)="messageUser()">
+              Message User
+            </button>
+            </ion-buttons>
+          </ion-col>
+        </ion-item>
+      </ion-list>
+    </ion-grid>
+  </div>
+</ion-content>

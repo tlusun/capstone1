@@ -7,8 +7,8 @@ import { StatusBar, Splashscreen } from 'ionic-native';
 import { UserProfilePage } from '../pages/userprofile/userprofile';
 import { ListPage } from '../pages/list/list';
 import { CategoriesPage  } from '../pages/categories/categories';
-import { RequestServicePage } from '../pages/requestservice/requestservice'
-
+import { RequestServicePage } from '../pages/requestservice/requestservice';
+import { BusinessProfilePage } from '../pages/business-profile/business-profile';
 import {LoginPage} from '../pages/login/login';
 import {RegisterPage} from '../pages/register/register';
 
@@ -20,6 +20,7 @@ export class MyApp {
 
   // make HelloIonicPage the root (or first) page
   rootPage: any = LoginPage;
+
   pages: Array<{title: string, component: any}>;
 
   constructor(
@@ -34,7 +35,9 @@ export class MyApp {
       { title: 'Services List', component: ListPage },
       { title: 'Categories', component: CategoriesPage},
       { title: 'Log In', component: LoginPage},
-      { title: 'Register', component: RegisterPage}
+      { title: 'Register', component: RegisterPage},
+      { title: 'Business Profile', component: BusinessProfilePage}
+
     ];
   }
 

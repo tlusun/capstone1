@@ -1,21 +1,3 @@
-<ion-header>
 
-  <ion-navbar text-center>
-
-
-    <H1 class="title">
-    BLIP
-    </H1>
-
-
-      <button ion-button clear (click)="openPage(pages[1])">Featured</button>
-      <button ion-button clear (click)="openPage(pages[2])">Categories</button>
-      <button ion-button clear (click)="openPage(pages[0])">Profile</button>
-
-
-      <button ion-button style="color: white; background-color: #2d2d2d" >Sign In</button>
-  </ion-navbar>
-
-</ion-header>
 
 <ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>

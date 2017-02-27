@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-
+import { HomePage} from '../homepage/homepage';
 import { NavController, NavParams } from 'ionic-angular';
 
 import { ItemDetailsPage } from '../item-details/item-details';
@@ -57,7 +57,7 @@ export class ListPage {
     // if the value is an empty string don't filter the items
     if (val && val.trim() != '') {
       this.items = this.items.filter((item) => {
-        return (item.title.toLowerCase().indexOf(val.toLowerCase()) > -1 || item.service.toLowerCase().indexOf(val.toLowerCase()) > -1 );
+        return (item.title.toLowerCase().indexOf(val.toLowerCase()) > -1); //|| item.service.toLowerCase().indexOf(val.toLowerCase()) > -1
       })
     }
   }
