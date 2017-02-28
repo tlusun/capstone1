@@ -4,7 +4,7 @@ import { AuthService } from '../../providers/auth-service';
 
 @Component({
   selector: 'page-register',
-  templateUrl: 'register.html'
+  templateUrl: 'register-business.html'
 })
 export class RegisterBusinessPage {
   createSuccess = false;
