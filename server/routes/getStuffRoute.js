@@ -1,4 +1,5 @@
 var router = require('express').Router();
+var mongoose = require('mongoose');
 
 router.get('/company', function(req, res){
   mongoose.model('Company').find(function (err, companys){
