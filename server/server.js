@@ -43,6 +43,7 @@ var memberInfoRoute = require('./routes/memberInfoRoute.js');
 var getStuffRoute = require('./routes/getStuffRoute.js');
 var postStuffRoute = require('./routes/postStuffRoute.js');
 var deleteStuffRoute = require('./routes/deleteStuffRoute.js');
+var maps = require('./routes/maps.js');
 
 ///////////////
 app.use('/', demoRoute);
@@ -52,6 +53,7 @@ app.use('/api', memberInfoRoute);
 app.use('/api', getStuffRoute);
 app.use('/api', postStuffRoute);
 app.use('/api', deleteStuffRoute);
+app.use('/api', maps);
 
 // Start the server
 app.listen(port);
