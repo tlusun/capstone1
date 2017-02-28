@@ -18,11 +18,11 @@
             </ion-item>
 
             <ion-item>
-              <ion-input type="text" placeholder="firstName" name="firstName" [(ngModel)]="registerCredentials.firstName" required></ion-input>
+              <ion-input type="text" placeholder="name" name="name" [(ngModel)]="registerCredentials.name" required></ion-input>
             </ion-item>
 
             <ion-item>
-              <ion-input type="text" placeholder="lastName" name="lastName" [(ngModel)]="registerCredentials.lastName" required></ion-input>
+              <ion-input type="text" placeholder="owner" name="owner" [(ngModel)]="registerCredentials.owner" required></ion-input>
             </ion-item>
 
             <ion-item>
@@ -31,6 +31,26 @@
 
             <ion-item>
               <ion-input type="text" placeholder="address" name="address" [(ngModel)]="registerCredentials.address" required></ion-input>
+            </ion-item>
+
+            <ion-item>
+              Service Details:
+            </ion-item>
+
+            <ion-item>
+              <ion-input type="text" placeholder="service" name="service" [(ngModel)]="registerCredentials.services.service" required></ion-input>
+            </ion-item>
+
+            <ion-item>
+              <ion-input type="text" placeholder="details" name="details" [(ngModel)]="registerCredentials.services.details" required></ion-input>
+            </ion-item>
+
+            <ion-item>
+              <ion-input type="tel" placeholder="price" name="price" [(ngModel)]="registerCredentials.services.price" required></ion-input>
+            </ion-item>
+
+            <ion-item>
+              <ion-input type="text" placeholder="descriptions" name="descriptions" [(ngModel)]="registerCredentials.services.descriptions" required></ion-input>
             </ion-item>
 
           </ion-list>

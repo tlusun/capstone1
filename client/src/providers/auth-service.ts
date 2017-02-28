@@ -96,6 +96,29 @@ export class AuthService {
     }
   }
 
+  public registerBusiness(credentials) {
+    if (credentials.email === null || credentials.password === null) {
+      return Observable.throw("Please insert credentials");
+    } else {
+      let headers = new Headers({ 'Content-Type': 'application/json' });
+      let options = new RequestOptions({ headers: headers });
+      this.http.post('http://localhost:8080/api/signupbusiness',credentials, options).map(res => res.json()).subscribe(
+        data => {
+          console.log(data.success);
+          console.log(data.msg);
+        },
+        err => {
+          console.log('This has failed quite horribly. err: ', err);
+        }
+      );
+
+      return Observable.create(observer => {
+        observer.next(true);
+        observer.complete();
+      });
+    }
+  }
+
   public getUserInfo() : User {
     return this.currentUser;
   }

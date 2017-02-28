@@ -14,10 +14,13 @@ export class RegisterBusinessPage {
     owner: '',
     number: '',
     address: '',
-    services: '',
+    services: {
+      service: '',
+      details: '',
+      price: ''
+    },
     descriptions: '',
     password: '',
-    
   };
 
   constructor(private nav: NavController, private auth: AuthService, private alertCtrl: AlertController) {}
