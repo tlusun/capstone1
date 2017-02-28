@@ -14,6 +14,8 @@ import {RegisterPage} from '../pages/register/register';
 import { AuthService } from '../providers/auth-service';
 import { BusinessProfilePage } from '../pages/business-profile/business-profile';
 import { BusinessOrdersPage } from '../pages/business-orders/business-orders';
+import { EditBusinessProfilePage } from '../pages/edit-business-profile/edit-business-profile';
+import { EditServicePage } from '../pages/edit-service/edit-service';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,9 @@ import { BusinessOrdersPage } from '../pages/business-orders/business-orders';
     RegisterPage,
     LoginPage,
     BusinessProfilePage,
-    BusinessOrdersPage
+    BusinessOrdersPage,
+    EditBusinessProfilePage,
+    EditServicePage
   ],
   imports: [
     IonicModule.forRoot(MyApp)
@@ -46,7 +50,9 @@ import { BusinessOrdersPage } from '../pages/business-orders/business-orders';
     RegisterPage,
     LoginPage,
     BusinessProfilePage,
-    BusinessOrdersPage
+    BusinessOrdersPage,
+    EditBusinessProfilePage,
+    EditServicePage
   ],
   providers: [AuthService, {provide: ErrorHandler, useClass: IonicErrorHandler}]
 })

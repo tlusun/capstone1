@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
 import {NavController, NavParams} from 'ionic-angular';
 import {BusinessOrdersPage} from '../business-orders/business-orders';
+import {EditBusinessProfilePage} from "../edit-business-profile/edit-business-profile";
 
 /*
  Generated class for the BusinessProfile page.
@@ -78,7 +79,9 @@ export class BusinessProfilePage {
     }
   }
   editBusinessProfile(){
-
+    this.navCtrl.push(EditBusinessProfilePage,{
+      item: this.company
+    });
 
   }
 

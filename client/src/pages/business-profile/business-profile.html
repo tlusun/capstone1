@@ -23,11 +23,29 @@
       </ion-row>
       <p></p>
       <p></p>
+      <h2>Your Services</h2>
 
+      <ion-row padding>
+        <ion-list>
+          <ion-item *ngFor="let service of company.services" text-wrap>
+            <ion-row>
+              <ion-col width-75>
+                <h3> {{service.service}}</h3>
+              </ion-col>
+              <ion-col width-25 align="right">
+                <p>Price : {{service.price}}</p>
+              </ion-col>
+            </ion-row>
+            <ion-row text-wrap>
+              <ion-col><p>{{service.details}}</p></ion-col>
+            </ion-row>
+          </ion-item>
+        </ion-list>
+      </ion-row>
       <h2>Notifications</h2>
       <ion-scroll scrollY="true" style="height: 50vh">
 
-        <ion-list >
+        <ion-list>
           <ion-item class="note" *ngFor="let note of company.notifications" text-wrap>
             <ion-row>
               <ion-col>
@@ -52,7 +70,7 @@
 
       <h2>Your reviews</h2>
       <ion-scroll scrollY="true" style="height: 50vh">
-        <ion-list  >
+        <ion-list>
           <ion-item class="review" *ngFor="let review of company.reviews" text-wrap>
             <h3>{{review.username}}</h3>
             <ion-col text-wrap>
