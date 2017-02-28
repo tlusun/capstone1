@@ -25,7 +25,9 @@ export class EditServicePage {
 
   }
 
-
+back(){
+    this.navCtrl.pop();
+}
 addService(){
 
   this.navCtrl.pop();

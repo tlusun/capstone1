@@ -28,9 +28,10 @@ var CompanySchema = new Schema({
     type: String,
     required: true
   },
-  service: {
-    type: String,
-    required: true
+  services: {
+    service: {type: String, required: true},
+    details: {type: String, required: true},
+    price: {type: String, required: true}
   },
   descriptions: {
     type: String,
@@ -44,10 +45,18 @@ var CompanySchema = new Schema({
     type: String,
     required: true
   },
-  price: {
-    type: Number,
-    required: true
+  reviews: [{
+    type: Schema.Types.ObjectId, ref: 'Review'
+  }],
+  orders: [{
+    type: Schema.Types.ObjectId, ref: 'Order'
+  }],
+  location:{
+    longitude: {type: Number, required: true},
+    latitude: {type: Number, required: true}
   }
+
+
 });
 
 module.exports = mongoose.model('Company', CompanySchema);

@@ -14,14 +14,6 @@ var ReviewSchema = new Schema({
         type: String,
         required: true
     },
-    reviewTitle: {
-      type: String,
-      required: true
-    },
-    date:{
-      type: Date,
-      required: true
-    },
     rating:{
       type: Number,
       required: true

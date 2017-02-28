@@ -27,7 +27,7 @@
 
       <ion-row padding>
         <ion-list>
-          <button ion-item *ngFor="let service of company.services" (click)="editService($event, service)" text-wrap>
+          <ion-item *ngFor="let service of company.services" (click)="editService($event, service)" text-wrap>
             <ion-row>
               <ion-col width-75>
                 <h3> {{service.service}}</h3>
@@ -40,7 +40,7 @@
               <ion-col><p>{{service.details}}</p></ion-col>
             </ion-row>
             <button ion-button small (click)="remove(service)">Delete</button>
-          </button>
+          </ion-item>
         </ion-list>
       </ion-row>
 

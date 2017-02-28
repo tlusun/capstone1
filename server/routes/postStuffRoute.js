@@ -1,50 +1,39 @@
 var router = require('express').Router();
-
+var Company = require('../app/models/company');
 //this function is not needed for now since signUpRoute will post the user to the db
-/*
-router.post('/user', function (req, res){
-
-  var myuser = new User({
-  		username:req.body.username,
-	    name: req.body.name,
-	    email: req.body.email,
-	    number: req.body.number,
-	   	address: req.body.address,
-	   	password:req.body.password
-  });
-
-  myuser.save(function (error, myuser) {
-      if (error) response.send(error);
-      res.status(201).json({myuser});
-  });
-});
-*/
 
 
-router.post('/company', function (req, res){
+
+router.post('/company', function (req, res) {
 
   var mycompany = new Company({
-  		username:req.body.username,
-	    name: req.body.name,
-	    email: req.body.email,
-	    owner:req.body.owner,
-	    number: req.body.number,
-	   	address: req.body.address,
-	   	service:req.body.service,
-	   	descriptions:req.body.descriptions,
-	   	rating:req.body.rating,
-	   	password:req.body.password,
-	   	price:req.body.price
+    username: req.body.username,
+    name: req.body.name,
+    email: req.body.email,
+    owner: req.body.owner,
+    number: req.body.number,
+    address: req.body.address,
+    services: req.body.services,
+    descriptions: req.body.descriptions,
+    rating: req.body.rating,
+    password: req.body.password,
+    reviews: req.body.reviews,
+    orders: req.body.orders,
+    location: req.body.location
+
   });
 
-  mycompany.save(function (error, mycompany) {
-      if (error) response.send(error);
-      res.status(201).json({mycompany});
+  mycompany.save(function(err) {
+    if (err) {
+      console.log('save err: ', err);
+      return res.json({success: false, msg: 'Username already exists.'});
+    }
+    res.json({success: true, msg: 'Successful created new user.'});
   });
 });
 
 
-router.post('/contacts', function (req, res){
+router.post('/contacts', function (req, res) {
   console.log(req.body);
   console.log('iam here');
 
@@ -55,8 +44,8 @@ router.post('/contacts', function (req, res){
   });
 
   person.save(function (error, person) {
-      if (error) response.send(error);
-      res.status(201).json({person});
+    if (error) response.send(error);
+    res.status(201).json({person});
   });
 });
 
