@@ -10,11 +10,27 @@
           <ion-list inset>
 
             <ion-item>
-              <ion-input type="text" placeholder="Email" name="email" [(ngModel)]="registerCredentials.email" required></ion-input>
+              <ion-input type="email" placeholder="Email" name="email" [(ngModel)]="registerCredentials.email" required></ion-input>
             </ion-item>
 
             <ion-item>
               <ion-input type="password" placeholder="Password" name="password" [(ngModel)]="registerCredentials.password" required></ion-input>
+            </ion-item>
+
+            <ion-item>
+              <ion-input type="text" placeholder="firstName" name="firstName" [(ngModel)]="registerCredentials.firstName" required></ion-input>
+            </ion-item>
+
+            <ion-item>
+              <ion-input type="text" placeholder="lastName" name="lastName" [(ngModel)]="registerCredentials.lastName" required></ion-input>
+            </ion-item>
+
+            <ion-item>
+              <ion-input type="tel" placeholder="number" name="number" [(ngModel)]="registerCredentials.number" required></ion-input>
+            </ion-item>
+
+            <ion-item>
+              <ion-input type="text" placeholder="address" name="address" [(ngModel)]="registerCredentials.address" required></ion-input>
             </ion-item>
 
           </ion-list>

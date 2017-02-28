@@ -8,11 +8,26 @@ import { Http, Response , Headers, RequestOptions} from '@angular/http';
 export class User {
   email: string;
   password: string;
+  firstName: string;
+  lastName: string;
+  number: number;
+  address: string;
 
+  /**/
   constructor(email: string, password: string) {
     this.email = email;
     this.password = password;
+  };
+  /*
+  constructor(email: string, password: string, firstName: string, lastName: string, number: number, address: string) {
+    this.email = email;
+    this.password = password;
+    this.firstName = firstName;
+    this.lastName = lastName;
+    this.number = number;
+    this.address = address;
   }
+  */
 }
 
 @Injectable()
@@ -45,7 +60,7 @@ export class AuthService {
             }
             console.log('access1: ', access);
             observer.next(access);
-            observer.complete();  
+            observer.complete();
           },
           err => {
             console.log('This has failed quite horribly. err: ', err);
