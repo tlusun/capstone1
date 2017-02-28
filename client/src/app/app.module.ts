@@ -8,6 +8,14 @@ import {CategoriesPage} from "../pages/categories/categories";
 import {UserProfilePage} from "../pages/userprofile/userprofile";
 import {RequestServicePage} from "../pages/requestservice/requestservice";
 import { UserOrdersPage } from "../pages/userorders/userorders"
+import {LoginPage} from '../pages/login/login';
+import {RegisterPage} from '../pages/register/register';
+
+import { AuthService } from '../providers/auth-service';
+import { BusinessProfilePage } from '../pages/business-profile/business-profile';
+import { BusinessOrdersPage } from '../pages/business-orders/business-orders';
+import { EditBusinessProfilePage } from '../pages/edit-business-profile/edit-business-profile';
+import { EditServicePage } from '../pages/edit-service/edit-service';
 
 @NgModule({
   declarations: [
@@ -18,7 +26,13 @@ import { UserOrdersPage } from "../pages/userorders/userorders"
     CategoriesPage,
     UserProfilePage,
     RequestServicePage,
-    UserOrdersPage
+    UserOrdersPage,
+    RegisterPage,
+    LoginPage,
+    BusinessProfilePage,
+    BusinessOrdersPage,
+    EditBusinessProfilePage,
+    EditServicePage
   ],
   imports: [
     IonicModule.forRoot(MyApp)
@@ -32,8 +46,14 @@ import { UserOrdersPage } from "../pages/userorders/userorders"
     CategoriesPage,
     UserProfilePage,
     RequestServicePage,
-    UserOrdersPage
+    UserOrdersPage,
+    RegisterPage,
+    LoginPage,
+    BusinessProfilePage,
+    BusinessOrdersPage,
+    EditBusinessProfilePage,
+    EditServicePage
   ],
-  providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}]
+  providers: [AuthService, {provide: ErrorHandler, useClass: IonicErrorHandler}]
 })
 export class AppModule {}

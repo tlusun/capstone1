@@ -4,6 +4,7 @@ import { RegisterPage } from '../register/register';
 import { ListPage } from '../list/list';
 
 import { AuthService } from '../../providers/auth-service';
+import { HomePage} from '../homepage/homepage';
 
 @Component({
   selector: 'page-login',

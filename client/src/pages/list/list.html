@@ -1,37 +1,26 @@
-<ion-header>
-  <ion-navbar text-center>
-    <H1 class="title">
-      BLIP
-    </H1>
-    <button ion-button clear >Featured</button>
-    <button ion-button clear >Categories</button>
-    <button ion-button clear >Profile</button>
-    <button ion-button style="color: white; background-color: #2d2d2d" >Sign In</button>
-  </ion-navbar>
-</ion-header>
+<ion-content class="main-content">
+
+  <page-homepage></page-homepage>
 
 
-<ion-content class="main-content" >
-
-
-  <ion-searchbar (ionInput)="getItems($event)"  class="main-content"></ion-searchbar>
+  <ion-searchbar (ionInput)="getItems($event)" class="main-content"></ion-searchbar>
   <ion-list class="main-content">
 
-    <button  ion-item *ngFor="let item of items" (click)="itemTapped($event, item)">
+    <button ion-item *ngFor="let item of items" (click)="itemTapped($event, item)" text-wrap>
       <ion-grid>
         <ion-row responsive-sm>
           <ion-col width-33>
-            <img src={{item.image}} item-left />
+            <img src={{item.image}} item-left/>
           </ion-col>
 
           <ion-col width-33 padding-top>
             <h1>{{item.title}}</h1>
             <p>{{item.note}}</p>
           </ion-col>
-            <ion-col width-33 align="end" center>
-              <li>Service: {{item.service}}</li>
-              <li>Rating: {{item.rating}}</li>
-            </ion-col>
+          <ion-col width-33 align="end" center>
+            <li>Service: {{item.service}}</li>
+            <li>Rating: {{item.rating}}</li>
+          </ion-col>
 
         </ion-row>
       </ion-grid>

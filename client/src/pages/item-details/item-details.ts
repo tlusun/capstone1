@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { HomePage} from '../homepage/homepage';
 
 import { NavController, NavParams } from 'ionic-angular';
 import { RequestServicePage } from '../requestservice/requestservice'
@@ -29,12 +30,24 @@ export class ItemDetailsPage {
 
   message(){
     console.log(this.question);
-    let toast = this.toastCtrl.create({
-      message: 'Message sent! Your profile will show any replies sent to you.',
-      duration: 3000
-    });
+    if (this.question!=""){
+      let toast = this.toastCtrl.create({
+        message: 'Message sent! Your profile will show any replies sent to you.',
+        duration: 3000
+      });
+      toast.present();
+
+    }
+    else{
+      let toast = this.toastCtrl.create({
+        message: 'Message is empty.',
+        duration: 3000
+      });
+      toast.present();
+    }
+
     this.question="";
 
-    toast.present();
+
   }
 }

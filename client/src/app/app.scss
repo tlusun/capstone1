@@ -25,20 +25,21 @@
     width: 100%;
     float: none
   }
+  .header-content{
+
+  }
+
 
 } /* ========================================================== */
 
-
-/* ==================== *\
-    02
-\* ==================== */
 
 @media (min-width: 1000px){ /* ====== */
 
   .main-content {
 
-    padding-left: 15%;
-    padding-right: 15%;
+    padding-left: 10%;
+    padding-right: 10%;
+
   }
 
   .side-bar {
@@ -46,8 +47,39 @@
     float: none
   }
   .form-content {
-    padding-left: 500px;
-    padding-right: 500px;
+    padding-left: 20%;
+    padding-right: 20%;
+
+  }
+  .header-content {
+
+  }
+
+
+}
+/* ==================== *\
+    02
+\* ==================== */
+
+@media (min-width: 1500px){ /* ====== */
+
+  .main-content {
+
+    padding-left: 20vh;
+    padding-right: 20vh;
+
+  }
+
+  .side-bar {
+    width: 30%;
+    float: none
+  }
+  .form-content {
+    padding-left: 30%;
+    padding-right: 30%;
+
+  }
+  .header-content {
 
   }
 

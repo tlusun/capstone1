@@ -1,0 +1,50 @@
+<!--
+  Generated template for the EditBusinessProfile page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+
+
+<ion-content padding>
+  <page-homepage></page-homepage>
+  <div class="main-content">
+    <button ion-button (click)="back()">Back</button>
+    <p></p>
+    <h1>Edit Profile</h1>
+
+    <ion-row responsive-sm>
+
+      <ion-item>
+        <ion-label floating>Company Description</ion-label>
+        <ion-textarea rows="6" [(ngModel)]="company.description"></ion-textarea>
+      </ion-item>
+    </ion-row>
+    <p></p>
+    <p></p>
+    <h1>Your Services</h1>
+    <p></p>
+
+      <ion-row padding>
+        <ion-list>
+          <button ion-item *ngFor="let service of company.services" (click)="editService($event, service)" text-wrap>
+            <ion-row>
+              <ion-col width-75>
+                <h3> {{service.service}}</h3>
+              </ion-col>
+              <ion-col width-25 align="right">
+                <p>Price : {{service.price}}</p>
+              </ion-col>
+            </ion-row>
+            <ion-row text-wrap>
+              <ion-col><p>{{service.details}}</p></ion-col>
+            </ion-row>
+            <button ion-button small (click)="remove(service)">Delete</button>
+          </button>
+        </ion-list>
+      </ion-row>
+
+    <button ion-button (click)="addService()">Add new service</button>
+
+  </div>
+</ion-content>
