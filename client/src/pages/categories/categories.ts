@@ -24,9 +24,11 @@ export class CategoriesPage {
   }
 
 
-  openPage(){
+  openPage(servicename){
 
-    this.navCtrl.push(ListPage);
+    this.navCtrl.push(ListPage, {
+      servicecategory: servicename
+    });
 
   }
 }

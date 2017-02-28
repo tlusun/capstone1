@@ -24,7 +24,6 @@ export class RegisterBusinessPage {
   };
 
   constructor(private nav: NavController, private auth: AuthService, private alertCtrl: AlertController) {}
-
   public registerBusiness() {
     this.auth.registerBusiness(this.registerCredentials).subscribe(success => {
       if (success) {
