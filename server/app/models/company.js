@@ -3,16 +3,12 @@ var Schema = mongoose.Schema;
 
 // set up a mongoose model
 var CompanySchema = new Schema({
-  username: {
-        type: String,
-        unique: true,
-        required: true
-    },
-  name: {
+  email: {
     type: String,
+    unique: true,
     required: true
   },
-  email: {
+  name: {
     type: String,
     required: true
   },
@@ -39,21 +35,23 @@ var CompanySchema = new Schema({
   },
   rating: {
     type: String,
-    required: true
+    required: false
   },
   password: {
     type: String,
     required: true
   },
   reviews: [{
-    type: Schema.Types.ObjectId, ref: 'Review'
+    type: Schema.Types.ObjectId, ref: 'Review',
+    required: false
   }],
   orders: [{
-    type: Schema.Types.ObjectId, ref: 'Order'
+    type: Schema.Types.ObjectId, ref: 'Order',
+    required: false
   }],
   location:{
-    longitude: {type: Number, required: true},
-    latitude: {type: Number, required: true}
+    longitude: {type: Number, required: false},
+    latitude: {type: Number, required: false}
   }
 
 

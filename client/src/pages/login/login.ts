@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, AlertController, LoadingController, Loading } from 'ionic-angular';
 import { RegisterPage } from '../register/register';
+import {RegisterBusinessPage} from '../register-business/register-business'
 import { ListPage } from '../list/list';
 
 import { AuthService } from '../../providers/auth-service';
@@ -18,6 +19,10 @@ export class LoginPage {
 
   public createAccount() {
     this.nav.push(RegisterPage);
+  }
+
+  public createBusinessAccount() {
+    this.nav.push(RegisterBusinessPage);
   }
 
   public login() {
