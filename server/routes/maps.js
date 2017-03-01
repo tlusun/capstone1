@@ -1,12 +1,29 @@
 var express = require('express');
 var router = express.Router();
 var request = require('request');
+var bodyParser = require('body-parser');
 
-router.get('/map', function(req, res, next) {
-  request({
-    uri: 'https://maps.googleapis.com/maps/api/geocode/json?address=toronto',
+router.get('/map/:location', function(req, res, next) {
+	var some= req.params.location; 
+	var lat;
+   var long;
+	request({
+    uri: 'https://maps.googleapis.com/maps/api/geocode/json?address='+some,
+    json: true
     
-   }).pipe(res);
+   }, function(error, response, body) {
+            if (!error && response.statusCode === 200) {
+      console.log(body.results[0].geometry.location.lat) // Print the json response
+    }
+    });
+res.send("Thanks!");
+
+
+
+
 });
+
+
+
 
 module.exports = router;
