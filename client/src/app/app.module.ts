@@ -9,6 +9,7 @@ import {UserProfilePage} from "../pages/userprofile/userprofile";
 import {RequestServicePage} from "../pages/requestservice/requestservice";
 import { UserOrdersPage } from "../pages/userorders/userorders"
 import {LoginPage} from '../pages/login/login';
+import {LoginBusinessPage} from '../pages/login-business/login-business';
 import {RegisterPage} from '../pages/register/register';
 import {RegisterBusinessPage} from '../pages/register-business/register-business';
 
@@ -32,6 +33,7 @@ import { EditServicePage } from '../pages/edit-service/edit-service';
     RegisterPage,
     RegisterBusinessPage,
     LoginPage,
+    LoginBusinessPage,
     BusinessProfilePage,
     BusinessOrdersPage,
     EditBusinessProfilePage,
@@ -53,6 +55,7 @@ import { EditServicePage } from '../pages/edit-service/edit-service';
     RegisterPage,
     RegisterBusinessPage,
     LoginPage,
+    LoginBusinessPage,
     BusinessProfilePage,
     BusinessOrdersPage,
     EditBusinessProfilePage,

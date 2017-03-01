@@ -3,16 +3,17 @@ import { NavController, AlertController, LoadingController, Loading } from 'ioni
 import { RegisterPage } from '../register/register';
 import {RegisterBusinessPage} from '../register-business/register-business'
 import { ListPage } from '../list/list';
-import {LoginBusinessPage} from '../login-business/login-business';
+import { LoginPage } from '../login/login';
+import { BusinessProfilePage } from '../business-profile/business-profile';
 
 import { AuthService } from '../../providers/auth-service';
 import { HomePage} from '../homepage/homepage';
 
 @Component({
   selector: 'page-login',
-  templateUrl: 'login.html'
+  templateUrl: 'login-business.html'
 })
-export class LoginPage {
+export class LoginBusinessPage {
   loading: Loading;
   registerCredentials = {email: '', password: ''};
 
@@ -26,17 +27,17 @@ export class LoginPage {
     this.nav.push(RegisterBusinessPage);
   }
 
-  public loginAsBusiness(){
-    this.nav.push(LoginBusinessPage);
+  public loginAsUser(){
+    this.nav.push(LoginPage);
   }
 
   public login() {
     this.showLoading()
-    this.auth.login(this.registerCredentials).subscribe(allowed => {
+    this.auth.loginAsBusiness(this.registerCredentials).subscribe(allowed => {
       if (allowed) {
         setTimeout(() => {
         this.loading.dismiss();
-        this.nav.setRoot(ListPage)
+        this.nav.setRoot(BusinessProfilePage)
         });
       } else {
         this.showError("Access Denied");
