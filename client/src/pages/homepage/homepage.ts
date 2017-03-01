@@ -12,6 +12,7 @@ import { BusinessProfilePage} from '../business-profile/business-profile';
 import {BusinessPreviewPage} from '../business-preview/business-preview';
 
 import { ShareService } from '../../providers/share-service';
+import { UserProfileService } from '../../providers/user-profile-service'
 /*
   Generated class for the Homepage page.
 
@@ -27,8 +28,9 @@ export class HomePage {
   items: string[];
   pages: Array<{title: string, component: any}>
   loginCredentials: any;
+  user: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private shareService: ShareService) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private shareService: ShareService, private userProfileService: UserProfileService) {
 
     // set our app's pages
     this.pages = [
@@ -41,7 +43,7 @@ export class HomePage {
       { title: 'Business Preview', component: BusinessPreviewPage}
     ];
     this.loginCredentials=this.shareService.getCredentials();
-
+    this.user = this.userProfileService.getUser(this.loginCredentials);
   }
 
   openPage(page) {
