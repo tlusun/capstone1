@@ -10,6 +10,8 @@
   <page-homepage></page-homepage>
   <div class="main-content">
     <button ion-button (click)="back()">Back</button>
+    <button ion-button (click)="save()">Save</button>
+
     <p></p>
     <h1>Edit Profile</h1>
 
@@ -17,7 +19,17 @@
 
       <ion-item>
         <ion-label floating>Edit Company Description</ion-label>
-        <ion-textarea rows="6" [(ngModel)]="company.description"></ion-textarea>
+        <ion-textarea style="background-color: lavender" [(ngModel)]="newdescription"></ion-textarea>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating>Edit Address</ion-label>
+        <ion-input style="background-color: lavender" [(ngModel)]="newaddress"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating>Edit Phone</ion-label>
+        <ion-input style="background-color: lavender"  [(ngModel)]="newphone"></ion-input>
       </ion-item>
     </ion-row>
     <p></p>

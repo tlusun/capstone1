@@ -15,10 +15,16 @@ export class EditBusinessProfilePage {
 
   company: any;
   service: any;
+  newdescription: String;
+  newaddress: String;
+  newphone: String;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     this.company = navParams.get('item');
     this.service = [];
+    this.newdescription=this.company.description;
+    this.newaddress=this.company.address;
+    this.newphone=this.company.phone;
 
   }
 
@@ -44,6 +50,13 @@ export class EditBusinessProfilePage {
   back() {
 
     this.navCtrl.pop();
+  }
+  save(){
+    this.company.description=this.newdescription;
+    this.company.address=this.newaddress;
+    this.company.phone=this.newphone;
+    this.navCtrl.pop();
+
   }
 
 }
