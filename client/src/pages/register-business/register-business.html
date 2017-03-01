@@ -1,0 +1,68 @@
+
+
+<ion-content class="form-content" padding>
+  <div style="padding-top: 100px"></div>
+  <div class="form-content">
+
+    <form (ngSubmit)="registerBusiness()" #registerForm="ngForm">
+      <ion-row>
+        <ion-col>
+          <ion-list inset>
+
+            <ion-item>
+              <ion-input type="email" placeholder="Email" name="email" [(ngModel)]="registerCredentials.email" required></ion-input>
+            </ion-item>
+
+            <ion-item>
+              <ion-input type="password" placeholder="Password" name="password" [(ngModel)]="registerCredentials.password" required></ion-input>
+            </ion-item>
+
+            <ion-item>
+              <ion-input type="text" placeholder="name" name="name" [(ngModel)]="registerCredentials.name" required></ion-input>
+            </ion-item>
+
+            <ion-item>
+              <ion-input type="text" placeholder="owner" name="owner" [(ngModel)]="registerCredentials.owner" required></ion-input>
+            </ion-item>
+
+            <ion-item>
+              <ion-input type="tel" placeholder="number" name="number" [(ngModel)]="registerCredentials.number" required></ion-input>
+            </ion-item>
+
+            <ion-item>
+              <ion-input type="text" placeholder="address" name="address" [(ngModel)]="registerCredentials.address" required></ion-input>
+            </ion-item>
+
+            <ion-item>
+              Service Details:
+            </ion-item>
+
+            <ion-item>
+              <ion-input type="text" placeholder="service" name="service" [(ngModel)]="registerCredentials.services.service" required></ion-input>
+            </ion-item>
+
+            <ion-item>
+              <ion-input type="text" placeholder="details" name="details" [(ngModel)]="registerCredentials.services.details" required></ion-input>
+            </ion-item>
+
+            <ion-item>
+              <ion-input type="tel" placeholder="price" name="price" [(ngModel)]="registerCredentials.services.price" required></ion-input>
+            </ion-item>
+
+            <ion-item>
+              <ion-input type="text" placeholder="descriptions" name="descriptions" [(ngModel)]="registerCredentials.descriptions" required></ion-input>
+            </ion-item>
+
+          </ion-list>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col class="signup-col">
+          <button ion-button class="submit-btn" full type="submit" [disabled]="!registerForm.form.valid">Register</button>
+        </ion-col>
+      </ion-row>
+
+    </form>
+  </div>
+</ion-content>

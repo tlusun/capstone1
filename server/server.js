@@ -38,7 +38,9 @@ require('./config/passport')(passport);
 //TODO: make life easier by putting the routes in separate files
 var demoRoute = require('./routes/demoRoute.js');
 var signUpRoute = require('./routes/signUpRoute.js');
+var signUpBusinessRoute = require('./routes/signUpBusinessRoute.js');
 var authenticateRoute = require('./routes/authenticateRoute.js');
+var authenticateBusinessRoute = require('./routes/authenticateBusinessRoute.js');
 var memberInfoRoute = require('./routes/memberInfoRoute.js');
 var getStuffRoute = require('./routes/getStuffRoute.js');
 var postStuffRoute = require('./routes/postStuffRoute.js');
@@ -54,6 +56,8 @@ app.use('/api', getStuffRoute);
 app.use('/api', postStuffRoute);
 app.use('/api', deleteStuffRoute);
 app.use('/api', maps);
+app.use('/api', signUpBusinessRoute);
+app.use('/api', authenticateBusinessRoute); 
 
 // Start the server
 app.listen(port);

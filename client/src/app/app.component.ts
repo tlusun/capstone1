@@ -11,6 +11,7 @@ import { RequestServicePage } from '../pages/requestservice/requestservice';
 import { BusinessProfilePage } from '../pages/business-profile/business-profile';
 import {LoginPage} from '../pages/login/login';
 import {RegisterPage} from '../pages/register/register';
+import {RegisterBusinessPage} from '../pages/register-business/register-business';
 
 @Component({
   templateUrl: 'app.html'
@@ -36,6 +37,7 @@ export class MyApp {
       { title: 'Categories', component: CategoriesPage},
       { title: 'Log In', component: LoginPage},
       { title: 'Register', component: RegisterPage},
+      { title: 'Register Business', component: RegisterBusinessPage},
       { title: 'Business Profile', component: BusinessProfilePage}
 
     ];

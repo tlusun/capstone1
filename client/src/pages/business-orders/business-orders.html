@@ -35,11 +35,11 @@
           <ion-col>
             <h3>Status: {{order.status}}</h3>
             <ion-buttons>
-            <button ion-button small (click)="changeStatus()">
+            <button ion-button small (click)="changeStatus(order)">
               Change Order Status
             </button>
-            <button ion-button small (click)="messageUser()">
-              Message User
+            <button ion-button small (click)="updateInvoice(order)">
+              Update Invoice
             </button>
             </ion-buttons>
           </ion-col>

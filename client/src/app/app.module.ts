@@ -9,13 +9,16 @@ import {UserProfilePage} from "../pages/userprofile/userprofile";
 import {RequestServicePage} from "../pages/requestservice/requestservice";
 import { UserOrdersPage } from "../pages/userorders/userorders"
 import {LoginPage} from '../pages/login/login';
+import {LoginBusinessPage} from '../pages/login-business/login-business';
 import {RegisterPage} from '../pages/register/register';
+import {RegisterBusinessPage} from '../pages/register-business/register-business';
 
 import { AuthService } from '../providers/auth-service';
 import { BusinessProfilePage } from '../pages/business-profile/business-profile';
 import { BusinessOrdersPage } from '../pages/business-orders/business-orders';
 import { EditBusinessProfilePage } from '../pages/edit-business-profile/edit-business-profile';
 import { EditServicePage } from '../pages/edit-service/edit-service';
+
 
 @NgModule({
   declarations: [
@@ -28,7 +31,9 @@ import { EditServicePage } from '../pages/edit-service/edit-service';
     RequestServicePage,
     UserOrdersPage,
     RegisterPage,
+    RegisterBusinessPage,
     LoginPage,
+    LoginBusinessPage,
     BusinessProfilePage,
     BusinessOrdersPage,
     EditBusinessProfilePage,
@@ -48,7 +53,9 @@ import { EditServicePage } from '../pages/edit-service/edit-service';
     RequestServicePage,
     UserOrdersPage,
     RegisterPage,
+    RegisterBusinessPage,
     LoginPage,
+    LoginBusinessPage,
     BusinessProfilePage,
     BusinessOrdersPage,
     EditBusinessProfilePage,

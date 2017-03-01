@@ -11,8 +11,8 @@
   <page-homepage></page-homepage>
 
 
-  <div class="main-content">
-    <h1>{{user.username}}'s profile</h1>
+  <div class="form-content">
+    <h1>{{user.fullname}}'s profile</h1>
     <p></p>
 
     <ion-list>
@@ -21,29 +21,30 @@
         <img src="assets/icon/favicon.ico">
       </ion-avatar>
       <ion-item>
-
-        <h2>name</h2>
-        <p>{{user.fullname}}</p>
-      </ion-item>
-      <ion-item>
         <h2> email </h2>
         <p>{{user.email}}</p>
       </ion-item>
       <ion-item>
+        <h2>name</h2>
+        <p>{{user.fullname}}  </p>
+        <div style="text-align: right;"><button ion-button (click)="edit('fullname')">Edit</button></div>
+      </ion-item>
+
+      <ion-item>
         <h2>address </h2>
         <p>{{user.address}}</p>
+        <div style="text-align: right;"><button ion-button (click)="edit('address')">Edit</button></div>
       </ion-item>
       <ion-item>
         <h2>phone</h2>
         <p>{{user.phone}}</p>
+        <div style="text-align: right;"><button ion-button (click)="edit('phone')">Edit</button></div>
       </ion-item>
 
 
     </ion-list>
 
-    <p>
-      <button ion-button color="secondary" menuToggle>Edit Profile</button>
-    </p>
+
     <button ion-button (click)="openPage()">Your Orders</button>
   </div>
 </ion-content>

@@ -11,7 +11,8 @@ import { ItemDetailsPage } from '../item-details/item-details';
 })
 export class ListPage {
 
-  initializeItems() {
+  initializeItems(category) {
+
 
     for(let i = 1; i < 15; i++) {
       this.details = [['first service','$1500+'],['service2','Contact'],['third service','$1000-$5000']];
@@ -21,24 +22,30 @@ export class ListPage {
         note: 'This iaj s;lf jsldjffsdfskaldfjlsdjfl;sdjkfl;fasdfsad f fs fasd fasd fasd fsad fasd fasd fasd fasd fasdf asd fasd fasd fasd fasdasdjfl;dsjafl;sdjfl;kjdsal;fjsdl;fjsladkfj;sadjfl;ksdjfl;askdjf;lasdjfl;sdjafl;sdjl;fjsdfkjsda;lfjka;sdfj;lsd sl',
         rating: Math.floor(Math.random()*10),
         image: '/assets/house.JPG',
-        listpricing: this.details
+        listpricing: this.details,
+        address: '315 wharncliffe rd north'
 
       });
+    }
+    if (category){
+      this.items = this.items.filter((item) => {
+        return (item.service.toLowerCase().indexOf(category.toLowerCase()) > -1); //|| item.service.toLowerCase().indexOf(val.toLowerCase()) > -1
+      })
     }
   }
   selectedItem: any;
   icons: string[];
   services: string[];
-  items: Array<{title: string, service: string, note: string, rating: number, image: string, listpricing: string[][]}>;
+  items: Array<{title: string, service: string, note: string, rating: number, image: string, listpricing: string[][], address: string}>;
   searchQuery: string = '';
   details: string[][];
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     // If we navigated to this page, we will have an item available as a nav param
-    this.selectedItem = navParams.get('item');
+    this.selectedItem = navParams.get('servicecategory');
     this.services = ['Plumbing','Indoor Renovations','Painting','Other','Garden'];
     this.items = [];
-    this.initializeItems();
+    this.initializeItems(this.selectedItem);
   }
 
   itemTapped(event, item) {
@@ -49,7 +56,7 @@ export class ListPage {
 
   getItems(ev: any) {
     // Reset items back to all of the items
-    this.initializeItems();
+    this.initializeItems(this.selectedItem);
 
     // set val to the value of the searchbar
     let val = ev.target.value;
