@@ -36,7 +36,10 @@ export class LoginPage {
       if (allowed) {
         setTimeout(() => {
         this.loading.dismiss();
-        this.nav.setRoot(ListPage)
+        this.nav.setRoot(HomePage, {
+          registerCredentials: this.registerCredentials
+        });
+
         });
       } else {
         this.showError("Access Denied");

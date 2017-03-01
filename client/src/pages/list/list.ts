@@ -34,6 +34,7 @@ export class ListPage {
     }
   }
   selectedItem: any;
+  registerCredentials: any;
   icons: string[];
   services: string[];
   items: Array<{title: string, service: string, note: string, rating: number, image: string, listpricing: string[][], address: string}>;
@@ -43,6 +44,8 @@ export class ListPage {
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     // If we navigated to this page, we will have an item available as a nav param
     this.selectedItem = navParams.get('servicecategory');
+    this.registerCredentials = navParams.get('registerCredentials');
+    console.log("REGISTER CREDENTIALS: ", this.registerCredentials);
     this.services = ['Plumbing','Indoor Renovations','Painting','Other','Garden'];
     this.items = [];
     this.initializeItems(this.selectedItem);
