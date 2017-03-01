@@ -5,8 +5,8 @@
   <ion-grid class="main-content">
     <ion-row>
       <ion-col>
-      <button ion-button (click)="back()">Back</button>
-      <p></p>
+        <button ion-button (click)="back()">Back</button>
+        <p></p>
       </ion-col>
       <ion-col item-right>
 
@@ -19,21 +19,16 @@
     <ion-row responsive-sm>
       <ion-col width-50>
         <h1>
-          {{selectedItem.title}}
+          {{company.title}}
         </h1>
         <p></p>
         <h3>
           Description
         </h3>
-        <p>{{selectedItem.note}}</p>
+        <p>{{company.note}}</p>
       </ion-col>
       <ion-col>
-        <h4>Address: </h4>
-        <p>{{selectedItem.address}}</p>
-        <h4>Email: </h4>
-        <p>{{selectedItem.email}}</p>
-        <h4>Phone: </h4>
-        <p>{{selectedItem.phone}}</p>
+        <h3>Address: {{company.address}}</h3>
       </ion-col>
     </ion-row>
     <ion-row responsive-sm>
@@ -48,7 +43,7 @@
           </ion-col>
         </ion-row>
 
-        <ion-row *ngFor="let item of selectedItem.listpricing">
+        <ion-row *ngFor="let item of company.listpricing">
           <ion-col>
             <p>{{item[0]}} </p>
           </ion-col>
@@ -58,19 +53,18 @@
         </ion-row>
       </ion-col>
       <ion-col>
-        <img src={{selectedItem.image}}/>
+        <img src={{company.image}}/>
       </ion-col>
     </ion-row>
 
     <ion-row responsive-sm padding>
-      <h2>Rating: {{selectedItem.rating}}</h2>
+      <h2>Rating: {{company.rating}}</h2>
     </ion-row>
 
-
-    <h2>Reviews</h2>
+    <h2>Your reviews</h2>
     <ion-scroll scrollY="true" style="height: 50vh">
       <ion-list>
-        <ion-item class="review" *ngFor="let review of selectedItem.reviews" text-wrap>
+        <ion-item class="review" *ngFor="let review of company.reviews" text-wrap>
           <h3>{{review.username}}</h3>
           <ion-col text-wrap>
             <p>{{review.comment}}</p>
@@ -79,7 +73,6 @@
         </ion-item>
       </ion-list>
     </ion-scroll>
-
 
   </ion-grid>
 

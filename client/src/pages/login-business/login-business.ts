@@ -37,7 +37,10 @@ export class LoginBusinessPage {
       if (allowed) {
         setTimeout(() => {
         this.loading.dismiss();
-        this.nav.setRoot(BusinessProfilePage)
+        this.nav.setRoot(BusinessProfilePage,{
+          credentials : this.registerCredentials,
+          type : 'business'
+        })
         });
       } else {
         this.showError("Access Denied");

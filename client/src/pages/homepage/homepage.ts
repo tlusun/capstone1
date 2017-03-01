@@ -8,7 +8,10 @@ import { NavController, NavParams } from 'ionic-angular';
 
 import {LoginPage} from '../login/login';
 import {RegisterPage} from '../register/register';
-import { BusinessProfilePage} from '../business-profile/business-profile'
+import { BusinessProfilePage} from '../business-profile/business-profile';
+import {BusinessPreviewPage} from '../business-preview/business-preview';
+
+import { ShareService } from '../../providers/share-service';
 /*
   Generated class for the Homepage page.
 
@@ -22,9 +25,10 @@ import { BusinessProfilePage} from '../business-profile/business-profile'
 export class HomePage {
   searchQuery: string = '';
   items: string[];
-  pages: Array<{title: string, component: any}>;
+  pages: Array<{title: string, component: any}>
+  loginCredentials: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private shareService: ShareService) {
 
     // set our app's pages
     this.pages = [
@@ -33,9 +37,11 @@ export class HomePage {
       { title: 'Categories', component: CategoriesPage},
       { title: 'Business Profile', component: BusinessProfilePage},
       { title: 'Log In', component: LoginPage},
-      { title: 'Register', component: RegisterPage}
-
+      { title: 'Register', component: RegisterPage},
+      { title: 'Business Preview', component: BusinessPreviewPage}
     ];
+    this.loginCredentials=this.shareService.getCredentials();
+
   }
 
   openPage(page) {

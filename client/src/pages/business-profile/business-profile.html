@@ -8,39 +8,56 @@
 
 <ion-content>
   <page-homepage></page-homepage>
-  <div class="main-content">
+  <div class="form-content">
     <ion-grid responsive-sm>
-      <ion-row padding>
-        <h1>{{company.companyname}}</h1>
-        <p></p>
-      </ion-row>
-      <ion-row padding>
-        <h2>Your Dashboard</h2>
-      </ion-row>
       <ion-row padding>
         <button ion-button (click)="editBusinessProfile()">Edit business page</button>
         <button ion-button (click)="gotoOrders()">View Orders</button>
       </ion-row>
-      <p></p>
-      <p></p>
-      <h2>Your Services</h2>
 
+      <p></p>
+      <p></p>
       <ion-row padding>
-        <ion-list>
-          <ion-item *ngFor="let service of company.services" text-wrap>
-            <ion-row>
-              <ion-col width-75>
-                <h3> {{service.service}}</h3>
-              </ion-col>
-              <ion-col width-25 align="right">
-                <p>Price : {{service.price}}</p>
-              </ion-col>
-            </ion-row>
-            <ion-row text-wrap>
-              <ion-col><p>{{service.details}}</p></ion-col>
-            </ion-row>
-          </ion-item>
-        </ion-list>
+        <h1>{{company.companyname}}</h1>
+      </ion-row>
+      <ion-row padding>
+        <ion-col>
+          <ion-list text-wrap>
+
+            <ion-item>
+              <h2>Description:</h2>
+              <p> {{company.description}}</p>
+            </ion-item>
+            <ion-item>
+              <h2>Address:</h2>
+              <p> {{company.address}}</p></ion-item>
+            <ion-item>
+              <h2>Phone:</h2>
+              <p> {{company.phone}}</p>
+            </ion-item>
+          </ion-list>
+        </ion-col>
+      </ion-row>
+      <h2>Your Services</h2>
+      <ion-row padding responsive-sm>
+        <ion-col>
+          <ion-list>
+            <ion-item *ngFor="let service of company.services" text-wrap>
+              <ion-row>
+                <ion-col width-75>
+                  <h3> {{service.service}}</h3>
+                </ion-col>
+                <ion-col width-25 align="right">
+                  <p>Price : {{service.price}}</p>
+                </ion-col>
+              </ion-row>
+              <ion-row text-wrap>
+                <ion-col><p>{{service.details}}</p></ion-col>
+              </ion-row>
+            </ion-item>
+          </ion-list>
+        </ion-col>
+
       </ion-row>
       <h2>Notifications</h2>
       <ion-scroll scrollY="true" style="height: 50vh">

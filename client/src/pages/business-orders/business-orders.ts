@@ -59,7 +59,7 @@ back(){
       type: 'radio',
       label: 'Complete-Paid',
       value: 'Complete-Paid',
-      checked: true
+      checked: false
     });
 
     alert.addButton('Cancel');

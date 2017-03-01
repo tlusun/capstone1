@@ -30,9 +30,11 @@
       </ion-col>
       <ion-col width-33>
         <h3>{{order.status}}</h3>
-        <button ion-button (click)="requestcancel()">
-          Request Cancellation
+        <ion-item *ngIf="order.status=='Waiting-Payment'">
+        <button  ion-button (click)="requestcancel()">
+          Pay
         </button>
+        </ion-item>
       </ion-col>
 
     </ion-row>

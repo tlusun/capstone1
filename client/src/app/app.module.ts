@@ -12,13 +12,14 @@ import {LoginPage} from '../pages/login/login';
 import {LoginBusinessPage} from '../pages/login-business/login-business';
 import {RegisterPage} from '../pages/register/register';
 import {RegisterBusinessPage} from '../pages/register-business/register-business';
-
-import { AuthService } from '../providers/auth-service';
 import { BusinessProfilePage } from '../pages/business-profile/business-profile';
 import { BusinessOrdersPage } from '../pages/business-orders/business-orders';
 import { EditBusinessProfilePage } from '../pages/edit-business-profile/edit-business-profile';
 import { EditServicePage } from '../pages/edit-service/edit-service';
+import { BusinessPreviewPage } from '../pages/business-preview/business-preview'
 
+import { AuthService } from '../providers/auth-service';
+import { ShareService } from '../providers/share-service';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { EditServicePage } from '../pages/edit-service/edit-service';
     BusinessProfilePage,
     BusinessOrdersPage,
     EditBusinessProfilePage,
-    EditServicePage
+    EditServicePage,
+    BusinessPreviewPage
   ],
   imports: [
     IonicModule.forRoot(MyApp)
@@ -59,8 +61,9 @@ import { EditServicePage } from '../pages/edit-service/edit-service';
     BusinessProfilePage,
     BusinessOrdersPage,
     EditBusinessProfilePage,
-    EditServicePage
+    EditServicePage,
+    BusinessPreviewPage
   ],
-  providers: [AuthService, {provide: ErrorHandler, useClass: IonicErrorHandler}]
+  providers: [AuthService, ShareService, {provide: ErrorHandler, useClass: IonicErrorHandler}]
 })
 export class AppModule {}

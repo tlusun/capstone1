@@ -11,10 +11,25 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class ShareService {
 
-  
+  loginCredentials: {
+    email: String,
+    password: String
+  };
 
   constructor(public http: Http) {
-    console.log('Hello ShareService Provider');
+
+    this.loginCredentials= {
+      email : '',
+      password : ''
+    }
+
   }
 
+  setCredentials(credentials){
+    this.loginCredentials = credentials;
+  }
+
+  getCredentials(){
+    return this.loginCredentials;
+  }
 }

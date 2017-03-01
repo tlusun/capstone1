@@ -37,7 +37,8 @@ export class LoginPage {
         setTimeout(() => {
         this.loading.dismiss();
         this.nav.setRoot(HomePage, {
-          registerCredentials: this.registerCredentials
+          registerCredentials: this.registerCredentials,
+          type: 'user'
         });
 
         });

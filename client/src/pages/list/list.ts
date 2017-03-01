@@ -3,7 +3,7 @@ import { HomePage} from '../homepage/homepage';
 import { NavController, NavParams } from 'ionic-angular';
 
 import { ItemDetailsPage } from '../item-details/item-details';
-
+import { ShareService } from '../../providers/share-service';
 
 @Component({
   selector: 'page-list',
@@ -23,8 +23,17 @@ export class ListPage {
         rating: Math.floor(Math.random()*10),
         image: '/assets/house.JPG',
         listpricing: this.details,
-        address: '315 wharncliffe rd north'
+        address: '315 wharncliffe rd north',
+        reviews: this.reviews
 
+      });
+    }
+    for (let j = 1; j < 4; j++) {
+      this.reviews.push({
+        companyid: 1,
+        username: 'user #' + j,
+        comment: 'this company sucks big time, if i had 100 dollars to spend on anything, i would rather buy a huge dildo and stick it up my ass,',
+        rating: 5
       });
     }
     if (category){
@@ -37,18 +46,23 @@ export class ListPage {
   registerCredentials: any;
   icons: string[];
   services: string[];
-  items: Array<{title: string, service: string, note: string, rating: number, image: string, listpricing: string[][], address: string}>;
+  items: Array<{title: string, service: string, note: string, rating: number, image: string, listpricing: string[][], address: string, reviews: any}>;
   searchQuery: string = '';
   details: string[][];
+  reviews: Array<{companyid: number, username: String, comment: String, rating: number}>;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, private shareService: ShareService) {
     // If we navigated to this page, we will have an item available as a nav param
     this.selectedItem = navParams.get('servicecategory');
     this.registerCredentials = navParams.get('registerCredentials');
     console.log("REGISTER CREDENTIALS: ", this.registerCredentials);
     this.services = ['Plumbing','Indoor Renovations','Painting','Other','Garden'];
     this.items = [];
+    this.reviews=[];
     this.initializeItems(this.selectedItem);
+    this.shareService.setCredentials(this.registerCredentials);
+
   }
 
   itemTapped(event, item) {

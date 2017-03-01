@@ -8,14 +8,14 @@
 
 <ion-content>
   <page-homepage></page-homepage>
-  <div class="main-content">
+  <div class="form-content">
     <button ion-button (click)="back()">Back</button>
     <button ion-button (click)="save()">Save</button>
 
     <p></p>
     <h1>Edit Profile</h1>
 
-    <ion-row responsive-sm>
+    <ion-row padding responsive-sm>
 
       <ion-item>
         <ion-label floating>Edit Company Description</ion-label>
@@ -29,7 +29,7 @@
 
       <ion-item>
         <ion-label floating>Edit Phone</ion-label>
-        <ion-input style="background-color: lavender"  [(ngModel)]="newphone"></ion-input>
+        <ion-input style="background-color: lavender" [(ngModel)]="newphone"></ion-input>
       </ion-item>
     </ion-row>
     <p></p>
@@ -37,9 +37,10 @@
     <h1>Your Services</h1>
     <p></p>
 
-      <ion-row padding>
+    <ion-row padding>
+      <ion-col>
         <ion-list>
-          <ion-item *ngFor="let service of company.services" (click)="editService($event, service)" text-wrap>
+          <ion-item *ngFor="let service of company.services" (click)="editService($event, service)" style="background-color: lavender" text-wrap>
             <ion-row>
               <ion-col width-75>
                 <h3> {{service.service}}</h3>
@@ -54,7 +55,8 @@
             <button ion-button small (click)="remove(service)">Delete</button>
           </ion-item>
         </ion-list>
-      </ion-row>
+      </ion-col>
+    </ion-row>
 
     <button ion-button (click)="addService()">Add new service</button>
 

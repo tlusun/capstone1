@@ -10,11 +10,11 @@
 
 <ion-content >
 <page-homepage></page-homepage>
-  <ion-grid class="card-background-page" center>
+  <ion-grid class="card-background-page" >
 
-    <ion-row responsive-sm  class="main-content" center>
+    <ion-row responsive-sm  class="main-content" >
       <ion-col width-34 *ngFor="let service of services"  >
-        <ion-card  (click)="openPage(service)"  >
+        <ion-card  (click)="openPage(service)" >
           <img src="/assets/house.JPG" class ="image"/>
           <div class="card-title">{{service}}</div>
 

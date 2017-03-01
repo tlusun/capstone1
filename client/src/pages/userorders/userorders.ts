@@ -20,6 +20,7 @@ export class UserOrdersPage {
 
     this.user = navParams.get('item');
     this.orders = this.user.orderhistory;
+
   }
 
   back(){
