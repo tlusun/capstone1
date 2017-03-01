@@ -18,6 +18,7 @@ import { EditBusinessProfilePage } from '../pages/edit-business-profile/edit-bus
 import { EditServicePage } from '../pages/edit-service/edit-service';
 import { BusinessPreviewPage } from '../pages/business-preview/business-preview'
 
+import {UserProfileService} from '../providers/user-profile-service';
 import { AuthService } from '../providers/auth-service';
 import { ShareService } from '../providers/share-service';
 
@@ -64,6 +65,6 @@ import { ShareService } from '../providers/share-service';
     EditServicePage,
     BusinessPreviewPage
   ],
-  providers: [AuthService, ShareService, {provide: ErrorHandler, useClass: IonicErrorHandler}]
+  providers: [AuthService, ShareService, UserProfileService, {provide: ErrorHandler, useClass: IonicErrorHandler}]
 })
 export class AppModule {}
