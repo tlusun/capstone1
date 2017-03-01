@@ -50,10 +50,10 @@ var CompanySchema = new Schema({
     type: Schema.Types.ObjectId, ref: 'Order',
     required: false
   }],
-    location:{
-      longitude: {type: Number, required: false},
-      latitude: {type: Number, required: false}
-    }
+  location:{
+    longitude: {type: Number, required: false},
+    latitude: {type: Number, required: false}
+  }
 });
 
 CompanySchema.pre('save', function (next) {
