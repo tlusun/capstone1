@@ -38,6 +38,13 @@ mongoose.model('User').findOne({email: req.params.email}, function(err, doc){
   })
 });
 
+router.get('/company/:email', function(req, res){
+  mongoose.model('Company').findOne({email: req.params.email}, function(err, doc){
+    console.log('doc', doc);
+    res.send(doc);
+  })
+});
+
 router.get('/ordersforcustomer/:userEmail', function(req, res){
 mongoose.model('Order').find({userEmail: req.params.userEmail}, function(err, orders){
   console.log('doc', orders);

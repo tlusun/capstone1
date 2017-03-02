@@ -1,24 +1,25 @@
-import { Component } from '@angular/core';
-import { UserProfilePage } from '../userprofile/userprofile';
-import { ListPage } from '../list/list';
-import { CategoriesPage  } from '../categories/categories';
-import { RequestServicePage } from '../requestservice/requestservice'
-import { Platform, MenuController, Nav } from 'ionic-angular';
-import { NavController, NavParams } from 'ionic-angular';
+import {Component} from '@angular/core';
+import {UserProfilePage} from '../userprofile/userprofile';
+import {ListPage} from '../list/list';
+import {CategoriesPage} from '../categories/categories';
+import {RequestServicePage} from '../requestservice/requestservice'
+import {Platform, MenuController, Nav} from 'ionic-angular';
+import {NavController, NavParams} from 'ionic-angular';
 
 import {LoginPage} from '../login/login';
 import {RegisterPage} from '../register/register';
-import { BusinessProfilePage} from '../business-profile/business-profile';
+import {BusinessProfilePage} from '../business-profile/business-profile';
 import {BusinessPreviewPage} from '../business-preview/business-preview';
 
-import { ShareService } from '../../providers/share-service';
-import { UserProfileService } from '../../providers/user-profile-service'
+import {ShareService} from '../../providers/share-service';
+import {UserProfileService} from '../../providers/user-profile-service';
+import {BusinessProfileService} from '../../providers/business-profile-service';
 /*
-  Generated class for the Homepage page.
+ Generated class for the Homepage page.
 
-  See http://ionicframework.com/docs/v2/components/#navigation for more info on
-  Ionic pages and navigation.
-*/
+ See http://ionicframework.com/docs/v2/components/#navigation for more info on
+ Ionic pages and navigation.
+ */
 
 export class User {
   email: string;
@@ -50,28 +51,43 @@ export class HomePage {
   loginCredentials: any;
   user: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private shareService: ShareService, private userProfileService: UserProfileService) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private shareService: ShareService, private userProfileService: UserProfileService, private businessProfileService: BusinessProfileService) {
 
     // set our app's pages
     this.pages = [
-      { title: 'User Profile', component: UserProfilePage },
-      { title: 'Services List', component: ListPage },
-      { title: 'Categories', component: CategoriesPage},
-      { title: 'Business Profile', component: BusinessProfilePage},
-      { title: 'Log In', component: LoginPage},
-      { title: 'Register', component: RegisterPage},
-      { title: 'Business Preview', component: BusinessPreviewPage}
+      {title: 'User Profile', component: UserProfilePage},
+      {title: 'Services List', component: ListPage},
+      {title: 'Categories', component: CategoriesPage},
+      {title: 'Business Profile', component: BusinessProfilePage},
+      {title: 'Log In', component: LoginPage},
+      {title: 'Register', component: RegisterPage},
+      {title: 'Business Preview', component: BusinessPreviewPage}
     ];
 
-    this.loginCredentials=this.shareService.getCredentials();
+    this.loginCredentials = this.shareService.getCredentials();
     console.log("HOMEPAGE");
-    this.userProfileService.getUser(this.loginCredentials).then(
-      data => {
-        this.user = data;
-        console.log("user2: ", this.user);
-      }
-    );
-    console.log("user1: ", this.user);
+    if (this.loginCredentials.type == 'user') {
+      this.userProfileService.getUser(this.loginCredentials).then(
+        data => {
+          this.user = data;
+          console.log("user2: ", this.user);
+        }
+      );
+      console.log("user1: ", this.user);
+    }
+    else if (this.loginCredentials.type == 'business') {
+      this.businessProfileService.getBusiness(this.loginCredentials).then(
+        data => {
+          this.user = data;
+          console.log("business: ", this.user);
+        }
+      );
+      console.log("business2: ", this.user);
+    }
+    else {
+
+    }
+
   }
 
   openPage(page) {

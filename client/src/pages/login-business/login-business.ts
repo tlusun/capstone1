@@ -16,7 +16,7 @@ import { HomePage} from '../homepage/homepage';
 })
 export class LoginBusinessPage {
   loading: Loading;
-  registerCredentials = {email: '', password: ''};
+  registerCredentials = {email: '', password: '', type: 'business'};
 
   constructor(private nav: NavController, private auth: AuthService, private alertCtrl: AlertController, private loadingCtrl: LoadingController) {}
 
@@ -38,9 +38,9 @@ export class LoginBusinessPage {
       if (allowed) {
         setTimeout(() => {
         this.loading.dismiss();
+        this.registerCredentials.type='business';
         this.nav.setRoot(BusinessProfilePage,{
-          registerCredentials : this.registerCredentials,
-          type : 'business'
+          registerCredentials : this.registerCredentials
         })
         });
       } else {
