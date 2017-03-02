@@ -27,9 +27,12 @@ export class ShareService {
 
   setCredentials(credentials){
     this.loginCredentials = credentials;
+    console.log('credentials set' + this.loginCredentials);
   }
 
   getCredentials(){
+    console.log('credentials got' + this.loginCredentials);
+
     return this.loginCredentials;
   }
 }

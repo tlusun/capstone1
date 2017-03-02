@@ -12,7 +12,7 @@
 
 
   <div class="form-content">
-    <h1>{{user.fullname}}'s profile</h1>
+    <h1>{{user.firstName}}'s profile</h1>
     <p></p>
 
     <ion-list>
@@ -26,7 +26,7 @@
       </ion-item>
       <ion-item>
         <h2>name</h2>
-        <p>{{user.fullname}}  </p>
+        <p>{{user.firstName}}  </p>
         <div style="text-align: right;"><button ion-button (click)="edit('fullname')">Edit</button></div>
       </ion-item>
 
@@ -37,7 +37,7 @@
       </ion-item>
       <ion-item>
         <h2>phone</h2>
-        <p>{{user.phone}}</p>
+        <p>{{user.number}}</p>
         <div style="text-align: right;"><button ion-button (click)="edit('phone')">Edit</button></div>
       </ion-item>
 

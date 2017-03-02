@@ -31,8 +31,9 @@ router.get('/contacts', function(req, res){
   })
 });
 
-router.get('/user/:emails', function(req, res){
-mongoose.model('User').findOne({user: req.params.email}, function(err, doc){
+router.get('/user/:email', function(req, res){
+mongoose.model('User').findOne({email: req.params.email}, function(err, doc){
+  console.log(doc);
   res.send(doc);
   })
 });

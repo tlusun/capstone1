@@ -19,6 +19,26 @@ import { UserProfileService } from '../../providers/user-profile-service'
   See http://ionicframework.com/docs/v2/components/#navigation for more info on
   Ionic pages and navigation.
 */
+
+export class User {
+  email: string;
+  password: string;
+  firstName: string;
+  lastName: string;
+  number: string;
+  address: string;
+
+  constructor(email: string, password: string, firstName: string, lastName: string, number: string, address: string) {
+    this.email = email;
+    this.password = password;
+    this.firstName = firstName;
+    this.lastName = lastName;
+    this.number = number;
+    this.address = address;
+  };
+}
+
+
 @Component({
   selector: 'page-homepage',
   templateUrl: 'homepage.html'
@@ -28,7 +48,7 @@ export class HomePage {
   items: string[];
   pages: Array<{title: string, component: any}>
   loginCredentials: any;
-  user: any;
+  user: User;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private shareService: ShareService, private userProfileService: UserProfileService) {
 
@@ -42,15 +62,20 @@ export class HomePage {
       { title: 'Register', component: RegisterPage},
       { title: 'Business Preview', component: BusinessPreviewPage}
     ];
+
     this.loginCredentials=this.shareService.getCredentials();
+    console.log("HOMEPAGE");
     this.user = this.userProfileService.getUser(this.loginCredentials);
+    if (this.user!==null)console.log("user1: " + this.user);
   }
 
   openPage(page) {
 
     // navigate to the new page if it is not the current page
     //this.nav.push(page.component);
-    this.navCtrl.setRoot(page.component);
+    this.navCtrl.setRoot(page.component, {
+      user: this.user
+    });
   }
 
 

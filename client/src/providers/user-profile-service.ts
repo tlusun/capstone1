@@ -11,7 +11,7 @@ import 'rxjs/add/operator/catch';
   See https://angular.io/docs/ts/latest/guide/dependency-injection.html
   for more info on providers and Angular 2 DI.
 */
-@Injectable()
+
 
 export class User {
   email: string;
@@ -30,7 +30,7 @@ export class User {
     this.address = address;
   };
 }
-
+@Injectable()
 export class UserProfileService {
   currentUser: User;
 
@@ -40,25 +40,22 @@ export class UserProfileService {
   }
 
   getUser(credentials) {
-    if (credentials.email === null || credentials.password === null) {
-      return Observable.throw("Please insert credentials");
-    } else {
-      return Observable.create(observer => {
-        let headers = new Headers({ 'Content-Type': 'application/json' });
-        let options = new RequestOptions({ headers: headers });
-        this.http.get('http://localhost:8080/api/user/' + credentials.email, options).map(res => res.json()).subscribe(
-          data => {
-            this.currentUser = new User(data.email, data.password, data.firstName, data.lastName, data.number, data.address);
-            console.log(this.currentUser);
+    console.log("getUser: " + credentials.email);
 
-            observer.next(true);
-            observer.complete();
+        this.http.get('http://localhost:8080/api/user/' + credentials.email).map(res => res.json()).subscribe(
+          data => {
+            console.log("email: " + data.email);
+            //this.currentUser = data.user;
+            this.currentUser = new User(data.email, data.password, data.firstName, data.lastName, data.number, data.address);
+            console.log("we retreived it" + this.currentUser);
           },
           err => {
             console.log('This has failed quite horribly. err: ', err);
           }
         );
-      });
-    }
+    return this.currentUser;
+
+
   }
+
 }

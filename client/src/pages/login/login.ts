@@ -4,7 +4,7 @@ import { RegisterPage } from '../register/register';
 import {RegisterBusinessPage} from '../register-business/register-business'
 import { ListPage } from '../list/list';
 import {LoginBusinessPage} from '../login-business/login-business';
-
+import { ShareService} from '../../providers/share-service';
 import { AuthService } from '../../providers/auth-service';
 import { HomePage} from '../homepage/homepage';
 
@@ -16,7 +16,7 @@ export class LoginPage {
   loading: Loading;
   registerCredentials = {email: '', password: ''};
 
-  constructor(private nav: NavController, private auth: AuthService, private alertCtrl: AlertController, private loadingCtrl: LoadingController) {}
+  constructor(private nav: NavController, private auth: AuthService, private alertCtrl: AlertController, private loadingCtrl: LoadingController, private shareServ: ShareService) {}
 
   public createAccount() {
     this.nav.push(RegisterPage);
@@ -36,7 +36,8 @@ export class LoginPage {
       if (allowed) {
         setTimeout(() => {
         this.loading.dismiss();
-        this.nav.setRoot(HomePage, {
+        this.shareServ.setCredentials(this.registerCredentials);
+        this.nav.setRoot(ListPage, {
           registerCredentials: this.registerCredentials,
           type: 'user'
         });
