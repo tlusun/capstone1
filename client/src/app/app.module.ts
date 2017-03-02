@@ -21,6 +21,7 @@ import { BusinessPreviewPage } from '../pages/business-preview/business-preview'
 import { AuthService } from '../providers/auth-service';
 import { ShareService } from '../providers/share-service';
 import { UserProfileService } from '../providers/user-profile-service'
+import { GetCompanies } from '../providers/get-companies'
 
 @NgModule({
   declarations: [
@@ -65,6 +66,6 @@ import { UserProfileService } from '../providers/user-profile-service'
     EditServicePage,
     BusinessPreviewPage
   ],
-  providers: [AuthService, ShareService, UserProfileService, {provide: ErrorHandler, useClass: IonicErrorHandler}]
+  providers: [AuthService, ShareService, UserProfileService, GetCompanies, {provide: ErrorHandler, useClass: IonicErrorHandler}]
 })
 export class AppModule {}

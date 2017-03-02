@@ -4,6 +4,7 @@ import { NavController, NavParams } from 'ionic-angular';
 
 import { ItemDetailsPage } from '../item-details/item-details';
 import { ShareService } from '../../providers/share-service';
+import { GetCompanies } from '../../providers/get-companies'
 
 @Component({
   selector: 'page-list',
@@ -52,15 +53,23 @@ export class ListPage {
   reviews: Array<{companyid: number, username: String, comment: String, rating: number}>;
 
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private shareService: ShareService) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private shareService: ShareService, private getCompanies: GetCompanies) {
+    this.getCompanies.getCompanies().then(
+      data => {
+        this.selectedItem = data;
+        console.log("this.selectedItem: ", this.selectedItem);
+        //this.initializeItems(this.selectedItem);
+      }
+    );
+    console.log('this.selectedItem in list.ts', this.selectedItem);
+
     // If we navigated to this page, we will have an item available as a nav param
-    this.selectedItem = navParams.get('servicecategory');
+    //this.selectedItem = navParams.get('servicecategory');
     this.registerCredentials = navParams.get('registerCredentials');
     console.log("REGISTER CREDENTIALS: ", this.registerCredentials);
     this.services = ['Plumbing','Indoor Renovations','Painting','Other','Garden'];
     this.items = [];
     this.reviews=[];
-    this.initializeItems(this.selectedItem);
     this.shareService.setCredentials(this.registerCredentials);
 
   }
