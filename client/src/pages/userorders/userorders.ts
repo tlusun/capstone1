@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { HomePage} from '../homepage/homepage';
 
+import { GetOrdersForCustomer } from '../../providers/get-orders-for-customer';
+
 
 /*
   Generated class for the Userorders page.
@@ -16,10 +18,21 @@ import { HomePage} from '../homepage/homepage';
 export class UserOrdersPage {
   user : any;
   orders : Object;
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-
+  constructor(public navCtrl: NavController, public navParams: NavParams, private getOrdersForCustomer: GetOrdersForCustomer) {
     this.user = navParams.get('item');
-    this.orders = this.user.orderhistory;
+    console.log("this.user: ", this.user);
+    this.getOrdersForCustomer.getOrdersForCustomer(this.user).then(
+      data => {
+        this.orders = data;
+        console.log("this.orders: ", this.orders);
+        //this.initializeItems(this.selectedItem);
+      }
+    );
+    console.log('this.orders in userorders.ts', this.orders);
+
+    ////
+    //this.user = navParams.get('item');
+    //this.orders = this.user.orderhistory;
 
   }
 

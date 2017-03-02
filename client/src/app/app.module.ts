@@ -22,6 +22,7 @@ import { AuthService } from '../providers/auth-service';
 import { ShareService } from '../providers/share-service';
 import { UserProfileService } from '../providers/user-profile-service'
 import { GetCompanies } from '../providers/get-companies'
+import { GetOrdersForCustomer } from '../providers/get-orders-for-customer'
 
 @NgModule({
   declarations: [
@@ -66,6 +67,6 @@ import { GetCompanies } from '../providers/get-companies'
     EditServicePage,
     BusinessPreviewPage
   ],
-  providers: [AuthService, ShareService, UserProfileService, GetCompanies, {provide: ErrorHandler, useClass: IonicErrorHandler}]
+  providers: [AuthService, ShareService, UserProfileService, GetCompanies, GetOrdersForCustomer, {provide: ErrorHandler, useClass: IonicErrorHandler}]
 })
 export class AppModule {}

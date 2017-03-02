@@ -51,7 +51,7 @@ export class UserProfilePage {
   openPage() {
 
     this.navCtrl.push(UserOrdersPage, {
-      item: this.user
+      item: this.user1
     });
   }
 

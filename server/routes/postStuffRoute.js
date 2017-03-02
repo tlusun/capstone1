@@ -1,5 +1,6 @@
 var router = require('express').Router();
 var Company = require('../app/models/company');
+var Order = require('../app/models/order');
 //this function is not needed for now since signUpRoute will post the user to the db
 
 
@@ -46,6 +47,24 @@ router.post('/contacts', function (req, res) {
   person.save(function (error, person) {
     if (error) response.send(error);
     res.status(201).json({person});
+  });
+});
+
+router.post('/order', function (req, res) {
+  console.log('order', req.body);
+
+  var order = new Order({
+    userEmail: req.body.userEmail,
+    amount: req.body.amount,
+    service: req.body.service,
+    date: req.body.date,
+    businessEmail: req.body.businessEmail, 
+    invoice: req.body.invoice
+  });
+
+  order.save(function (error, order) {
+    if (error) response.send(error);
+    res.status(201).json({order});
   });
 });
 
