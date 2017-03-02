@@ -18,7 +18,7 @@
       <p></p>
       <p></p>
       <ion-row padding>
-        <h1>{{company.companyname}}</h1>
+        <h1>{{company1.name}}</h1>
       </ion-row>
       <ion-row padding>
         <ion-col>
@@ -26,22 +26,22 @@
 
             <ion-item>
               <h2>Description:</h2>
-              <p> {{company.description}}</p>
+              <p> {{company1.descriptions}}</p>
             </ion-item>
             <ion-item>
               <h2>Address:</h2>
-              <p> {{company.address}}</p></ion-item>
+              <p> {{company1.address}}</p></ion-item>
             <ion-item>
               <h2>Phone:</h2>
-              <p> {{company.phone}}</p>
+              <p> {{company1.number}}</p>
             </ion-item>
             <ion-item>
               <h2>Service:</h2>
-              <p> {{company.service}}</p>
+              <p> {{company1.service}}</p>
             </ion-item>
             <ion-item>
               <h2>Price:</h2>
-              <p> {{company.price}}</p>
+              <p> {{company1.price}}</p>
             </ion-item>
           </ion-list>
         </ion-col>
@@ -98,13 +98,13 @@
       <p></p>
 
       <h2>Your reviews</h2>
-      <h3>Average rating: {{company.rating}}</h3>
+      <h3>Average rating: {{company1.rating}}</h3>
       <ion-scroll scrollY="true" style="height: 50vh">
         <ion-list>
           <ion-item class="review" *ngFor="let review of company.reviews" text-wrap>
-            <h3>{{review.username}}</h3>
+            <h3>{{review.customerEmail}}</h3>
             <ion-col text-wrap>
-              <p>{{review.comment}}</p>
+              <p>{{review.review}}</p>
             </ion-col>
             <p>Rating: {{review.rating}}</p>
           </ion-item>

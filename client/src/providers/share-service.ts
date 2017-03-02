@@ -13,14 +13,17 @@ export class ShareService {
 
   loginCredentials: {
     email: String,
-    password: String
+    password: String,
+    type: String,
   };
 
   constructor(public http: Http) {
 
     this.loginCredentials= {
       email : '',
-      password : ''
+      password : '',
+      type: '',
+
     }
 
   }

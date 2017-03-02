@@ -14,7 +14,7 @@ import { NavController, NavParams } from 'ionic-angular';
 export class BusinessPreviewPage {
     company: any;
   constructor(public navCtrl: NavController, public navParams: NavParams) {
-    this.company = navParams.get('company');
+    this.company = navParams.get('user');
   }
 
 

@@ -2,6 +2,8 @@ import {Component} from '@angular/core';
 import {NavController, NavParams} from 'ionic-angular';
 import {BusinessOrdersPage} from '../business-orders/business-orders';
 import {EditBusinessProfilePage} from "../edit-business-profile/edit-business-profile";
+import {ShareService} from "../../providers/share-service";
+import {BusinessProfileService} from "../../providers/business-profile-service";
 
 /*
  Generated class for the BusinessProfile page.
@@ -19,8 +21,26 @@ export class BusinessProfilePage {
   reviews: Array<{companyid: number, username: String, comment: String, rating: number}>;
   company: {username: String, companyid: number, companyname: String, services: any, description: String, address: String, phone: number, email: String, orders: Object, reviews: any, notifications: any};
   notifications: Array<{title: String, description: String, time: any}>;
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-    
+  company1: any;
+  registerCredentials: any;
+
+
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, private shareService: ShareService, private businessProfileService: BusinessProfileService) {
+    this.registerCredentials=this.navParams.get('registerCredentials');
+    if(this.registerCredentials) {
+      this.shareService.setCredentials(this.registerCredentials);
+      this.businessProfileService.getBusiness(this.registerCredentials).then(
+        data => {
+          this.company1 = data;
+          console.log("businessprf: ", this.company1);
+        }
+      );
+      console.log("businessprof2: ", this.company1);
+    }
+
+
+
 
     this.services=[];
     this.reviews=[];
@@ -82,14 +102,14 @@ export class BusinessProfilePage {
   }
   editBusinessProfile(){
     this.navCtrl.push(EditBusinessProfilePage,{
-      item: this.company
+      item: this.company1
     });
 
   }
 
   gotoOrders(){
     this.navCtrl.push(BusinessOrdersPage,{
-      item: this.company
+      item: this.company1
     });
   }
 

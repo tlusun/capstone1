@@ -24,7 +24,9 @@ import { UserProfileService } from '../providers/user-profile-service'
 import { GetCompanies } from '../providers/get-companies'
 import { GetOrdersForCustomer } from '../providers/get-orders-for-customer'
 import { GetOrdersForBusiness } from '../providers/get-orders-for-business'
+
 import { RequestService } from '../providers/request-service'
+import {BusinessProfileService} from "../providers/business-profile-service";
 
 @NgModule({
   declarations: [
@@ -77,6 +79,7 @@ import { RequestService } from '../providers/request-service'
     GetOrdersForCustomer,
     GetOrdersForBusiness,
     RequestService,
+    BusinessProfileService,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

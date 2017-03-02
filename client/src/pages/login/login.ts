@@ -14,7 +14,7 @@ import { HomePage} from '../homepage/homepage';
 })
 export class LoginPage {
   loading: Loading;
-  registerCredentials = {email: '', password: ''};
+  registerCredentials = {email: '', password: '', type: 'user'};
 
   constructor(private nav: NavController, private auth: AuthService, private alertCtrl: AlertController, private loadingCtrl: LoadingController, private shareServ: ShareService) {}
 
@@ -36,10 +36,10 @@ export class LoginPage {
       if (allowed) {
         setTimeout(() => {
         this.loading.dismiss();
+        this.registerCredentials.type='user';
         this.shareServ.setCredentials(this.registerCredentials);
         this.nav.setRoot(ListPage, {
-          registerCredentials: this.registerCredentials,
-          type: 'user'
+          registerCredentials: this.registerCredentials
         });
 
         });
