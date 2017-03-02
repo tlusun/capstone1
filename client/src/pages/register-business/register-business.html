@@ -33,20 +33,14 @@
               <ion-input type="text" placeholder="address" name="address" [(ngModel)]="registerCredentials.address" required></ion-input>
             </ion-item>
 
-            <ion-item>
-              Service Details:
-            </ion-item>
 
             <ion-item>
-              <ion-input type="text" placeholder="service" name="service" [(ngModel)]="registerCredentials.services.service" required></ion-input>
+              <ion-input type="text" placeholder="service" name="service" [(ngModel)]="registerCredentials.service" required></ion-input>
             </ion-item>
 
-            <ion-item>
-              <ion-input type="text" placeholder="details" name="details" [(ngModel)]="registerCredentials.services.details" required></ion-input>
-            </ion-item>
 
             <ion-item>
-              <ion-input type="tel" placeholder="price" name="price" [(ngModel)]="registerCredentials.services.price" required></ion-input>
+              <ion-input type="tel" placeholder="price" name="price" [(ngModel)]="registerCredentials.price" required></ion-input>
             </ion-item>
 
             <ion-item>
@@ -59,7 +53,7 @@
 
       <ion-row>
         <ion-col class="signup-col">
-          <button ion-button (click)="back()">Register</button>
+          <button ion-button (click)="back()">Back</button>
         </ion-col>
         <ion-col class="signup-col">
           <button ion-button class="submit-btn" full type="submit" [disabled]="!registerForm.form.valid">Register</button>

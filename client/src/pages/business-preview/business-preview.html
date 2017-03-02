@@ -25,7 +25,12 @@
         <p>{{company.descriptions}}</p>
       </ion-col>
       <ion-col>
-        <h3>Address: {{company.address}}</h3>
+        <h4>Address: </h4>
+        <p>{{company.address}}</p>
+        <h4>Email: </h4>
+        <p>{{company.email}}</p>
+        <h4>Phone: </h4>
+        <p>{{company.number}}</p>
       </ion-col>
     </ion-row>
     <ion-row responsive-sm>
@@ -34,12 +39,14 @@
         <ion-row>
           <ion-col>
             <h4>Service</h4>
+            <p>{{company.service}}</p>
           </ion-col>
           <ion-col text-right>
             <h4>Pricing</h4>
+            <p>{{company.price}}</p>
           </ion-col>
         </ion-row>
-
+<!--
         <ion-row *ngFor="let item of company.listpricing">
           <ion-col>
             <p>{{item[0]}} </p>
@@ -48,9 +55,10 @@
             <p>{{item[1]}}</p>
           </ion-col>
         </ion-row>
+        -->
       </ion-col>
       <ion-col>
-        <img src={{company.image}}/>
+        <img src="https://s-media-cache-ak0.pinimg.com/736x/9b/8d/64/9b8d647e4a91cba808e3b9d3ff057671.jpg"/>
       </ion-col>
     </ion-row>
 
@@ -62,9 +70,9 @@
     <ion-scroll scrollY="true" style="height: 50vh">
       <ion-list>
         <ion-item class="review" *ngFor="let review of company.reviews" text-wrap>
-          <h3>{{review.username}}</h3>
+          <h3>{{review.customerEmail}}</h3>
           <ion-col text-wrap>
-            <p>{{review.comment}}</p>
+            <p>{{review.review}}</p>
           </ion-col>
           <p>Rating: {{review.rating}}</p>
         </ion-item>

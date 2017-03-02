@@ -10,9 +10,9 @@ router.post('/signupbusiness', function(req, res) {
   console.log('owner: ', req.body.owner);
   console.log('number: ', req.body.number);
   console.log('address: ', req.body.address);
-  console.log('service: ', req.body.services.service);
-  console.log('details: ', req.body.services.details);
-  console.log('price: ', req.body.services.price);
+  console.log('service: ', req.body.service);
+  //console.log('details: ', req.body.services.details);
+  console.log('price: ', req.body.price);
   console.log('descriptions: ', req.body.descriptions);
   console.log('password: ', req.body.password);
 
@@ -27,8 +27,8 @@ router.post('/signupbusiness', function(req, res) {
       address: req.body.address,
       //not sure if we need to do it field by field
       /**/
-      service: req.body.services.service,
-      price: req.body.services.price,
+      service: req.body.service,
+      price: req.body.price,
 
       /**/
       //services = req.body.services,
