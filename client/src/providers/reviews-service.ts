@@ -40,4 +40,23 @@ export class ReviewsService {
       );
     });
   }
+
+  getReviews(businessCredentials){
+    //grab businessCredentials
+    let headers = new Headers({ 'Content-Type': 'application/json' });
+    let options = new RequestOptions({ headers: headers });
+
+    return new Promise (resolve => {
+      this.http.get('http://localhost:8080/api/review/' + businessCredentials.email, options).map(res => res.json()).subscribe(
+        data => {
+          //return success
+          resolve(data); //instead of data
+        },
+        err => {
+          console.log('This has failed quite horribly. err: ', err);
+        }
+      );
+    });
+  }
+
 }

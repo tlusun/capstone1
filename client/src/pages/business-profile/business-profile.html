@@ -101,7 +101,7 @@
       <h3>Average rating: {{company1.rating}}</h3>
       <ion-scroll scrollY="true" style="height: 50vh">
         <ion-list>
-          <ion-item class="review" *ngFor="let review of company.reviews" text-wrap>
+          <ion-item class="review" *ngFor="let review of reviews" text-wrap>
             <h3>{{review.customerEmail}}</h3>
             <ion-col text-wrap>
               <p>{{review.review}}</p>

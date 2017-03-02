@@ -59,4 +59,11 @@ mongoose.model('Order').find({businessEmail: req.params.businessEmail}, function
   })
 });
 
+router.get('/review/:companyEmail', function(req, res){
+  mongoose.model('Review').find({companyEmail: req.params.companyEmail}, function(err, reviews){
+    console.log('reviews by companyEmail: ', reviews);
+  res.send(reviews);
+  })
+});
+
 module.exports = router;

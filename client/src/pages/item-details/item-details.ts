@@ -8,6 +8,8 @@ import { ToastController } from 'ionic-angular';
 import { RequestService } from '../../providers/request-service'
 import { ShareService } from '../../providers/share-service';
 
+import { ReviewsService } from '../../providers/reviews-service'
+
 @Component({
   selector: 'page-item-details',
   templateUrl: 'item-details.html'
@@ -16,11 +18,21 @@ export class ItemDetailsPage {
   selectedItem: any;
   question: String;
   registerCredentials: any;
+  reviews: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public toastCtrl: ToastController, private requestServ: RequestService, private shareServ: ShareService) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public toastCtrl: ToastController, private requestServ: RequestService, private shareServ: ShareService, private reviewServ: ReviewsService) {
     // If we navigated to this page, we will have an item available as a nav param
     this.selectedItem = navParams.get('item');
     this.question = "";
+    var companyCredentials = {
+      email: this.selectedItem.email,
+      password: this.selectedItem.password
+    }
+    this.reviewServ.getReviews(companyCredentials).then(
+      data => {
+          this.reviews = data;
+      }
+    );
   }
 
 

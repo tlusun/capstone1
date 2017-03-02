@@ -4,6 +4,7 @@ import {BusinessOrdersPage} from '../business-orders/business-orders';
 import {EditBusinessProfilePage} from "../edit-business-profile/edit-business-profile";
 import {ShareService} from "../../providers/share-service";
 import {BusinessProfileService} from "../../providers/business-profile-service";
+import { ReviewsService } from '../../providers/reviews-service'
 import {LoginPage} from '../login/login';
 
 /*
@@ -19,7 +20,7 @@ import {LoginPage} from '../login/login';
 export class BusinessProfilePage {
   orders: Array<{userid: number, ordernumber: number, ordername: String, companyid: number, invoice: String, cost: number, status: String, date: String}>;
   services: Array<{service: String, details: String, price: any}>;
-  reviews: Array<{companyid: number, username: String, comment: String, rating: number}>;
+  reviews: any;
   company: {username: String, companyid: number, companyname: String, services: any, description: String, address: String, phone: number, email: String, orders: Object, reviews: any, notifications: any};
   notifications: Array<{title: String, description: String, time: any}>;
   company1: any;
@@ -27,20 +28,25 @@ export class BusinessProfilePage {
   loading: Loading;
 
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private shareService: ShareService, private businessProfileService: BusinessProfileService, private loadCtl: LoadingController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private shareService: ShareService, private businessProfileService: BusinessProfileService, private loadCtl: LoadingController, private reviewServ : ReviewsService) {
     this.registerCredentials=this.navParams.get('registerCredentials');
       this.shareService.setCredentials(this.registerCredentials);
 
 
       this.businessProfileService.getBusiness(this.registerCredentials).then(
         data => {
-
               this.company1 = data;
               console.log("businessprf: ", this.company1);
             }
           );
 
       console.log("businessprof2: ", this.company1);
+
+      this.reviewServ.getReviews(this.registerCredentials).then(
+        data => {
+            this.reviews = data; 
+        }
+      );
 
 
 
