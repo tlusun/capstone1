@@ -25,10 +25,13 @@ var CompanySchema = new Schema({
     type: String,
     required: true
   },
-  services: {
-    service: {type: String, required: true},
-    details: {type: String, required: true},
-    price: {type: String, required: true}
+  service: {
+    type: String,
+    required: true
+  },
+  price: {
+    type: Number,
+    required: true
   },
   descriptions: {
     type: String,

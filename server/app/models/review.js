@@ -2,11 +2,11 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var ReviewSchema = new Schema({
-  company: {
+  companyEmail: {
       type: String,
       required: true
     },
-    customer: {
+    customerEmail: {
       type: String,
       required: true
     },

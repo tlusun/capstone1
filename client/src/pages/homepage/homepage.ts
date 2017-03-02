@@ -80,9 +80,9 @@ export class HomePage {
     //this.nav.push(page.component);
     console.log('user in openPage(page): ', this.user);
     this.navCtrl.setRoot(page.component, {
-      user: this.user
+      user: this.user,
+      registerCredentials: this.loginCredentials
     });
   }
-
 
 }

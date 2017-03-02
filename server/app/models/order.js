@@ -5,7 +5,7 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var OrderSchema = new Schema({
-  customer: {
+  userEmail: {
     type: String,
     required: true
   },
@@ -21,7 +21,7 @@ var OrderSchema = new Schema({
     type: Date,
     required: true
   },
-  businessName: {
+  businessEmail: {
     type: String,
     required: true
   },
