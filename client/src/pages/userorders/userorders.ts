@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { HomePage} from '../homepage/homepage';
-
+import {AlertController} from 'ionic-angular';
 import { GetOrdersForCustomer } from '../../providers/get-orders-for-customer';
 
 
@@ -18,8 +18,9 @@ import { GetOrdersForCustomer } from '../../providers/get-orders-for-customer';
 export class UserOrdersPage {
   user : any;
   orders : Object;
-  
-  constructor(public navCtrl: NavController, public navParams: NavParams, private getOrdersForCustomer: GetOrdersForCustomer) {
+  newreview: any;
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, private getOrdersForCustomer: GetOrdersForCustomer, public alertCtrl: AlertController) {
     this.user = navParams.get('item');
     console.log("this.user: ", this.user);
     this.getOrdersForCustomer.getOrdersForCustomer(this.user).then(
@@ -29,6 +30,7 @@ export class UserOrdersPage {
         //this.initializeItems(this.selectedItem);
       }
     );
+    this.newreview=[];
     console.log('this.orders in userorders.ts', this.orders);
 
     ////
@@ -44,6 +46,46 @@ export class UserOrdersPage {
   pay(){
 
 
+  }
+  review(order){
+
+    let prompt = this.alertCtrl.create({
+      title: 'Edit',
+      message: "Write a new review. " ,
+      inputs: [
+        {
+          name: 'review',
+          placeholder: 'Comment here',
+
+        },
+        {
+          name: 'rating',
+          placeholder: '',
+        }
+      ],
+      buttons: [
+        {
+          text: 'Cancel',
+          handler: data => {
+            console.log('Cancel clicked');
+          }
+        },
+        {
+          text: 'Save',
+          handler: data => {
+            if (data !== "") {
+              this.newreview = {
+                companyEmail : order.businessEmail,
+                customerEmail : this.user.email,
+                rating : data.rating,
+                review : data.review,
+              }
+            }
+          }
+        }
+      ]
+    });
+    prompt.present();
   }
 
 }

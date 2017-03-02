@@ -4,6 +4,7 @@ import {BusinessOrdersPage} from '../business-orders/business-orders';
 import {EditBusinessProfilePage} from "../edit-business-profile/edit-business-profile";
 import {ShareService} from "../../providers/share-service";
 import {BusinessProfileService} from "../../providers/business-profile-service";
+import {LoginPage} from '../login/login';
 
 /*
  Generated class for the BusinessProfile page.
@@ -116,5 +117,7 @@ export class BusinessProfilePage {
       item: this.company1
     });
   }
-
+  logOut(){
+    this.navCtrl.setRoot(LoginPage);
+  }
 }

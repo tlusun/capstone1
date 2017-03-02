@@ -6,44 +6,52 @@
 -->
 
 
-<ion-content >
+<ion-content>
   <page-homepage></page-homepage>
 
   <div class="form-content">
-  <button ion-button (click)="back()">
-    Back
-  </button>
-  <ion-grid>
-    <h2>Your Orders</h2>
+    <button ion-button (click)="back()">
+      Back
+    </button>
+    <ion-grid>
+      <h2>Your Orders</h2>
 
-    <ion-row ion-item responsive-sm *ngFor="let order of orders">
+      <ion-row ion-item responsive-sm *ngFor="let order of orders">
 
-      <ion-col width-33>
-        <!--<h1>{{order.ordername}}</h1>-->
-        <h2>Company: {{order.businessEmail}}</h2>
-        <h3>Date: {{order.date}}</h3>
+        <ion-col>
+          <!--<h1>{{order.ordername}}</h1>-->
+          <h2>Company: {{order.businessEmail}}</h2>
+          <h3>Date: {{order.date}}</h3>
 
-      </ion-col>
-      <ion-col width-33>
-        <h3>Service:</h3>
-        <p>{{order.service}}</p>
-        <h4>Price</h4>
-        <p>{{order.amount}}</p>
+        </ion-col>
+        <ion-row>
+          <ion-col width-67>
+            <h3>Service:</h3>
+            <p>{{order.service}}</p>
+          </ion-col>
+          <ion-col width-33>
+            <h4>Price</h4>
+            <p>{{order.amount}}</p>
+          </ion-col>
 
-      </ion-col>
-      <ion-col width-33>
-        <h3>{{order.status}}</h3>
-        <ion-item *ngIf="order.status=='Complete-WaitingPayment'">
-        <button  ion-button (click)="pay()">
-          Pay
-        </button>
-        </ion-item>
-      </ion-col>
+        </ion-row>
+        <ion-col >
+          <h3>{{order.status}}</h3>
+          <ion-item *ngIf="order.status=='Complete-WaitingPayment'">
+            <button ion-button (click)="pay()">
+              Pay
+            </button>
+          </ion-item>
+          <ion-item *ngIf="order.status=='Complete-Paid'">
+            <button ion-button (click)="review(order)">
+              Review
+            </button>
+          </ion-item>
+        </ion-col>
+      </ion-row>
 
-    </ion-row>
 
-
-  </ion-grid>
+    </ion-grid>
 
   </div>
 </ion-content>
