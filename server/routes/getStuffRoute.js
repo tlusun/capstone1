@@ -31,4 +31,11 @@ router.get('/contacts', function(req, res){
   })
 });
 
-module.exports = router; 
+router.get('/user/:email', function(req, res){
+mongoose.model('User').findOne({email: req.params.email}, function(err, doc){
+  console.log(doc);
+  res.send(doc);
+  })
+});
+
+module.exports = router;

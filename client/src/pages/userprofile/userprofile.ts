@@ -17,7 +17,7 @@ import {AlertController} from 'ionic-angular';
 })
 export class UserProfilePage {
   orders: Array<{userid: number, ordername: String, companyid: number, invoice: String, cost: number, status: String, date: String}>;
-
+  user1 : any;
   user: {userid: number, fullname: String, address: String, phone: number, email: String, orderhistory: Object};
 
 
@@ -35,7 +35,8 @@ export class UserProfilePage {
         date: "Nov 15 2017"
       });
     }
-
+    this.user1 = this.navParams.get('user');
+    console.log("userprofile" + this.user1.firstName);
     this.user = {
       userid: 1,
       fullname: 'Tommy Lusun',
