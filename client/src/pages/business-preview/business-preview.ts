@@ -18,5 +18,7 @@ export class BusinessPreviewPage {
   }
 
 
-
+back(){
+    this.navCtrl.pop();
+}
 }

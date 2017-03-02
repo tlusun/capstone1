@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {NavController, NavParams} from 'ionic-angular';
+import {NavController, NavParams, Loading, LoadingController} from 'ionic-angular';
 import {BusinessOrdersPage} from '../business-orders/business-orders';
 import {EditBusinessProfilePage} from "../edit-business-profile/edit-business-profile";
 import {ShareService} from "../../providers/share-service";
@@ -23,22 +23,23 @@ export class BusinessProfilePage {
   notifications: Array<{title: String, description: String, time: any}>;
   company1: any;
   registerCredentials: any;
+  loading: Loading;
 
 
-
-  constructor(public navCtrl: NavController, public navParams: NavParams, private shareService: ShareService, private businessProfileService: BusinessProfileService) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private shareService: ShareService, private businessProfileService: BusinessProfileService, private loadCtl: LoadingController) {
     this.registerCredentials=this.navParams.get('registerCredentials');
-    if(this.registerCredentials) {
       this.shareService.setCredentials(this.registerCredentials);
+
+
       this.businessProfileService.getBusiness(this.registerCredentials).then(
         data => {
-          this.company1 = data;
-          console.log("businessprf: ", this.company1);
-        }
-      );
-      console.log("businessprof2: ", this.company1);
-    }
 
+              this.company1 = data;
+              console.log("businessprf: ", this.company1);
+            }
+          );
+
+      console.log("businessprof2: ", this.company1);
 
 
 
@@ -100,6 +101,9 @@ export class BusinessProfilePage {
 
     }
   }
+
+
+
   editBusinessProfile(){
     this.navCtrl.push(EditBusinessProfilePage,{
       item: this.company1

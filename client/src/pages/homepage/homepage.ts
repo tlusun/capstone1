@@ -4,7 +4,7 @@ import {ListPage} from '../list/list';
 import {CategoriesPage} from '../categories/categories';
 import {RequestServicePage} from '../requestservice/requestservice'
 import {Platform, MenuController, Nav} from 'ionic-angular';
-import {NavController, NavParams} from 'ionic-angular';
+import {NavController, NavParams, Loading} from 'ionic-angular';
 
 import {LoginPage} from '../login/login';
 import {RegisterPage} from '../register/register';

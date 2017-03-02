@@ -9,9 +9,6 @@
         <p></p>
       </ion-col>
       <ion-col item-right>
-
-        <button ion-button (click)="requestService()">Request Service</button>
-
       </ion-col>
     </ion-row>
 
@@ -19,13 +16,13 @@
     <ion-row responsive-sm>
       <ion-col width-50>
         <h1>
-          {{company.title}}
+          {{company.name}}
         </h1>
         <p></p>
         <h3>
           Description
         </h3>
-        <p>{{company.note}}</p>
+        <p>{{company.descriptions}}</p>
       </ion-col>
       <ion-col>
         <h3>Address: {{company.address}}</h3>

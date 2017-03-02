@@ -24,9 +24,9 @@ export class EditBusinessProfilePage {
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     this.company = navParams.get('item');
     this.service = [];
-    this.newdescription=this.company.description;
+    this.newdescription=this.company.descriptions;
     this.newaddress=this.company.address;
-    this.newphone=this.company.phone;
+    this.newphone=this.company.number;
     this.newservice=this.company.service;
     this.newprice=this.company.price;
 

@@ -16,10 +16,11 @@
     </H1>
 
 
-    <button ion-button clear (click)="openPage(pages[1])">Featured</button>
-    <button ion-button clear (click)="openPage(pages[2])">Categories</button>
-    <button ion-button clear (click)="openPage(pages[0])">Account</button>
-    <button ion-button clear (click)="openPage(pages[3])">Business</button>
+    <button *ngIf="loginCredentials.type=='user'" ion-button clear (click)="openPage(pages[1])">Featured</button>
+    <button *ngIf="loginCredentials.type=='user'" ion-button clear (click)="openPage(pages[2])">Categories</button>
+    <button *ngIf="loginCredentials.type=='business'" ion-button clear (click)="openPage(pages[6])">Preview</button>
+    <button *ngIf="loginCredentials.type=='user'" ion-button clear (click)="openPage(pages[0])">Account</button>
+    <button *ngIf="loginCredentials.type=='business'" ion-button clear (click)="openPage(pages[3])">Business</button>
 
 
   </ion-navbar>
