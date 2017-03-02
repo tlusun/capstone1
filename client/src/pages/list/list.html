@@ -6,7 +6,7 @@
   <ion-searchbar (ionInput)="getItems($event)" class="main-content"></ion-searchbar>
   <ion-list class="main-content">
 
-    <button ion-item *ngFor="let item of items" (click)="itemTapped($event, item)" text-wrap>
+    <button ion-item *ngFor="let item of company" (click)="itemTapped($event, item)" text-wrap>
       <ion-grid>
         <ion-row responsive-sm>
           <ion-col width-33>
@@ -14,8 +14,8 @@
           </ion-col>
 
           <ion-col width-33 padding-top>
-            <h1>{{item.title}}</h1>
-            <p>{{item.note}}</p>
+            <h1>{{item.name}}</h1>
+            <p>{{item.descriptions}}</p>
           </ion-col>
           <ion-col width-33 align="end" center>
             <li>Service: {{item.service}}</li>

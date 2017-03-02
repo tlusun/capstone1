@@ -35,9 +35,20 @@
               <h2>Phone:</h2>
               <p> {{company.phone}}</p>
             </ion-item>
+            <ion-item>
+              <h2>Service:</h2>
+              <p> {{company.service}}</p>
+            </ion-item>
+            <ion-item>
+              <h2>Price:</h2>
+              <p> {{company.price}}</p>
+            </ion-item>
           </ion-list>
         </ion-col>
       </ion-row>
+
+
+      <!--
       <h2>Your Services</h2>
       <ion-row padding responsive-sm>
         <ion-col>
@@ -57,8 +68,9 @@
             </ion-item>
           </ion-list>
         </ion-col>
-
       </ion-row>
+-->
+      <!--
       <h2>Notifications</h2>
       <ion-scroll scrollY="true" style="height: 50vh">
 
@@ -81,11 +93,12 @@
           </ion-item>
         </ion-list>
       </ion-scroll>
-
+-->
       <p></p>
       <p></p>
 
       <h2>Your reviews</h2>
+      <h3>Average rating: {{company.rating}}</h3>
       <ion-scroll scrollY="true" style="height: 50vh">
         <ion-list>
           <ion-item class="review" *ngFor="let review of company.reviews" text-wrap>

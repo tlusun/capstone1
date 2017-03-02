@@ -23,9 +23,15 @@ export class ItemDetailsPage {
     this.navCtrl.pop();
   }
   requestService(){
-    this.navCtrl.push(RequestServicePage, {
+    /*this.navCtrl.push(RequestServicePage, {
         item:this.selectedItem
       });
+      */
+    let toast = this.toastCtrl.create({
+      message: 'Request Sent! Check your orders!',
+      duration: 3000
+    });
+    toast.present();
   }
 
   message(){
@@ -35,7 +41,7 @@ export class ItemDetailsPage {
         message: 'Message sent! Your profile will show any replies sent to you.',
         duration: 3000
       });
-      toast.present();
+      //toast.present();
 
     }
     else{
@@ -43,7 +49,7 @@ export class ItemDetailsPage {
         message: 'Message is empty.',
         duration: 3000
       });
-      toast.present();
+      //toast.present();
     }
 
     this.question="";

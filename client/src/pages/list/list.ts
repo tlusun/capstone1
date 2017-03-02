@@ -38,7 +38,7 @@ export class ListPage {
       });
     }
     if (category){
-      this.items = this.items.filter((item) => {
+      this.company = this.company.filter((item) => {
         return (item.service.toLowerCase().indexOf(category.toLowerCase()) > -1); //|| item.service.toLowerCase().indexOf(val.toLowerCase()) > -1
       })
     }
@@ -51,26 +51,27 @@ export class ListPage {
   searchQuery: string = '';
   details: string[][];
   reviews: Array<{companyid: number, username: String, comment: String, rating: number}>;
-
+  company:any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private shareService: ShareService, private getCompanies: GetCompanies) {
     this.getCompanies.getCompanies().then(
       data => {
-        this.selectedItem = data;
-        console.log("this.selectedItem: ", this.selectedItem);
+        this.company = data;
+        console.log("this.selectedItem: ", this.company);
         //this.initializeItems(this.selectedItem);
       }
     );
-    console.log('this.selectedItem in list.ts', this.selectedItem);
+    console.log('this.selectedItem in list.ts', this.company);
 
     // If we navigated to this page, we will have an item available as a nav param
-    //this.selectedItem = navParams.get('servicecategory');
+    this.selectedItem = navParams.get('servicecategory');
     this.registerCredentials = navParams.get('registerCredentials');
     console.log("REGISTER CREDENTIALS: ", this.registerCredentials);
     this.services = ['Plumbing','Indoor Renovations','Painting','Other','Garden'];
     this.items = [];
     this.reviews=[];
-    this.shareService.setCredentials(this.registerCredentials);
+    if(this.registerCredentials)
+      this.shareService.setCredentials(this.registerCredentials);
 
   }
 
