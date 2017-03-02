@@ -34,6 +34,18 @@ mongoose.connect(config.database);
 // pass passport for configuration
 require('./config/passport')(passport);
 
+///paypall stuff 
+var fs = require('fs');
+
+try {
+  var configJSON = fs.readFileSync("./config.json");
+  var config = JSON.parse(configJSON.toString());
+} catch (e) {
+  console.error("File config.json not found or is invalid: " + e.message);
+  process.exit(1);
+}
+
+
 //ROUTES
 //TODO: make life easier by putting the routes in separate files
 var demoRoute = require('./routes/demoRoute.js');
@@ -46,6 +58,7 @@ var getStuffRoute = require('./routes/getStuffRoute.js');
 var postStuffRoute = require('./routes/postStuffRoute.js');
 var deleteStuffRoute = require('./routes/deleteStuffRoute.js');
 var maps = require('./routes/maps.js');
+var paypal = require('./routes/paypal.js');
 
 ///////////////
 app.use('/', demoRoute);
@@ -58,6 +71,7 @@ app.use('/api', deleteStuffRoute);
 app.use('/api', maps);
 app.use('/api', signUpBusinessRoute);
 app.use('/api', authenticateBusinessRoute); 
+app.use('/api', paypal); 
 
 // Start the server
 app.listen(port);
