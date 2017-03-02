@@ -33,7 +33,7 @@ router.get('/contacts', function(req, res){
 
 router.get('/user/:email', function(req, res){
 mongoose.model('User').findOne({email: req.params.email}, function(err, doc){
-  console.log(doc);
+  console.log('doc', doc);
   res.send(doc);
   })
 });

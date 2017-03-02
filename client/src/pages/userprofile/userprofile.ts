@@ -36,7 +36,7 @@ export class UserProfilePage {
       });
     }
     this.user1 = this.navParams.get('user');
-    console.log("userprofile" + this.user1.firstName);
+    console.log("userprofile" , this.user1.firstName);
     this.user = {
       userid: 1,
       fullname: 'Tommy Lusun',

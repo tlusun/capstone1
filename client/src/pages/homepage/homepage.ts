@@ -48,7 +48,7 @@ export class HomePage {
   items: string[];
   pages: Array<{title: string, component: any}>
   loginCredentials: any;
-  user: User;
+  user: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private shareService: ShareService, private userProfileService: UserProfileService) {
 
@@ -65,14 +65,20 @@ export class HomePage {
 
     this.loginCredentials=this.shareService.getCredentials();
     console.log("HOMEPAGE");
-    this.user = this.userProfileService.getUser(this.loginCredentials);
-    if (this.user!==null)console.log("user1: " + this.user);
+    this.userProfileService.getUser(this.loginCredentials).then(
+      data => {
+        this.user = data;
+        console.log("user2: ", this.user);
+      }
+    );
+    console.log("user1: ", this.user);
   }
 
   openPage(page) {
 
     // navigate to the new page if it is not the current page
     //this.nav.push(page.component);
+    console.log('user in openPage(page): ', this.user);
     this.navCtrl.setRoot(page.component, {
       user: this.user
     });
