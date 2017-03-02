@@ -14,18 +14,19 @@
     Back
   </button>
   <ion-grid>
+    <h2>Your Orders</h2>
 
     <ion-row ion-item responsive-sm *ngFor="let order of orders">
 
       <ion-col width-33>
         <h1>{{order.ordername}}</h1>
-        <h2>Company #{{order.companyid}}</h2>
+        <h2>Company #{{order.businessEmail}}</h2>
         <h3>Date: {{order.date}}</h3>
 
       </ion-col>
       <ion-col width-33>
         <p>Invoice: {{order.invoice}}</p>
-        <h4>Total: {{order.cost}}</h4>
+        <h4>Total: {{order.price}}</h4>
 
       </ion-col>
       <ion-col width-33>
