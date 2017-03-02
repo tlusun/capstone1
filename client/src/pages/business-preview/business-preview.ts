@@ -15,6 +15,7 @@ export class BusinessPreviewPage {
     company: any;
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     this.company = navParams.get('user');
+    //this.reviews = navParams.get('reviews');
   }
 
 

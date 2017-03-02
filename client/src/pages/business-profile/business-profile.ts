@@ -24,6 +24,7 @@ export class BusinessProfilePage {
   company: {username: String, companyid: number, companyname: String, services: any, description: String, address: String, phone: number, email: String, orders: Object, reviews: any, notifications: any};
   notifications: Array<{title: String, description: String, time: any}>;
   company1: any;
+  rating: any;
   registerCredentials: any;
   loading: Loading;
 
@@ -44,11 +45,15 @@ export class BusinessProfilePage {
 
       this.reviewServ.getReviews(this.registerCredentials).then(
         data => {
-            this.reviews = data; 
+            this.reviews = data;
+          this.rating =0;
+
+          for (var i =0; i<this.reviews.length; i++){
+            this.rating += this.reviews[i].rating;
+          }
+          this.rating = this.rating/this.reviews.length;
         }
       );
-
-
 
     this.services=[];
     this.reviews=[];

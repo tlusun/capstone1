@@ -19,6 +19,7 @@ export class ItemDetailsPage {
   question: String;
   registerCredentials: any;
   reviews: any;
+  rating: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public toastCtrl: ToastController, private requestServ: RequestService, private shareServ: ShareService, private reviewServ: ReviewsService) {
     // If we navigated to this page, we will have an item available as a nav param
@@ -31,6 +32,12 @@ export class ItemDetailsPage {
     this.reviewServ.getReviews(companyCredentials).then(
       data => {
           this.reviews = data;
+        this.rating =0;
+
+        for (var i =0; i<this.reviews.length; i++){
+          this.rating += this.reviews[i].rating;
+        }
+        this.rating = this.rating/this.reviews.length;
       }
     );
   }
