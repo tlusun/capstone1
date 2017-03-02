@@ -41,12 +41,6 @@ back(){
     let alert = this.alertCtrl.create();
     alert.setTitle('Order Status');
 
-    alert.addInput({
-      type: 'radio',
-      label: 'Pending',
-      value: 'Pending',
-      checked: false
-    });
 
     alert.addInput({
       type: 'radio',

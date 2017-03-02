@@ -14,11 +14,8 @@ export class RegisterBusinessPage {
     owner: '',
     number: '',
     address: '',
-    services: {
-      service: '',
-      details: '',
-      price: ''
-    },
+    service: '',
+    price: '',
     descriptions: '',
     password: '',
   };
