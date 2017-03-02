@@ -58,7 +58,8 @@ router.post('/order', function (req, res) {
     amount: req.body.amount,
     service: req.body.service,
     date: req.body.date,
-    businessEmail: req.body.businessEmail, 
+    businessEmail: req.body.businessEmail,
+    status: req.body.status, 
     invoice: req.body.invoice
   });
 

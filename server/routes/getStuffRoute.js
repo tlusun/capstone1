@@ -34,12 +34,19 @@ router.get('/contacts', function(req, res){
 router.get('/user/:email', function(req, res){
 mongoose.model('User').findOne({email: req.params.email}, function(err, doc){
   console.log('doc', doc);
-  res.send(doc);  
+  res.send(doc);
   })
 });
 
 router.get('/ordersforcustomer/:userEmail', function(req, res){
 mongoose.model('Order').find({userEmail: req.params.userEmail}, function(err, orders){
+  console.log('doc', orders);
+  res.send(orders);
+  })
+});
+
+router.get('/ordersforbusiness/:businessEmail', function(req, res){
+mongoose.model('Order').find({businessEmail: req.params.businessEmail}, function(err, orders){
   console.log('doc', orders);
   res.send(orders);
   })

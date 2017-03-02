@@ -25,6 +25,10 @@ var OrderSchema = new Schema({
     type: String,
     required: true
   },
+  status: {
+    type: String,
+    required: true
+  },
   invoice: {
     type: Schema.Types.ObjectId, ref: 'Invoice',
     required: false
