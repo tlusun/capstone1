@@ -19,20 +19,22 @@
     <ion-row ion-item responsive-sm *ngFor="let order of orders">
 
       <ion-col width-33>
-        <h1>{{order.ordername}}</h1>
-        <h2>Company #{{order.businessEmail}}</h2>
+        <!--<h1>{{order.ordername}}</h1>-->
+        <h2>Company: {{order.businessEmail}}</h2>
         <h3>Date: {{order.date}}</h3>
 
       </ion-col>
       <ion-col width-33>
-        <p>Invoice: {{order.invoice}}</p>
-        <h4>Total: {{order.price}}</h4>
+        <h3>Service:</h3>
+        <p>{{order.service}}</p>
+        <h4>Price</h4>
+        <p>{{order.amount}}</p>
 
       </ion-col>
       <ion-col width-33>
         <h3>{{order.status}}</h3>
         <ion-item *ngIf="order.status=='Waiting-Payment'">
-        <button  ion-button (click)="requestcancel()">
+        <button  ion-button (click)="pay()">
           Pay
         </button>
         </ion-item>

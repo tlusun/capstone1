@@ -41,7 +41,7 @@ export class UserOrdersPage {
     this.navCtrl.pop();
   }
 
-  requestcancel(){
+  pay(){
 
 
   }
