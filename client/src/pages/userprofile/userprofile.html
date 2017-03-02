@@ -12,7 +12,7 @@
 
 
   <div class="form-content">
-    <h1>{{user.firstName}}'s profile</h1>
+    <h1>{{user1.firstName}}'s profile</h1>
     <p></p>
 
     <ion-list>
@@ -22,22 +22,22 @@
       </ion-avatar>
       <ion-item>
         <h2> email </h2>
-        <p>{{user.email}}</p>
+        <p>{{user1.email}}</p>
       </ion-item>
       <ion-item>
         <h2>name</h2>
-        <p>{{user.firstName}}  </p>
+        <p>{{user1.firstName}}  </p>
         <div style="text-align: right;"><button ion-button (click)="edit('fullname')">Edit</button></div>
       </ion-item>
 
       <ion-item>
         <h2>address </h2>
-        <p>{{user.address}}</p>
+        <p>{{user1.address}}</p>
         <div style="text-align: right;"><button ion-button (click)="edit('address')">Edit</button></div>
       </ion-item>
       <ion-item>
         <h2>phone</h2>
-        <p>{{user.number}}</p>
+        <p>{{user1.number}}</p>
         <div style="text-align: right;"><button ion-button (click)="edit('phone')">Edit</button></div>
       </ion-item>
 
