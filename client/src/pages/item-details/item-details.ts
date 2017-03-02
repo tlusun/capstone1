@@ -5,6 +5,8 @@ import { NavController, NavParams } from 'ionic-angular';
 import { RequestServicePage } from '../requestservice/requestservice'
 import { ToastController } from 'ionic-angular';
 
+import { RequestService } from '../../providers/request-service'
+
 @Component({
   selector: 'page-item-details',
   templateUrl: 'item-details.html'
@@ -12,7 +14,9 @@ import { ToastController } from 'ionic-angular';
 export class ItemDetailsPage {
   selectedItem: any;
   question: String;
-  constructor(public navCtrl: NavController, public navParams: NavParams, public toastCtrl: ToastController) {
+  registerCredentials: any;
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, public toastCtrl: ToastController, private requestServ: RequestService) {
     // If we navigated to this page, we will have an item available as a nav param
     this.selectedItem = navParams.get('item');
     this.question = "";
@@ -23,15 +27,37 @@ export class ItemDetailsPage {
     this.navCtrl.pop();
   }
   requestService(){
+    //TODO: requestService, must use with credentials
+    this.registerCredentials = this.navParams.get('registerCredentials');
+    this.requestServ.requestService(this.registerCredentials, this.selectedItem).then(
+      data => {
+        if (data.success){
+          let toast = this.toastCtrl.create({
+            message: 'Request Sent! Check your orders!',
+            duration: 3000
+          });
+          toast.present();
+        }
+        else{
+          let toast = this.toastCtrl.create({
+            message: 'Request Not Sent! There is an error somewhere :(',
+            duration: 3000
+          });
+          toast.present();
+        }
+      }
+    );
     /*this.navCtrl.push(RequestServicePage, {
         item:this.selectedItem
       });
       */
+      /*
     let toast = this.toastCtrl.create({
       message: 'Request Sent! Check your orders!',
       duration: 3000
     });
     toast.present();
+    */
   }
 
   message(){

@@ -59,13 +59,13 @@ router.post('/order', function (req, res) {
     service: req.body.service,
     date: req.body.date,
     businessEmail: req.body.businessEmail,
-    status: req.body.status, 
+    status: req.body.status,
     invoice: req.body.invoice
   });
 
   order.save(function (error, order) {
     if (error) response.send(error);
-    res.status(201).json({order});
+    res.status(201).json({success: true, order});
   });
 });
 
