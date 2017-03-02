@@ -34,7 +34,7 @@ mongoose.connect(config.database);
 // pass passport for configuration
 require('./config/passport')(passport);
 
-///paypall stuff 
+///paypall stuff
 var fs = require('fs');
 
 try {
@@ -57,6 +57,7 @@ var memberInfoRoute = require('./routes/memberInfoRoute.js');
 var getStuffRoute = require('./routes/getStuffRoute.js');
 var postStuffRoute = require('./routes/postStuffRoute.js');
 var deleteStuffRoute = require('./routes/deleteStuffRoute.js');
+var updateStuffRoute = require('./routes/updateStuffRoute.js');
 var maps = require('./routes/maps.js');
 var paypal = require('./routes/paypal.js');
 
@@ -68,10 +69,11 @@ app.use('/api', memberInfoRoute);
 app.use('/api', getStuffRoute);
 app.use('/api', postStuffRoute);
 app.use('/api', deleteStuffRoute);
+app.use('/api', updateStuffRoute);
 app.use('/api', maps);
 app.use('/api', signUpBusinessRoute);
-app.use('/api', authenticateBusinessRoute); 
-app.use('/api', paypal); 
+app.use('/api', authenticateBusinessRoute);
+app.use('/api', paypal);
 
 // Start the server
 app.listen(port);

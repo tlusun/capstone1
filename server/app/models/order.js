@@ -30,7 +30,8 @@ var OrderSchema = new Schema({
     required: true
   },
   invoice: {
-    type: Schema.Types.ObjectId, ref: 'Invoice',
+    //type: Schema.Types.ObjectId, ref: 'Invoice',
+    type: String, 
     required: false
   }
 });

@@ -27,6 +27,7 @@ export class RequestService {
       service: businessDetails.service,
       date: new Date().toISOString(), //TODO: make sure this works!
       businessEmail: businessDetails.email,
+      invoice: "", 
       status: "Pending"
     }
 

@@ -3,6 +3,7 @@ import { NavController, NavParams } from 'ionic-angular';
 import { AlertController } from 'ionic-angular';
 
 import { GetOrdersForBusiness } from '../../providers/get-orders-for-business';
+import { UpdateInvoice } from '../../providers/update-invoice';
 /*
   Generated class for the BusinessOrders page.
 
@@ -17,7 +18,7 @@ export class BusinessOrdersPage {
   company: any;
   orders: Object;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController, private getOrdersForBusiness: GetOrdersForBusiness) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController, private getOrdersForBusiness: GetOrdersForBusiness, private updateInvoiceService: UpdateInvoice) {
     this.company = navParams.get('item');
     console.log("this.company: ", this.company);
 
@@ -80,6 +81,15 @@ back(){
       text: 'OK',
       handler: data => {
         order.status=data;
+        console.log("HOLY SHIT THIS ORDER: ", order._id);
+        //console.log("wtf is data in business-orders: ", data);
+        //TODO: CALL SERVICE TO UPDATE STATUS OF ORDER, pass order._id, as well as order.status
+        this.updateInvoiceService.updateInvoiceStatus(order._id, order.status).then(
+          data => {
+            //TODO: WHAT SHOULD BE HERE?
+            //data returns as true or false, depending on success 
+          }
+        );
       }
     });
     alert.present();

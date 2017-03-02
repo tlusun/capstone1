@@ -33,7 +33,7 @@
       </ion-col>
       <ion-col width-33>
         <h3>{{order.status}}</h3>
-        <ion-item *ngIf="order.status=='Waiting-Payment'">
+        <ion-item *ngIf="order.status=='Complete-WaitingPayment'">
         <button  ion-button (click)="pay()">
           Pay
         </button>
