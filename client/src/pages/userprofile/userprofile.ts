@@ -3,7 +3,7 @@ import {NavController, NavParams} from 'ionic-angular';
 import {UserOrdersPage} from "../userorders/userorders";
 import {HomePage} from '../homepage/homepage';
 import {AlertController} from 'ionic-angular';
-
+import {LoginPage} from '../login/login';
 
 /*
  Generated class for the Userprofile page.
@@ -58,7 +58,7 @@ export class UserProfilePage {
   edit(item) {
     let prompt = this.alertCtrl.create({
       title: 'Edit',
-      message: "Enter a name for this new album you're so keen on adding",
+      message: "Edit " + item,
       inputs: [
         {
           name: 'text',
@@ -84,5 +84,8 @@ export class UserProfilePage {
     });
     prompt.present();
 
+  }
+  logOut(){
+    this.navCtrl.setRoot(LoginPage);
   }
 }

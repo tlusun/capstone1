@@ -43,4 +43,7 @@ export class RegisterPage {
     });
     alert.present();
   }
+  back(){
+    this.nav.pop();
+  }
 }

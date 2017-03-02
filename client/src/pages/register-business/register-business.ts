@@ -55,4 +55,7 @@ export class RegisterBusinessPage {
     });
     alert.present();
   }
+  back(){
+    this.nav.pop();
+  }
 }

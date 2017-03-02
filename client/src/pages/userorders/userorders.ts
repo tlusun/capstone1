@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { HomePage} from '../homepage/homepage';
-
+import {AlertController} from 'ionic-angular';
 import { GetOrdersForCustomer } from '../../providers/get-orders-for-customer';
+import { ReviewsService } from '../../providers/reviews-service'
 import {PayPal, PayPalPayment, PayPalConfiguration} from "ionic-native";
 
 
@@ -20,7 +21,9 @@ export class UserOrdersPage {
   user : any;
   orders : Object;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private getOrdersForCustomer: GetOrdersForCustomer) {
+  newreview: any;
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, private getOrdersForCustomer: GetOrdersForCustomer, private reviewServ: ReviewsService, public alertCtrl: AlertController) {
     this.user = navParams.get('item');
     console.log("this.user: ", this.user);
     this.getOrdersForCustomer.getOrdersForCustomer(this.user).then(
@@ -30,6 +33,7 @@ export class UserOrdersPage {
         //this.initializeItems(this.selectedItem);
       }
     );
+    this.newreview=[];
     console.log('this.orders in userorders.ts', this.orders);
 
     ////
@@ -88,6 +92,48 @@ export class UserOrdersPage {
       console.log("Oops. initilizationError activated: ", initilizationError);
     });
 
+  }
+  review(order){
+
+    let prompt = this.alertCtrl.create({
+      title: 'Edit',
+      message: "Write a new review. " ,
+      inputs: [
+        {
+          name: 'review',
+          placeholder: 'Comment here',
+
+        },
+        {
+          name: 'rating',
+          placeholder: '',
+        }
+      ],
+      buttons: [
+        {
+          text: 'Cancel',
+          handler: data => {
+            console.log('Cancel clicked');
+          }
+        },
+        {
+          text: 'Save',
+          handler: data => {
+            if (data !== "") {
+              this.newreview = {
+                companyEmail : order.businessEmail,
+                customerEmail : this.user.email,
+                rating : data.rating,
+                review : data.review,
+              }
+              //TODO: ADD SERVICE HERE
+              this.reviewServ.createReview(this.newreview);
+            }
+          }
+        }
+      ]
+    });
+    prompt.present();
   }
 
 }
