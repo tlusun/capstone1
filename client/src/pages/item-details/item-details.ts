@@ -6,6 +6,7 @@ import { RequestServicePage } from '../requestservice/requestservice'
 import { ToastController } from 'ionic-angular';
 
 import { RequestService } from '../../providers/request-service'
+import { ShareService } from '../../providers/share-service';
 
 @Component({
   selector: 'page-item-details',
@@ -16,7 +17,7 @@ export class ItemDetailsPage {
   question: String;
   registerCredentials: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public toastCtrl: ToastController, private requestServ: RequestService) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public toastCtrl: ToastController, private requestServ: RequestService, private shareServ: ShareService) {
     // If we navigated to this page, we will have an item available as a nav param
     this.selectedItem = navParams.get('item');
     this.question = "";
@@ -28,10 +29,12 @@ export class ItemDetailsPage {
   }
   requestService(){
     //TODO: requestService, must use with credentials
-    this.registerCredentials = this.navParams.get('registerCredentials');
+    this.registerCredentials = this.shareServ.getCredentials();
+    console.log("this.registerCrednetials in item-details: ", this.registerCredentials);
     this.requestServ.requestService(this.registerCredentials, this.selectedItem).then(
       data => {
-        if (data.success){
+        //TODO: EDIT THIS!!!
+        if (data){
           let toast = this.toastCtrl.create({
             message: 'Request Sent! Check your orders!',
             duration: 3000
