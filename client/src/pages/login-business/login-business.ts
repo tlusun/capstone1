@@ -6,6 +6,7 @@ import { ListPage } from '../list/list';
 import { LoginPage } from '../login/login';
 import { BusinessProfilePage } from '../business-profile/business-profile';
 
+import { ShareService} from '../../providers/share-service';
 import { AuthService } from '../../providers/auth-service';
 import { HomePage} from '../homepage/homepage';
 
@@ -38,7 +39,7 @@ export class LoginBusinessPage {
         setTimeout(() => {
         this.loading.dismiss();
         this.nav.setRoot(BusinessProfilePage,{
-          credentials : this.registerCredentials,
+          registerCredentials : this.registerCredentials,
           type : 'business'
         })
         });

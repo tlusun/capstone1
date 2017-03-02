@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { AlertController } from 'ionic-angular';
 
+import { GetOrdersForBusiness } from '../../providers/get-orders-for-business';
 /*
   Generated class for the BusinessOrders page.
 
@@ -14,8 +15,20 @@ import { AlertController } from 'ionic-angular';
 })
 export class BusinessOrdersPage {
   company: any;
-  constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController) {
+  orders: Object;
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController, private getOrdersForBusiness: GetOrdersForBusiness) {
     this.company = navParams.get('item');
+    console.log("this.company: ", this.company);
+
+    this.getOrdersForBusiness.getOrdersForBusiness(this.company).then(
+      data => {
+        this.orders = data;
+        console.log("this.orders: ", this.orders);
+        //this.initializeItems(this.selectedItem);
+      }
+    );
+    console.log('this.orders in userorders.ts', this.orders);
   }
 
 back(){

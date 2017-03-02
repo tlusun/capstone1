@@ -18,6 +18,7 @@ import { GetOrdersForCustomer } from '../../providers/get-orders-for-customer';
 export class UserOrdersPage {
   user : any;
   orders : Object;
+  
   constructor(public navCtrl: NavController, public navParams: NavParams, private getOrdersForCustomer: GetOrdersForCustomer) {
     this.user = navParams.get('item');
     console.log("this.user: ", this.user);
