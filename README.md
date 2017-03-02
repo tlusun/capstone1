@@ -6,8 +6,14 @@ All the files should be there to run, but if need be
 ##Install Client dependencies:
 1. `npm install -g ionic cordova`
 2. `ionic info`
+3. `npm install` (if necessary)
 
 Make sure Ionic is up to v2, and cordova is using the latest version.
+
+##Install Cordova on Client:
+1. `cordova platform add browser`
+2. `cordova platform add android`
+3. `cordova platform add ios`
 
 ##Install Server dependencies:  
 1. `cd server`
@@ -15,14 +21,18 @@ Make sure Ionic is up to v2, and cordova is using the latest version.
 
 Server dependencies are configured in `package.json` in `\server` folder.
 
-#Run Client
+##Run Client
 1. `ionic serve` or `ionic serve -l`
 The first one, or [http://localhost:8100](http://localhost:8100) tests on a normal website, while the second one, or
 [http://localhost:8100/ionic-lab](http://localhost:8100/ionic-lab) tests on a phone emulator. To turn on client-side console logs, use
 `-c`. To turn on server-side console logs, use `-s`.
 
+2. `ionic run browser`
+3. `ionic run android`
+4. `ionic run ios`
+
 ##Run Server:
 1. `npm start`
 
 ###Note:
-If you are running Client and Server with same browser, you will run into CORS (cross-origin resource sharing) issue. If you are using Chrome, you should download [this extension](https://chrome.google.com/webstore/detail/allow-control-allow-origi/nlfbmbojpeacfghkpbjhddihlkkiljbi?hl=en) and enable it. 
+If you are running Client and Server with same browser, you will run into CORS (cross-origin resource sharing) issue. If you are using Chrome, you should download [this extension](https://chrome.google.com/webstore/detail/allow-control-allow-origi/nlfbmbojpeacfghkpbjhddihlkkiljbi?hl=en) and enable it.

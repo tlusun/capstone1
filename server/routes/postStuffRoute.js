@@ -1,6 +1,7 @@
 var router = require('express').Router();
 var Company = require('../app/models/company');
 var Order = require('../app/models/order');
+var Review = require('../app/models/review');
 //this function is not needed for now since signUpRoute will post the user to the db
 
 
@@ -66,6 +67,20 @@ router.post('/order', function (req, res) {
   order.save(function (error, order) {
     if (error) response.send(error);
     res.status(201).json({success: true, order});
+  });
+});
+
+router.post('/review/', function (req,res) {
+  var review = new Review({
+    companyEmail: req.body.companyEmail,
+    customerEmail: req.body.customerEmail,
+    review: req.body.review,
+    rating: req.body.rating
+  });
+
+  review.save(function(err,review) {
+    if (err) response.send(err);
+    res.status(201).json({success: true}); 
   });
 });
 
