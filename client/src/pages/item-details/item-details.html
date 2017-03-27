@@ -19,21 +19,21 @@
     <ion-row responsive-sm>
       <ion-col width-50>
         <h1>
-          {{selectedItem.name}}
+          {{company.name}}
         </h1>
         <p></p>
         <h3>
           Description
         </h3>
-        <p>{{selectedItem.descriptions}}</p>
+        <p>{{company.descriptions}}</p>
       </ion-col>
       <ion-col>
         <h4>Address: </h4>
-        <p>{{selectedItem.address}}</p>
+        <p>{{company.address}}</p>
         <h4>Email: </h4>
-        <p>{{selectedItem.email}}</p>
+        <p>{{company.email}}</p>
         <h4>Phone: </h4>
-        <p>{{selectedItem.number}}</p>
+        <p>{{company.number}}</p>
       </ion-col>
     </ion-row>
     <ion-row responsive-sm>
@@ -42,23 +42,23 @@
         <ion-row>
           <ion-col>
             <h4>Service</h4>
-            <p>{{selectedItem.service}}</p>
+            <p>{{company.service}}</p>
           </ion-col>
           <ion-col text-right>
             <h4>Pricing</h4>
-            <p>{{selectedItem.price}}</p>
+            <p>{{company.price}}</p>
           </ion-col>
         </ion-row>
 
-<!--
-        <ion-row *ngFor="let item of selectedItem.listpricing">
+
+        <ion-row *ngFor="let service of company.services">
           <ion-col>
-            <p>{{item[0]}} </p>
+            <p>{{service.name}} </p>
           </ion-col>
           <ion-col text-right>
-            <p>{{item[1]}}</p>
+            <p>{{service.cost}}</p>
           </ion-col>
-        </ion-row>-->
+        </ion-row>
       </ion-col>
       <ion-col>
         <img src="https://s-media-cache-ak0.pinimg.com/736x/9b/8d/64/9b8d647e4a91cba808e3b9d3ff057671.jpg"/>

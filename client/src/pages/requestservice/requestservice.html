@@ -14,7 +14,7 @@
     <ion-label>Choose Service</ion-label>
     <p></p>
     <ion-select [(ngModel)]="requestedservice">
-      <ion-option *ngFor="let service of selectedItem.listpricing">{{service[0]}}</ion-option>
+      <ion-option *ngFor="let service of company.services">{{service.name}}</ion-option>
     </ion-select>
     <p></p>
   </ion-item>

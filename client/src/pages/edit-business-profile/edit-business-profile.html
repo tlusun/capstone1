@@ -8,7 +8,7 @@
 
 <ion-content>
   <page-homepage></page-homepage>
-  <div class="form-content">
+  <div class="form-content" *ngIf="(company)">
     <button ion-button (click)="back()">Back</button>
     <button ion-button (click)="save()">Save</button>
 
@@ -40,11 +40,7 @@
       <ion-textarea style="background-color: lavender" [(ngModel)]="newservice"></ion-textarea>
     </ion-item>
 
-    <ion-item>
-      <ion-label floating>Price</ion-label>
-      <ion-textarea style="background-color: lavender" [(ngModel)]="newprice"></ion-textarea>
-    </ion-item>
-    <!--<h1>Your Services</h1>
+    <h1>Your Services</h1>
     <p></p>
 
     <ion-row padding>
@@ -53,14 +49,14 @@
            <ion-item *ngFor="let service of company.services" (click)="editService($event, service)" style="background-color: lavender" text-wrap>
              <ion-row>
                <ion-col width-75>
-                 <h3> {{service.service}}</h3>
+                 <h3> {{service.name}}</h3>
                </ion-col>
                <ion-col width-25 align="right">
-                 <p>Price : {{service.price}}</p>
+                 <p>Price : {{service.cost}}</p>
                </ion-col>
              </ion-row>
              <ion-row text-wrap>
-               <ion-col><p>{{service.details}}</p></ion-col>
+               <ion-col><p>{{service.description}}</p></ion-col>
              </ion-row>
              <button ion-button small (click)="remove(service)">Delete</button>
            </ion-item>
@@ -69,6 +65,6 @@
      </ion-row>
 
      <button ion-button (click)="addService()">Add new service</button>
--->
+
    </div>
  </ion-content>

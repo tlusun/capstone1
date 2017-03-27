@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { ToastController } from 'ionic-angular';
 import { HomePage} from '../homepage/homepage';
+import { RequestService } from '../../providers/request-service'
 
 /*
   Generated class for the Requestservice page.
@@ -14,13 +15,17 @@ import { HomePage} from '../homepage/homepage';
   templateUrl: 'requestservice.html'
 })
 export class RequestServicePage {
-  selectedItem: any;
-
-  requestedservice: String;
+  company: any;
+  registerCredentials: any;
+  businessDetails: any;
+  requestedservice: any;
   usernote: String;
-  constructor(public navCtrl: NavController, public navParams: NavParams, public toastCtrl: ToastController) {
+  cost: any;
 
-    this.selectedItem = navParams.get('item');
+  constructor(public navCtrl: NavController, public navParams: NavParams, public toastCtrl: ToastController,private requestServ: RequestService) {
+
+    this.company = navParams.get('item');
+    this.registerCredentials =  navParams.get('credentials');
 
   }
 
@@ -33,12 +38,33 @@ export class RequestServicePage {
   }
 
   submit(){
+    this.cost = this.company.services.filter(item =>item.name==this.requestedservice);
+    this.businessDetails = {
+      email: this.company.email,
+      service: this.requestedservice,
+      price: this.cost[0].cost
 
-    let toast = this.toastCtrl.create({
-      message: 'Request Sent! Check for updates in your profile!',
-      duration: 3000
-    });
-    toast.present();
+    };
+    console.log(this.businessDetails);
+    this.requestServ.requestService(this.registerCredentials, this.businessDetails).then(
+      data => {
+        //TODO: EDIT THIS!!!
+        if (data){
+          let toast = this.toastCtrl.create({
+            message: 'Request Sent! Check your orders!',
+            duration: 3000
+          });
+          toast.present();
+        }
+        else{
+          let toast = this.toastCtrl.create({
+            message: 'Request Not Sent! There is an error somewhere :(',
+            duration: 3000
+          });
+          toast.present();
+        }
+      }
+    );
     this.navCtrl.popToRoot();
   }
 }

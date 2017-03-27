@@ -1,6 +1,10 @@
 import {Component} from '@angular/core';
 import {NavController, NavParams} from 'ionic-angular';
 import {EditServicePage} from '../edit-service/edit-service'
+import {UpdateCompanyServices} from '../../providers/update-company-services';
+import {BusinessProfileService} from "../../providers/business-profile-service";
+import {UpdateCompanyProfile} from "../../providers/update-company-profile";
+import {BusinessProfilePage} from "../business-profile/business-profile"
 /*
  Generated class for the EditBusinessProfile page.
 
@@ -15,40 +19,71 @@ export class EditBusinessProfilePage {
 
   company: any;
   service: any;
+  services: any;
   newdescription: String;
   newaddress: String;
   newphone: String;
   newprice: String;
   newservice: String;
+  registerCredentials: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-    this.company = navParams.get('item');
-    this.service = [];
-    this.newdescription=this.company.descriptions;
-    this.newaddress=this.company.address;
-    this.newphone=this.company.number;
-    this.newservice=this.company.service;
-    this.newprice=this.company.price;
+  constructor(public navCtrl: NavController, public navParams: NavParams, private updateServices: UpdateCompanyServices, private businessProfileService: BusinessProfileService, private updateCompany: UpdateCompanyProfile) {
+    this.registerCredentials = navParams.get('item');
+    this.businessProfileService.getBusiness(this.registerCredentials).then(
+      data => {
+        this.company = data;
+        console.log("businessprf: ", this.company);
+        this.newdescription=this.company.descriptions;
+        this.newaddress=this.company.address;
+        this.newphone=this.company.number;
+        this.newservice=this.company.service;
+        this.newprice=this.company.price;
 
+      }
+
+    );
+    //this.service = [];
+
+
+  }
+
+  ionViewWillEnter(){
+    this.businessProfileService.getBusiness(this.registerCredentials).then(
+      data => {
+        this.company = data;
+        console.log("businessprf: ", this.company);
+        this.newdescription=this.company.descriptions;
+        this.newaddress=this.company.address;
+        this.newphone=this.company.number;
+        this.newservice=this.company.service;
+        this.newprice=this.company.price;
+
+      }
+
+    );
   }
 
   remove(service) {
 
     this.company.services.splice(this.company.services.indexOf(service), 1);
+
   }
 
   editService(event, service) {
     this.navCtrl.push(EditServicePage, {
-      service: service
+      services: this.company.services,
+      index: this.company.services.indexOf(service),
+      id: this.company._id
     });
   }
 
   addService() {
     this.company.services.push({
-      service: 'New Service',
-      details: '',
-      price: ''
+      name: 'New Service',
+      description: 'Add your details',
+      cost: 'Your Price'
     });
+    console.log(this.company.services);
   }
 
   back() {
@@ -56,13 +91,20 @@ export class EditBusinessProfilePage {
     this.navCtrl.pop();
   }
   save(){
-    this.company.description=this.newdescription;
+    this.company.descriptions=this.newdescription;
     this.company.address=this.newaddress;
     this.company.phone=this.newphone;
     this.company.service=this.newservice;
-    this.company.price=this.newprice;
+    console.log('this.dess in edit profile', this.company.descriptions);
+
+    this.updateCompany.updateCompany(this.company._id,this.company).then(
+      data => {
+        //this.initializeItems(this.selectedItem);
+      });
     this.navCtrl.pop();
 
   }
+
+
 
 }

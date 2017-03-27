@@ -21,19 +21,19 @@
           <ion-col>
             <ion-item>
               <ion-label floating>Service</ion-label>
-              <ion-input style="background-color: lavender" name="email" type="text" [(ngModel)]="currentservice.service"
+              <ion-input style="background-color: lavender" name="email" type="text" [(ngModel)]="currentservice.name"
                          required></ion-input>
             </ion-item>
 
             <ion-item>
               <ion-label floating>Details</ion-label>
-              <ion-textarea style="background-color: lavender" rows="2" name="text" type="text" [(ngModel)]="currentservice.details"
+              <ion-textarea style="background-color: lavender" rows="2" name="text" type="text" [(ngModel)]="currentservice.description"
                             required></ion-textarea>
             </ion-item>
 
             <ion-item>
               <ion-label floating>Price</ion-label>
-              <ion-input style="background-color: lavender" type="text" name="text" [(ngModel)]="currentservice.price" required></ion-input>
+              <ion-input style="background-color: lavender" type="text" name="text" [(ngModel)]="currentservice.cost" required></ion-input>
             </ion-item>
           </ion-col>
 

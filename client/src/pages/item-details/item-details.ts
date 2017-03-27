@@ -15,7 +15,7 @@ import { ReviewsService } from '../../providers/reviews-service'
   templateUrl: 'item-details.html'
 })
 export class ItemDetailsPage {
-  selectedItem: any;
+  company: any;
   question: String;
   registerCredentials: any;
   reviews: any;
@@ -23,11 +23,11 @@ export class ItemDetailsPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public toastCtrl: ToastController, private requestServ: RequestService, private shareServ: ShareService, private reviewServ: ReviewsService) {
     // If we navigated to this page, we will have an item available as a nav param
-    this.selectedItem = navParams.get('item');
+    this.company = navParams.get('item');
     this.question = "";
     var companyCredentials = {
-      email: this.selectedItem.email,
-      password: this.selectedItem.password
+      email: this.company.email,
+      password: this.company.password
     }
     this.reviewServ.getReviews(companyCredentials).then(
       data => {
@@ -50,29 +50,12 @@ export class ItemDetailsPage {
     //TODO: requestService, must use with credentials
     this.registerCredentials = this.shareServ.getCredentials();
     console.log("this.registerCrednetials in item-details: ", this.registerCredentials);
-    this.requestServ.requestService(this.registerCredentials, this.selectedItem).then(
-      data => {
-        //TODO: EDIT THIS!!!
-        if (data){
-          let toast = this.toastCtrl.create({
-            message: 'Request Sent! Check your orders!',
-            duration: 3000
-          });
-          toast.present();
-        }
-        else{
-          let toast = this.toastCtrl.create({
-            message: 'Request Not Sent! There is an error somewhere :(',
-            duration: 3000
-          });
-          toast.present();
-        }
-      }
-    );
-    /*this.navCtrl.push(RequestServicePage, {
-        item:this.selectedItem
+
+    this.navCtrl.push(RequestServicePage, {
+        item:this.company,
+        credentials:this.registerCredentials
       });
-      */
+
       /*
     let toast = this.toastCtrl.create({
       message: 'Request Sent! Check your orders!',
