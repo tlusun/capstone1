@@ -37,7 +37,10 @@ export class ItemDetailsPage {
         for (var i =0; i<this.reviews.length; i++){
           this.rating += this.reviews[i].rating;
         }
-        this.rating = this.rating/this.reviews.length;
+        if (this.reviews.length==0)
+          this.rating="No ratings yet";
+        else
+          this.rating = this.rating/this.reviews.length;
       }
     );
   }

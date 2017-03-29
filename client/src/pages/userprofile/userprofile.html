@@ -21,23 +21,22 @@
         <img src="assets/icon/favicon.ico">
       </ion-avatar>
       <ion-item>
-        <h2> email </h2>
-        <p>{{user1.email}}</p>
+        <p> email </p>
+        <h2>{{user1.email}}</h2>
       </ion-item>
       <ion-item>
-        <h2>name</h2>
-        <p>{{user1.firstName}}  </p>
-        <div style="text-align: right;"><button ion-button (click)="edit('fullname')">Edit</button></div>
+        <p>name</p>
+        <h2>{{user1.firstName}}  </h2>
+
       </ion-item>
 
       <ion-item>
-        <h2>address </h2>
-        <p>{{user1.address}}</p>
-        <div style="text-align: right;"><button ion-button (click)="edit('address')">Edit</button></div>
+        <p>address </p>
+        <h2>{{user1.address}}</h2>
       </ion-item>
       <ion-item>
-        <h2>phone</h2>
-        <p>{{user1.number}}</p>
+        <p>phone</p>
+        <h2>{{user1.number}}</h2>
         <div style="text-align: right;"><button ion-button (click)="edit('phone')">Edit</button></div>
       </ion-item>
 
@@ -46,7 +45,7 @@
 
 
     <button ion-button (click)="openPage()">Your Orders</button>
-
+    <button ion-button (click)="edit()">Edit Profile</button>
     <button ion-button (click)="logOut()">Log Out</button>
   </div>
 </ion-content>

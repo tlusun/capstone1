@@ -2,7 +2,7 @@
 
 <ion-content>
   <page-homepage></page-homepage>
-  <ion-grid class="main-content">
+  <ion-grid class="main-content" *ngIf="(company)">
     <ion-row>
       <ion-col>
 
@@ -38,30 +38,45 @@
       <ion-col width-50>
         <ion-row>
           <ion-col>
-            <h4>Service</h4>
-            <p>{{company.service}}</p>
+            <h3>Service</h3>
           </ion-col>
           <ion-col text-right>
-            <h4>Pricing</h4>
-            <p>{{company.price}}</p>
+            <h3>Pricing</h3>
           </ion-col>
         </ion-row>
-<!--
-        <ion-row *ngFor="let item of company.listpricing">
-          <ion-col>
-            <p>{{item[0]}} </p>
-          </ion-col>
-          <ion-col text-right>
-            <p>{{item[1]}}</p>
-          </ion-col>
+
+        <ion-row>
+
+          <ion-item *ngFor="let service of company.services" text-wrap>
+            <ion-row>
+              <ion-col>
+                <h2> {{service.name}}</h2>
+              </ion-col>
+              <ion-col  align="right">
+                <p>{{service.cost}}</p>
+              </ion-col>
+            </ion-row>
+            <ion-row text-wrap>
+              <ion-col><p>{{service.description}}</p></ion-col>
+            </ion-row>
+          </ion-item>
+
         </ion-row>
-        -->
+
+
+
+
+
+
+
       </ion-col>
       <ion-col>
         <img src="https://s-media-cache-ak0.pinimg.com/736x/9b/8d/64/9b8d647e4a91cba808e3b9d3ff057671.jpg"/>
       </ion-col>
     </ion-row>
 
+
+    <div *ngIf="(reviews)">
     <ion-row responsive-sm padding>
       <h2>Rating: {{company.rating}}</h2>
     </ion-row>
@@ -69,7 +84,7 @@
     <h2>Your reviews</h2>
     <ion-scroll scrollY="true" style="height: 50vh">
       <ion-list>
-        <ion-item class="review" *ngFor="let review of company.reviews" text-wrap>
+        <ion-item class="review" *ngFor="let review of reviews" text-wrap>
           <h3>{{review.customerEmail}}</h3>
           <ion-col text-wrap>
             <p>{{review.review}}</p>
@@ -78,7 +93,7 @@
         </ion-item>
       </ion-list>
     </ion-scroll>
-
+    </div>
   </ion-grid>
 
 </ion-content>

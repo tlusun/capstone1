@@ -31,7 +31,7 @@ import { UpdateInvoice } from '../providers/update-invoice'
 import { ReviewsService } from '../providers/reviews-service'
 import { UpdateCompanyServices } from'../providers/update-company-services';
 import { UpdateCompanyProfile } from'../providers/update-company-profile';
-
+import {EditUserProfilePage} from '../pages/edit-user-profile/edit-user-profile';
 
 
 @NgModule({
@@ -52,7 +52,8 @@ import { UpdateCompanyProfile } from'../providers/update-company-profile';
     BusinessOrdersPage,
     EditBusinessProfilePage,
     EditServicePage,
-    BusinessPreviewPage
+    BusinessPreviewPage,
+    EditUserProfilePage
   ],
   imports: [
     IonicModule.forRoot(MyApp)
@@ -75,7 +76,8 @@ import { UpdateCompanyProfile } from'../providers/update-company-profile';
     BusinessOrdersPage,
     EditBusinessProfilePage,
     EditServicePage,
-    BusinessPreviewPage
+    BusinessPreviewPage,
+    EditUserProfilePage
   ],
   providers: [
     AuthService,

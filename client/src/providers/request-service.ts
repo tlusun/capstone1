@@ -27,10 +27,10 @@ export class RequestService {
       service: businessDetails.service,
       date: new Date().toISOString(), //TODO: make sure this works!
       businessEmail: businessDetails.email,
-      invoice: "", 
+      invoice: "",
       status: "Pending"
     }
-
+    console.log("BODY", body);
     return new Promise (resolve => {
       this.http.post('http://localhost:8080/api/order/', body ,options).map(res => res.json()).subscribe(
         data => {

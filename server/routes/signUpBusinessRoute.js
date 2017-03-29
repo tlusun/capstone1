@@ -12,7 +12,6 @@ router.post('/signupbusiness', function(req, res) {
   console.log('address: ', req.body.address);
   console.log('service: ', req.body.service);
   //console.log('details: ', req.body.services.details);
-  console.log('price: ', req.body.price);
   console.log('descriptions: ', req.body.descriptions);
   console.log('password: ', req.body.password);
 
@@ -28,8 +27,7 @@ router.post('/signupbusiness', function(req, res) {
       //not sure if we need to do it field by field
       /**/
       service: req.body.service,
-      price: req.body.price,
-
+      rating: "No reviews yet",
       /**/
       //services = req.body.services,
       descriptions: req.body.descriptions,

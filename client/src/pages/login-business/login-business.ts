@@ -18,7 +18,10 @@ export class LoginBusinessPage {
   loading: Loading;
   registerCredentials = {email: '', password: '', type: 'business'};
 
-  constructor(private nav: NavController, private auth: AuthService, private alertCtrl: AlertController, private loadingCtrl: LoadingController) {}
+  constructor(private nav: NavController, private auth: AuthService, private alertCtrl: AlertController, private loadingCtrl: LoadingController) {
+    this.registerCredentials = {email: '', password: '', type: 'business'};
+
+  }
 
   public createAccount() {
     this.nav.push(RegisterPage);

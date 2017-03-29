@@ -4,7 +4,7 @@ import {UserOrdersPage} from "../userorders/userorders";
 import {HomePage} from '../homepage/homepage';
 import {AlertController} from 'ionic-angular';
 import {LoginPage} from '../login/login';
-
+import {EditUserProfilePage} from '../edit-user-profile/edit-user-profile';
 /*
  Generated class for the Userprofile page.
 
@@ -55,34 +55,10 @@ export class UserProfilePage {
     });
   }
 
-  edit(item) {
-    let prompt = this.alertCtrl.create({
-      title: 'Edit',
-      message: "Edit " + item,
-      inputs: [
-        {
-          name: 'text',
-          placeholder: 'New Value'
-        },
-      ],
-      buttons: [
-        {
-          text: 'Cancel',
-          handler: data => {
-            console.log('Cancel clicked');
-          }
-        },
-        {
-          text: 'Save',
-          handler: data => {
-            if (data !== "") {
-              this.user[item] = data.text;
-            }
-          }
-        }
-      ]
+  edit() {
+    this.navCtrl.push(EditUserProfilePage, {
+      user: this.user1
     });
-    prompt.present();
 
   }
   logOut(){
