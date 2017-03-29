@@ -11,7 +11,7 @@
   <page-homepage></page-homepage>
 
 
-  <div class="form-content">
+  <div class="form-content" *ngIf="(user1)">
     <h1>{{user1.firstName}}'s profile</h1>
     <p></p>
 
@@ -37,7 +37,6 @@
       <ion-item>
         <p>phone</p>
         <h2>{{user1.number}}</h2>
-        <div style="text-align: right;"><button ion-button (click)="edit('phone')">Edit</button></div>
       </ion-item>
 
 

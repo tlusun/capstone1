@@ -32,7 +32,7 @@ import { ReviewsService } from '../providers/reviews-service'
 import { UpdateCompanyServices } from'../providers/update-company-services';
 import { UpdateCompanyProfile } from'../providers/update-company-profile';
 import {EditUserProfilePage} from '../pages/edit-user-profile/edit-user-profile';
-
+import {UpdateUserProfile} from '../providers/update-user-profile';
 
 @NgModule({
   declarations: [
@@ -92,6 +92,7 @@ import {EditUserProfilePage} from '../pages/edit-user-profile/edit-user-profile'
     ReviewsService,
     UpdateCompanyServices,
     UpdateCompanyProfile,
+    UpdateUserProfile,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

@@ -22,7 +22,6 @@ router.post('/company', function (req, res) {
     reviews: req.body.reviews,
     orders: req.body.orders,
     location: req.body.location
-
   });
 
   mycompany.save(function(err) {

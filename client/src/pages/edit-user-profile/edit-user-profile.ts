@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
-
+import {UpdateUserProfile} from '../../providers/update-user-profile';
 /*
   Generated class for the EditUserProfile page.
 
@@ -13,8 +13,15 @@ import { NavController, NavParams } from 'ionic-angular';
 })
 export class EditUserProfilePage {
   user: any;
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  address: any;
+  name: any;
+  number: any;
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, private updateProfile: UpdateUserProfile) {
     this.user = this.navParams.get('user');
+    this.address = this.user.address;
+    this.name = this.user.firstName;
+    this.number = this.user.number;
   }
 
   ionViewDidLoad() {
@@ -27,5 +34,13 @@ export class EditUserProfilePage {
   }
   save(){
 
+    this.user.address = this.address;
+    this.user.firstName= this.name;
+    this.user.number = this.number;
+    this.updateProfile.updateUser(this.user._id,this.user).then(
+      data => {
+        //this.initializeItems(this.selectedItem);
+      });
+    this.navCtrl.pop();
   }
 }

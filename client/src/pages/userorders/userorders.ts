@@ -5,6 +5,7 @@ import {AlertController} from 'ionic-angular';
 import { GetOrdersForCustomer } from '../../providers/get-orders-for-customer';
 import { ReviewsService } from '../../providers/reviews-service'
 import {PayPal, PayPalPayment, PayPalConfiguration} from "ionic-native";
+import { UpdateInvoice } from '../../providers/update-invoice';
 
 
 /*
@@ -23,7 +24,7 @@ export class UserOrdersPage {
 
   newreview: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private getOrdersForCustomer: GetOrdersForCustomer, private reviewServ: ReviewsService, public alertCtrl: AlertController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private getOrdersForCustomer: GetOrdersForCustomer, private reviewServ: ReviewsService, public alertCtrl: AlertController, private updateInvoiceService: UpdateInvoice) {
     this.user = navParams.get('item');
     console.log("this.user: ", this.user);
     this.getOrdersForCustomer.getOrdersForCustomer(this.user).then(
@@ -96,7 +97,7 @@ export class UserOrdersPage {
   review(order){
 
     let prompt = this.alertCtrl.create({
-      title: 'Edit',
+      title: 'Review',
       message: "Write a new review. " ,
       inputs: [
         {
@@ -128,6 +129,8 @@ export class UserOrdersPage {
               }
               //TODO: ADD SERVICE HERE
               this.reviewServ.createReview(this.newreview);
+              this.updateInvoiceService.updateInvoiceStatus(order._id,"Complete-Reviewed").then();
+
             }
           }
         }

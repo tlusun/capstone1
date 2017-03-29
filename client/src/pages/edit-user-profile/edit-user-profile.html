@@ -16,18 +16,18 @@
     <ion-row padding responsive-sm>
 
       <ion-item>
-        <ion-label floating>Edit Company Description</ion-label>
-        <ion-textarea style="background-color: lavender" [(ngModel)]="user.firstName"></ion-textarea>
+        <ion-label floating>Edit Name</ion-label>
+        <ion-textarea style="background-color: lavender" [(ngModel)]="name"></ion-textarea>
       </ion-item>
 
       <ion-item>
         <ion-label floating>Edit Address</ion-label>
-        <ion-input style="background-color: lavender" [(ngModel)]="user.address"></ion-input>
+        <ion-input style="background-color: lavender" [(ngModel)]="address"></ion-input>
       </ion-item>
 
       <ion-item>
-        <ion-label floating>Edit Phone</ion-label>
-        <ion-input style="background-color: lavender" [(ngModel)]="user.number"></ion-input>
+        <ion-label floating>Edit Phone Number</ion-label>
+        <ion-input style="background-color: lavender" type="tel" [(ngModel)]="number"></ion-input>
       </ion-item>
     </ion-row>
     <p></p>
