@@ -47,51 +47,9 @@ export class UserOrdersPage {
     this.navCtrl.pop();
   }
 
-  //TODO: USE PAYPAL SHIT
+  //TODO: use stripe
   pay(){
-    PayPal.init({
-      "PayPalEnvironmentProduction": "AQk9xIcK4gpfp7Mrrep1CJrfevLihYp9qL5HIa0DQr5IevhtShqHfDZF0ocZpZfDO4zuW_MBuad8oNjL",
-      "PayPalEnvironmentSandbox": "AbLZgpHTjmCEhKWk3wXqxoRPxvXv_cJa61zo1zVimz9Wfy7hMjRS-PeyB0dR1nuvKb4IlirMimtqT7Uc"
-    }).then(() => {
-      // Environments: PayPalEnvironmentNoNetwork, PayPalEnvironmentSandbox, PayPalEnvironmentProduction
-      PayPal.prepareToRender('PayPalEnvironmentSandbox', new PayPalConfiguration({
-        // Only needed if you get an "Internal Service Error" after PayPal login!
-        //payPalShippingAddressOption: 2 // PayPalShippingAddressOptionPayPal
-      })).then(() => {
-        let payment = new PayPalPayment('3.33', 'CAD', 'Description', 'sale');
-        PayPal.renderSinglePaymentUI(payment).then(response => {
-          // Successfully paid
-
-          // Example sandbox response
-          //
-          // {
-          //   "client": {
-          //     "environment": "sandbox",
-          //     "product_name": "PayPal iOS SDK",
-          //     "paypal_sdk_version": "2.16.0",
-          //     "platform": "iOS"
-          //   },
-          //   "response_type": "payment",
-          //   "response": {
-          //     "id": "PAY-1AB23456CD789012EF34GHIJ",
-          //     "state": "approved",
-          //     "create_time": "2016-10-03T13:33:33Z",
-          //     "intent": "sale"
-          //   }
-          // }
-          console.log("response from Paypal: ", response);
-        }, renderError => {
-          // Error or render dialog closed without being successful
-          console.log("Oops. renderError activated: ", renderError);
-        });
-      }, configError => {
-        // Error in configuration
-          console.log("Oops. configError activated: ", configError);
-      });
-    }, initilizationError => {
-      // Error in initialization, maybe PayPal isn't supported or something else
-      console.log("Oops. initilizationError activated: ", initilizationError);
-    });
+    
 
   }
   review(order){
