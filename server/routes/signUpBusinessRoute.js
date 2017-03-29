@@ -24,30 +24,6 @@ router.post('/signupbusiness', function(req, res) {
   } else {
 
 
-
-var add = req.body.address; 
-var late
-var longe
-
-request({
-    uri: 'https://maps.googleapis.com/maps/api/geocode/json?address='+add,
-    json: true
-    
-   }, function(error, response, body) {
-            if (!error && response.statusCode === 200) {
-      //console.log(body.results[0].geometry.location.lat)
-      late=body.results[0].geometry.location.lat; 
-      longe=body.results[0].geometry.location.lng; 
-      console.log('lat from map'+late);
-      console.log('long from map' + longe);
-    }
-    });
-
-
-
-
-
-
     var newCompany = new Company({
       email: req.body.email,
       name: req.body.name,
@@ -67,7 +43,7 @@ request({
           latitude: 123
       },
       password: req.body.password
-      
+
     });
     // save the user
     newCompany.save(function(err) {
