@@ -1,6 +1,8 @@
 var router = require('express').Router();
 var Company = require('../app/models/company');
 var Order = require('../app/models/order');
+var User = require('../app/models/user');
+
 
 var mongoose = require('mongoose');
 
@@ -30,7 +32,7 @@ router.put('/company/services/:id', function (req, res) {
 
     company.services = req.body.services; //TODO: MAKE SURE THIS WORKS
     company.save(function (err, company) {
-      if (err) response.send(error);
+      if (err) res.send(error);
       res.status(201).json({success: true});
     });
   });
@@ -48,13 +50,29 @@ router.put('/company/:id', function (req, res) {
     company.number = req.body.company.number;
     company.service = req.body.company.service;//TODO: MAKE SURE THIS WORKS
     company.save(function (err, company) {
-      if (err) response.send(error);
+      if (err) res.send(error);
       res.status(201).json({success: true});
     });
   });
 
 });
 
+router.put('/user/:id', function (req, res) {
+  console.log("what is in this req: ", req.body.user);
+  var id = req.params.id;
 
+  User.findById(id, function (err, user) {
+    if (err) return handleError(err);
+
+    user.firstName = req.body.user.firstName;
+    user.address = req.body.user.address;
+    user.number = req.body.user.number;
+    user.save(function (err, user) {
+      if (err) res.send(error);
+      res.status(201).json({success: true});
+    });
+  });
+
+});
 
 module.exports = router;

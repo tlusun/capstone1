@@ -13,6 +13,7 @@
       <ion-row padding>
         <button ion-button (click)="editBusinessProfile()">Edit business page</button>
         <button ion-button (click)="gotoOrders()">View Orders</button>
+          <button ion-button (click)="logOut()">Log Out</button>
       </ion-row>
 
       <p></p>
@@ -38,10 +39,6 @@
             <ion-item>
               <h2>Service:</h2>
               <p> {{company1.service}}</p>
-            </ion-item>
-            <ion-item>
-              <h2>Price:</h2>
-              <p> {{company1.price}}</p>
             </ion-item>
           </ion-list>
         </ion-col>
@@ -97,6 +94,7 @@
       <p></p>
       <p></p>
 -->
+      <div *ngIf="(reviews)">
       <h2>Your reviews</h2>
       <h3>Average rating: {{rating}}</h3>
       <ion-scroll scrollY="true" style="height: 50vh">
@@ -110,10 +108,8 @@
           </ion-item>
         </ion-list>
       </ion-scroll>
-      <ion-row>
-        <button ion-button (click)="logOut()">Log Out</button>
+      </div>
 
-      </ion-row>
     </ion-grid>
   </div>
 

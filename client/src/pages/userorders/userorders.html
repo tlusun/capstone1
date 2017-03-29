@@ -36,17 +36,17 @@
 
         </ion-row>
         <ion-col >
-          <h3>{{order.status}}</h3>
-          <ion-item *ngIf="order.status=='Complete-WaitingPayment'">
+          <h3>Status: {{order.status}}</h3>
+          <div *ngIf="order.status=='Complete-WaitingPayment'">
             <button ion-button (click)="pay()">
               Pay
             </button>
-          </ion-item>
-          <ion-item *ngIf="order.status=='Complete-Paid'">
+          </div>
+          <div *ngIf="order.status=='Complete-Paid'">
             <button ion-button (click)="review(order)">
               Review
             </button>
-          </ion-item>
+          </div>
         </ion-col>
       </ion-row>
 

@@ -36,10 +36,6 @@ var CompanySchema = new Schema({
     cost: {type: String}
 
   }],
-  price: {
-    type: Number,
-    required: true
-  },
   descriptions: {
     type: String,
     required: true

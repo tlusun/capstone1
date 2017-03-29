@@ -4,7 +4,7 @@ import {BusinessOrdersPage} from '../business-orders/business-orders';
 import {EditBusinessProfilePage} from "../edit-business-profile/edit-business-profile";
 import {ShareService} from "../../providers/share-service";
 import {BusinessProfileService} from "../../providers/business-profile-service";
-import { ReviewsService } from '../../providers/reviews-service'
+import {ReviewsService } from '../../providers/reviews-service'
 import {LoginPage} from '../login/login';
 
 /*
@@ -30,7 +30,7 @@ export class BusinessProfilePage {
 
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private shareService: ShareService, private businessProfileService: BusinessProfileService, private loadCtl: LoadingController, private reviewServ : ReviewsService) {
-    this.registerCredentials=this.navParams.get('registerCredentials');
+      this.registerCredentials=this.navParams.get('registerCredentials');
       this.shareService.setCredentials(this.registerCredentials);
 
 
@@ -51,7 +51,11 @@ export class BusinessProfilePage {
           for (var i =0; i<this.reviews.length; i++){
             this.rating += this.reviews[i].rating;
           }
-          this.rating = this.rating/this.reviews.length;
+          if (this.reviews.length==0)
+            this.rating="No ratings yet";
+          else
+            this.rating = this.rating/this.reviews.length;
+
         }
       );
 

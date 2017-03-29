@@ -35,12 +35,11 @@
           <ion-col>
             <h3>Status: {{order.status}}</h3>
             <ion-buttons>
+              <div *ngIf="order.status=='Complete-WaitingPayment' || order.status=='Accepted' || order.status=='Pending'">
             <button ion-button small (click)="changeStatus(order)">
               Change Order Status
             </button>
-            <button ion-button small (click)="updateInvoice(order)">
-              Update Invoice
-            </button>
+              </div>
             </ion-buttons>
           </ion-col>
         </ion-item>

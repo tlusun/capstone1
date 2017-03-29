@@ -16,23 +16,30 @@ export class EditServicePage {
   services: any;
   currentservice: any;
   index : any;
+  description: any;
   constructor(public navCtrl: NavController, public navParams: NavParams,  private updateservices: UpdateCompanyServices) {
-    //this.service={
-    //  name: '',
-    //  detail: '',
-    //  pricing: ''
-    //}
+    this.currentservice={
+      name: '',
+      detail: '',
+      pricing: ''
+    }
+
     this.services = navParams.get('services');
     this.index = navParams.get('index');
     this.company_id= navParams.get('id');
-    this.currentservice= this.services[this.index];
+    this.currentservice.name= this.services[this.index].name;
+    this.description= this.services[this.index].description;
 
+    this.currentservice.cost= this.services[this.index].cost;
+    console.log("description",this.description);
+    console.log("cost",this.currentservice.cost);
   }
 
 back(){
     this.navCtrl.pop();
 }
 addService(){
+  this.currentservice.description= this.description;
   this.services[this.index] = this.currentservice;
   this.updateservices.updateServices(this.company_id,this.services).then(
     data => {

@@ -18,34 +18,31 @@
             </ion-item>
 
             <ion-item>
-              <ion-input type="text" placeholder="name" name="name" [(ngModel)]="registerCredentials.name" required></ion-input>
+              <ion-input type="text" placeholder="Business Name" name="name" [(ngModel)]="registerCredentials.name" required></ion-input>
             </ion-item>
 
             <ion-item>
-              <ion-input type="text" placeholder="owner" name="owner" [(ngModel)]="registerCredentials.owner" required></ion-input>
+              <ion-input type="text" placeholder="Owner's Name" name="owner" [(ngModel)]="registerCredentials.owner" required></ion-input>
             </ion-item>
 
             <ion-item>
-              <ion-input type="tel" placeholder="number" name="number" [(ngModel)]="registerCredentials.number" required></ion-input>
+              <ion-input type="tel" placeholder="Phone Number" name="number" [(ngModel)]="registerCredentials.number" required></ion-input>
             </ion-item>
 
             <ion-item>
-              <ion-input type="text" placeholder="address" name="address" [(ngModel)]="registerCredentials.address" required></ion-input>
-            </ion-item>
-
-
-            <ion-item>
-              <ion-input type="text" placeholder="service" name="service" [(ngModel)]="registerCredentials.service" required></ion-input>
+              <ion-input type="text" placeholder="Address" name="address" [(ngModel)]="registerCredentials.address" required></ion-input>
             </ion-item>
 
 
             <ion-item>
-              <ion-input type="tel" placeholder="price" name="price" [(ngModel)]="registerCredentials.price" required></ion-input>
+              <ion-input type="text" placeholder="Service type" name="service" [(ngModel)]="registerCredentials.service" required></ion-input>
             </ion-item>
 
             <ion-item>
-              <ion-input type="text" placeholder="descriptions" name="descriptions" [(ngModel)]="registerCredentials.descriptions" required></ion-input>
+              <ion-textarea rows="4" placeholder="Description" name="descriptions" type="text" [(ngModel)]="registerCredentials.descriptions" required></ion-textarea>
             </ion-item>
+
+
 
           </ion-list>
         </ion-col>
