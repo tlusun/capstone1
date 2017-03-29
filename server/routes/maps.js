@@ -48,42 +48,55 @@ router.get('/map/new/:location', function(req,res,next) {
             //console.log(body)
             add = body[count].address;
             console.log(add);
-            request({
-              uri: 'https://maps.googleapis.com/maps/api/geocode/json?address='+add,
-              json: true
 
-            }, function(error, response, body) {
-              if (!error && response.statusCode === 200) {
-                //console.log(body.results[0].geometry.location.lat)
-                newlat=body.results[0].geometry.location.lat;
-                newlong=body.results[0].geometry.location.lng;
-                console.log(newlat);
-                console.log(newlong);
-              }
+            return new Promises(function(resolve,reject){
+
+              request({
+                uri: 'https://maps.googleapis.com/maps/api/geocode/json?address='+add,
+                json: true
+
+              }, function(error, response, body) {
+                if (!error && response.statusCode === 200) {
+                  //console.log(body.results[0].geometry.location.lat)
+                  newlat=body.results[0].geometry.location.lat;
+                  newlong=body.results[0].geometry.location.lng;
+                  console.log(newlat);
+                  console.log(newlong);
+                }
+                resolve(data);
+              });
+
+
+
+            },function (reason) {
+
+            }).then(function(data){
+              console.log('this is late' + late);
+              var lat2 = newlat;
+              var lon2 = newlong;
+              var lat1 = late;
+              var lon1 = longe;
+
+              var input1 = Math.cos((90-lat1)*Math.PI / 180);
+              var input2 = Math.cos((90-lat2)*Math.PI / 180);
+              var input3 = Math.sin((90-lat1)*Math.PI / 180);
+              var input4 = Math.sin((90-lat2)*Math.PI / 180);
+              var input5 = Math.cos((lon2-lon1)*Math.PI / 180);
+
+              var ans = Math.acos(input1*input2 +input3*input4 * input5)*6371;
+
+
+              var num = Math.floor(lat1);
+              var chicken = Math.cos(num);
+
+              console.log('this is ans: ', chicken);
+
+              if (ans<25)
+                console.log('ye');
             });
 
-            console.log('this is late' + late);
-            var lat2 = newlat;
-            var lon2 = newlong;
-            var lat1 = late;
-            var lon1 = longe;
-
-            var input1 = Math.cos((90-lat1)*Math.PI / 180);
-            var input2 = Math.cos((90-lat2)*Math.PI / 180);
-            var input3 = Math.sin((90-lat1)*Math.PI / 180);
-            var input4 = Math.sin((90-lat2)*Math.PI / 180);
-            var input5 = Math.cos((lon2-lon1)*Math.PI / 180);
-
-            var ans = Math.acos(input1*input2 +input3*input4 * input5)*6371;
 
 
-            var num = Math.floor(lat1);
-            var chicken = Math.cos(num);
-
-            console.log('this is ans: ', chicken);
-
-            if (ans<25)
-              console.log('ye');
           }
           resolve(ans);
         }
