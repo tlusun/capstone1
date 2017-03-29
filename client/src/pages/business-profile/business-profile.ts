@@ -51,10 +51,11 @@ export class BusinessProfilePage {
           for (var i =0; i<this.reviews.length; i++){
             this.rating += this.reviews[i].rating;
           }
-          if (this.reviews.length==0)
-            this.rating="No ratings yet";
-          else
+          if (this.reviews.length>0) {
             this.rating = this.rating/this.reviews.length;
+          }
+          else
+            this.rating = "No ratings yet";
 
         }
       );
@@ -69,11 +70,11 @@ export class BusinessProfilePage {
     this.businessProfileService.getBusiness(this.registerCredentials).then(
       data => {
         this.company1 = data;
-        console.log("businessprf: ", this.company1);
+        console.log("businesfdasfdsafsdafsdafsdfsasprf: ", this.company1);
       }
     );
 
-    console.log("businessprof2: ", this.company1);
+    console.log("businessprofdsfsadfsadfsdfsdafdsafasf2: ", this.company1);
 
     this.reviewServ.getReviews(this.registerCredentials).then(
       data => {

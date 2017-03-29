@@ -66,8 +66,8 @@ router.post('/signupbusiness', function(req, res) {
       descriptions: req.body.descriptions,
 
       location:{
-          longitude: late,
-          latitude: longe
+          longitude: longe,
+          latitude: late
       },
       password: req.body.password
 
