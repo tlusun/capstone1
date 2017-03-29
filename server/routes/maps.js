@@ -12,7 +12,7 @@ router.get('/map/new/:location', function(req,res,next) {
   var add;
   var newlat;
   var newlong;
-  var array = []; 
+  var array = [];
 
   var promise = new Promises(function (resolve,reject){
 
@@ -117,7 +117,7 @@ router.get('/map/new/:location', function(req,res,next) {
                 var num = Math.floor(lat1);
                 var chicken = Math.cos(num);
 
-                if (d < 1100){
+                if (d < 50){
                   array.push(body[count]);
 
                 }

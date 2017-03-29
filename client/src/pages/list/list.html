@@ -4,6 +4,7 @@
 
 
   <ion-searchbar (ionInput)="getItems($event)" class="main-content"></ion-searchbar>
+  <ion-searchbar (ionInput)="getLocation($event)" class="main-content"></ion-searchbar>
   <ion-list class="main-content" *ngIf="(filtered)">
 
     <button ion-item *ngFor="let item of filtered" (click)="itemTapped($event, item)" text-wrap>

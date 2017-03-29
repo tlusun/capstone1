@@ -4,7 +4,8 @@ import { NavController, NavParams } from 'ionic-angular';
 
 import { ItemDetailsPage } from '../item-details/item-details';
 import { ShareService } from '../../providers/share-service';
-import { GetCompanies } from '../../providers/get-companies'
+import { GetCompanies } from '../../providers/get-companies';
+import {SearchByLocation} from '../../providers/search-by-location';
 
 @Component({
   selector: 'page-list',
@@ -33,7 +34,7 @@ export class ListPage {
   searchQuery: string = '';
   company:any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private shareService: ShareService, private getCompanies: GetCompanies) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private shareService: ShareService, private getCompanies: GetCompanies, private searchLocation: SearchByLocation) {
     this.getCompanies.getCompanies().then(
       data => {
         this.company = data;
@@ -75,7 +76,22 @@ export class ListPage {
       console.log("filtred",this.filtered);
     }
   }
+getLocation(ev: any){
 
+  this.initializeItems(this.selectedItem);
+  let val = ev.target.value;
+  if (val && val.trim() != '') {
+    this.searchLocation.getLocation(val).then(
+      data => {
+        this.company = data;
+        console.log("location companies: ", this.company);
+        this.filtered = this.company;
+        //this.initializeItems(this.selectedItem);
+      }
+    );
+  }
+
+}
 
 
 }

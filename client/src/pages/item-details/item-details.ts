@@ -57,8 +57,8 @@ export class ItemDetailsPage {
     this.loadMap();
   }
   loadMap(){
-
-    let latLng = new google.maps.LatLng(-34.9290, 138.6010);
+    console.log("lat",this.company.location.latitude);
+    let latLng = new google.maps.LatLng(this.company.location.longitude,this.company.location.latitude);
 
     let mapOptions = {
       center: latLng,
