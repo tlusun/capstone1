@@ -4,9 +4,9 @@
 
 
   <ion-searchbar (ionInput)="getItems($event)" class="main-content"></ion-searchbar>
-  <ion-list class="main-content">
+  <ion-list class="main-content" *ngIf="(filtered)">
 
-    <button ion-item *ngFor="let item of company" (click)="itemTapped($event, item)" text-wrap>
+    <button ion-item *ngFor="let item of filtered" (click)="itemTapped($event, item)" text-wrap>
       <ion-grid>
         <ion-row responsive-sm>
           <ion-col width-33>

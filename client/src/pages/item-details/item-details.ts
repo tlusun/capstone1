@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild, ElementRef } from '@angular/core';
 import { HomePage} from '../homepage/homepage';
 
 import { NavController, NavParams } from 'ionic-angular';
@@ -10,11 +10,20 @@ import { ShareService } from '../../providers/share-service';
 
 import { ReviewsService } from '../../providers/reviews-service'
 
+
+declare var google;
+
+
 @Component({
   selector: 'page-item-details',
   templateUrl: 'item-details.html'
 })
 export class ItemDetailsPage {
+
+  @ViewChild('map') mapElement: ElementRef;
+  map: any;
+
+
   company: any;
   question: String;
   registerCredentials: any;
@@ -44,7 +53,22 @@ export class ItemDetailsPage {
       }
     );
   }
+  ionViewDidLoad(){
+    this.loadMap();
+  }
+  loadMap(){
 
+    let latLng = new google.maps.LatLng(-34.9290, 138.6010);
+
+    let mapOptions = {
+      center: latLng,
+      zoom: 15,
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    }
+
+    this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
+
+  }
 
   back(){
     this.navCtrl.pop();
