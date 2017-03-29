@@ -12,6 +12,8 @@ router.get('/map/new/:location', function(req,res,next) {
   var add;
   var newlat;
   var newlong;
+  var array = []; 
+
   var promise = new Promises(function (resolve,reject){
 
     request({
@@ -51,7 +53,7 @@ router.get('/map/new/:location', function(req,res,next) {
             function dothing(count, body) {
 
               return new Promises(function (resolve, reject) {
-                console.log("BODY", body[count]);
+            //    console.log("BODY", body[count]);
                 add = body[count].address;
                 console.log("address", add);
                 request({
@@ -115,16 +117,11 @@ router.get('/map/new/:location', function(req,res,next) {
                 var num = Math.floor(lat1);
                 var chicken = Math.cos(num);
 
+                if (d < 1100){
+                  array.push(body[count]);
 
+                }
 
-
-
-
-
-                console.log('this is ans: ', chicken);
-
-                if (d < 25)
-                  console.log('ye');
                 resolve(chicken);
               });
             }
@@ -142,25 +139,26 @@ router.get('/map/new/:location', function(req,res,next) {
 
           Promise.all(proms)
             .then(function (data) {
+              res.send(array);
             })
             .catch(function (err) {
             });
         }
-        resolve();
+
+        resolve(array);
       });
-
-
-
 
 
     });
   }, function(reason){
     console.log("fail");
+
+  }).then(function(data){
+    console.log("array", data);
+    resolve();
+  },function(reason){
+
   });
-
-
-  res.send("Thanks!");
-
 
 });
 
