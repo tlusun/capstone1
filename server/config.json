@@ -3,7 +3,7 @@
   "api" : {
     "host" : "api.sandbox.paypal.com",
     "port" : "",            
-    "client_id" : "YOUR TEST CLIENT ID",
-    "client_secret" : "YOUR TEST CLIENT SECRET"
+    "client_id" : "sax.rishabh-facilitator_api1.gmail.com",
+    "client_secret" : "3CSNAAL7R5R9ERJK"
   }
 }
