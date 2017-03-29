@@ -59,7 +59,8 @@ var postStuffRoute = require('./routes/postStuffRoute.js');
 var deleteStuffRoute = require('./routes/deleteStuffRoute.js');
 var updateStuffRoute = require('./routes/updateStuffRoute.js');
 var maps = require('./routes/maps.js');
-var paypal = require('./routes/paypal.js');
+//var paypal = require('./routes/paypal.js');
+var stripe = require('./routes/stripe.js');
 
 ///////////////
 app.use('/', demoRoute);
@@ -73,7 +74,8 @@ app.use('/api', updateStuffRoute);
 app.use('/api', maps);
 app.use('/api', signUpBusinessRoute);
 app.use('/api', authenticateBusinessRoute);
-app.use('/api', paypal);
+//app.use('/api', paypal);
+app.use('/api/stripe/', stripe); 
 
 // Start the server
 app.listen(port);
