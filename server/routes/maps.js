@@ -2,108 +2,219 @@ var express = require('express');
 var router = express.Router();
 var request = require('request');
 var bodyParser = require('body-parser');
+var Promises = require('promise');
 
-router.get('/map/:location', function(req, res, next) {
-  var some= req.params.location; 
+
+router.get('/map/new/:location', function(req,res,next) {
+  var some= req.params.location;
   var late;
   var longe;
-  var add; 
-  var newlat; 
+  var add;
+  var newlat;
+  var newlong;
+  var promise = new Promises(function (resolve,reject){
+
+    request({
+      uri: 'https://maps.googleapis.com/maps/api/geocode/json?address='+some,
+      json: true
+
+    }, function(error, response, body) {
+      if (!error && response.statusCode === 200) {
+        //console.log(body.results[0].geometry.location.lat)
+        late=body.results[0].geometry.location.lat;
+        longe=body.results[0].geometry.location.lng;
+        console.log('lat1 from map'+late);
+        console.log('long1 from map' + longe);
+        resolve(late);
+      }
+      else
+        reject("Fail1");
+    });
+
+
+  });
+
+  promise.then(function (data){
+    return new Promises(function (resolve,reject){
+      console.log("data", data);
+      request({
+        uri: 'http://localhost:8080/api/company',
+        json: true
+
+      }, function(error, response, body) {
+        if (!error && response.statusCode === 200) {
+          var count=0;
+          for(count = 0; count < body.length; count++){
+            //console.log(body)
+            add = body[count].address;
+            console.log(add);
+            request({
+              uri: 'https://maps.googleapis.com/maps/api/geocode/json?address='+add,
+              json: true
+
+            }, function(error, response, body) {
+              if (!error && response.statusCode === 200) {
+                //console.log(body.results[0].geometry.location.lat)
+                newlat=body.results[0].geometry.location.lat;
+                newlong=body.results[0].geometry.location.lng;
+                console.log(newlat);
+                console.log(newlong);
+              }
+            });
+
+            console.log('this is late' + late);
+            var lat2 = newlat;
+            var lon2 = newlong;
+            var lat1 = late;
+            var lon1 = longe;
+
+            var input1 = Math.cos((90-lat1)*Math.PI / 180);
+            var input2 = Math.cos((90-lat2)*Math.PI / 180);
+            var input3 = Math.sin((90-lat1)*Math.PI / 180);
+            var input4 = Math.sin((90-lat2)*Math.PI / 180);
+            var input5 = Math.cos((lon2-lon1)*Math.PI / 180);
+
+            var ans = Math.acos(input1*input2 +input3*input4 * input5)*6371;
+
+
+            var num = Math.floor(lat1);
+            var chicken = Math.cos(num);
+
+            console.log('this is ans: ', chicken);
+
+            if (ans<25)
+              console.log('ye');
+          }
+          resolve(ans);
+        }
+        else
+          reject("Fail2");
+      });
+
+
+
+
+
+    });
+  }, function(reason){
+    console.log("fail");
+  });
+
+
+  res.send("Thanks!");
+
+
+});
+
+
+
+
+
+
+
+
+
+router.get('/map/:location', function(req, res, next) {
+  var some= req.params.location;
+  var late;
+  var longe;
+  var add;
+  var newlat;
   var newlong;
 
 
-request({
+  request({
     uri: 'https://maps.googleapis.com/maps/api/geocode/json?address='+some,
     json: true
-    
-   }, function(error, response, body) {
-            if (!error && response.statusCode === 200) {
+
+  }, function(error, response, body) {
+    if (!error && response.statusCode === 200) {
       //console.log(body.results[0].geometry.location.lat)
-      late=body.results[0].geometry.location.lat; 
-      longe=body.results[0].geometry.location.lng; 
+      late=body.results[0].geometry.location.lat;
+      longe=body.results[0].geometry.location.lng;
       console.log('lat1 from map'+late);
       console.log('long1 from map' + longe);
     }
-    });
+  });
 
-next();
+  next();
 
-console.log('this came first');
-request({
+  console.log('this came first');
+  request({
     uri: 'http://localhost:8080/api/company',
     json: true
-    
-   }, function(error, response, body) {
-            if (!error && response.statusCode === 200) {
-              var count=0; 
-              for(count = 0; count < body.length; count++){
-               //console.log(body)
-                add = body[count].address
-                console.log(add);
-               request({
-    uri: 'https://maps.googleapis.com/maps/api/geocode/json?address='+add,
-    json: true
-    
-   }, function(error, response, body) {
-            if (!error && response.statusCode === 200) {
-      //console.log(body.results[0].geometry.location.lat)
-      newlat=body.results[0].geometry.location.lat; 
-      newlong=body.results[0].geometry.location.lng; 
-      console.log(newlat);
-      console.log(newlong);
-    }
-    })
+
+  }, function(error, response, body) {
+    if (!error && response.statusCode === 200) {
+      var count=0;
+      for(count = 0; count < body.length; count++){
+        //console.log(body)
+        add = body[count].address
+        console.log(add);
+        request({
+          uri: 'https://maps.googleapis.com/maps/api/geocode/json?address='+add,
+          json: true
+
+        }, function(error, response, body) {
+          if (!error && response.statusCode === 200) {
+            //console.log(body.results[0].geometry.location.lat)
+            newlat=body.results[0].geometry.location.lat;
+            newlong=body.results[0].geometry.location.lng;
+            console.log(newlat);
+            console.log(newlong);
+          }
+        })
 
 
-console.log('this is late' + late);
-var lat2 = newlat; 
-var lon2 = newlong; 
-var lat1 = late; 
-var lon1 = longe; 
+        console.log('this is late' + late);
+        var lat2 = newlat;
+        var lon2 = newlong;
+        var lat1 = late;
+        var lon1 = longe;
 
-var input1 = Math.cos((90-lat1)*Math.PI / 180);
-var input2 = Math.cos((90-lat2)*Math.PI / 180);
-var input3 = Math.sin((90-lat1)*Math.PI / 180);
-var input4 = Math.sin((90-lat2)*Math.PI / 180);
-var input5 = Math.cos((lon2-lon1)*Math.PI / 180);
+        var input1 = Math.cos((90-lat1)*Math.PI / 180);
+        var input2 = Math.cos((90-lat2)*Math.PI / 180);
+        var input3 = Math.sin((90-lat1)*Math.PI / 180);
+        var input4 = Math.sin((90-lat2)*Math.PI / 180);
+        var input5 = Math.cos((lon2-lon1)*Math.PI / 180);
 
-var ans = Math.acos(input1*input2 +input3*input4 * input5)*6371
+        var ans = Math.acos(input1*input2 +input3*input4 * input5)*6371
 
-// var R = 6371; // km 
+// var R = 6371; // km
 // //has a problem with the .toRad() method below.
 // var x1 = lat2-lat1;
-// var dLat = x1*Math.PI / 180;  
+// var dLat = x1*Math.PI / 180;
 // var x2 = lon2-lon1;
-// var dLon = x2*Math.PI / 180;  
+// var dLon = x2*Math.PI / 180;
 
 // var gg= lat1*Math.PI / 180;
 // var ff= lat2*Math.PI / 180;
 
-// var a = Math.sin(dLat/2) * Math.sin(dLat/2) + 
-//                 Math.cos(gg) * Math.cos(ff) * 
-//                 Math.sin(dLon/2) * Math.sin(dLon/2);  
-// var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
+// var a = Math.sin(dLat/2) * Math.sin(dLat/2) +
+//                 Math.cos(gg) * Math.cos(ff) *
+//                 Math.sin(dLon/2) * Math.sin(dLon/2);
+// var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
 // var d = R * c;
 
-var num = Math.floor(lat1);
-var chicken = Math.cos(num);
+        var num = Math.floor(lat1);
+        var chicken = Math.cos(num);
 
- console.log('this is ans: ', chicken); 
+        console.log('this is ans: ', chicken);
 
-if (ans<25) 
-  console.log('ye');
-
-
+        if (ans<25)
+          console.log('ye');
 
 
 
-            }
+
+
+      }
     }
-    });
+  });
 
 
-  
-res.send("Thanks!");
+
+  res.send("Thanks!");
 
 
 
