@@ -33,6 +33,8 @@ import { UpdateCompanyServices } from'../providers/update-company-services';
 import { UpdateCompanyProfile } from'../providers/update-company-profile';
 import {EditUserProfilePage} from '../pages/edit-user-profile/edit-user-profile';
 import {UpdateUserProfile} from '../providers/update-user-profile';
+import {SearchByLocation} from '../providers/search-by-location';
+
 
 @NgModule({
   declarations: [
@@ -93,6 +95,7 @@ import {UpdateUserProfile} from '../providers/update-user-profile';
     UpdateCompanyServices,
     UpdateCompanyProfile,
     UpdateUserProfile,
+    SearchByLocation,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
