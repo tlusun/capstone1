@@ -4,6 +4,7 @@ var Company = require('../app/models/company'); // get the mongoose model for co
 var express = require('express');
 var request = require('request');
 var bodyParser = require('body-parser');
+var Promises = require('promise');
 
 router.post('/signupbusiness', function(req, res) {
   //console.log('req: ', req);
@@ -23,7 +24,33 @@ router.post('/signupbusiness', function(req, res) {
     res.json({success: false, msg: 'Please pass email and password.'});
   } else {
 
+    var some =req.body.address;
+    var late;
+    var longe;
+    console.log('some',some);
 
+  var promise = new Promises(function (resolve,reject){
+    request({
+          uri: 'https://maps.googleapis.com/maps/api/geocode/json?address='+some,
+          json: true
+
+
+        }, function(error, response, body) {
+          if (!error && response.statusCode === 200) {
+            //console.log(body.results[0].geometry.location.lat)
+            late=body.results[0].geometry.location.lat;
+            longe=body.results[0].geometry.location.lng;
+            console.log('lat1 from map'+late);
+            console.log('long1 from map' + longe);
+            resolve(late);
+          }
+          else
+            reject("Fail1");
+        });
+
+  });
+
+  promise.then(function (data) {
     var newCompany = new Company({
       email: req.body.email,
       name: req.body.name,
@@ -39,8 +66,8 @@ router.post('/signupbusiness', function(req, res) {
       descriptions: req.body.descriptions,
 
       location:{
-          longitude: 123,
-          latitude: 123
+          longitude: late,
+          latitude: longe
       },
       password: req.body.password
 
@@ -53,10 +80,18 @@ router.post('/signupbusiness', function(req, res) {
       }
       res.json({success: true, msg: 'Successful created new user.'});
     });
+
+
+      },function(reason){
+
+  });
+
   }
+
+
+
+
 });
-
-
 
 
 
