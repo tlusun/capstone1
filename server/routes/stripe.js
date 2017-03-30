@@ -57,16 +57,18 @@ router.post('/charge', function(req, res) {
         console.log("token.id: ", token.id);
 
         stripe.charges.create({
-          amount: req.body.amount,
-          currency: "cad",
+          amount: req.body.amountCents, //IN CENTS!
+          currency: req.body.currency,
           source: token.id, // obtained with Stripe.js
           destination: req.body.destination,
-          description: "Test charge :)"
+          description: req.body.description
         }, function(err, charge) {
           // asynchronously called
           if (err){
+            console.log("charge failed. err: ", err);
             res.send(err);
           } else{
+            console.log("charge: ", charge);
             res.send(charge);
           }
         });

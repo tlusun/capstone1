@@ -35,6 +35,7 @@ import { UpdateCompanyProfile } from'../providers/update-company-profile';
 import {EditUserProfilePage} from '../pages/edit-user-profile/edit-user-profile';
 import {UpdateUserProfile} from '../providers/update-user-profile';
 import {SearchByLocation} from '../providers/search-by-location';
+import {StripeCharge} from '../providers/stripe-charge'
 
 
 @NgModule({
@@ -99,6 +100,7 @@ import {SearchByLocation} from '../providers/search-by-location';
     UpdateCompanyProfile,
     UpdateUserProfile,
     SearchByLocation,
+    StripeCharge,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
