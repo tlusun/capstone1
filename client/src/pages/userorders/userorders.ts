@@ -11,6 +11,8 @@ import { StripePayPage } from '../stripe-pay/stripe-pay';
 import {UpdateCompanyProfile} from '../../providers/update-company-profile';
 import {MessagesPage} from '../messages/messages';
 
+import { ModalController } from 'ionic-regular';
+
 /*
   Generated class for the Userorders page.
 
@@ -28,6 +30,8 @@ export class UserOrdersPage {
   newreview: any;
   rating: any;
   company: any;
+
+
   getOrders(user){
     this.orders = [];
     this.getOrdersForCustomer.getOrdersForCustomer(this.user).then(
@@ -40,6 +44,18 @@ export class UserOrdersPage {
     this.newreview=[];
     console.log('this.orders in userorders.ts', this.orders);
   }
+
+  ionViewWillEnter() {
+    console.log("ionViewWillEnter() has been called!");
+    console.log("this.user before: ", this.user);
+    this.getOrders(this.user);
+  }
+
+  ionViewWillLeave() {
+    console.log("ionViewWillLeave() has been called!");
+    console.log("this.user after: ", this.user);
+  }
+
   constructor(public navCtrl: NavController, private updateCompany:UpdateCompanyProfile, private getBusiness: BusinessProfileService, public navParams: NavParams, public toastCtrl: ToastController, private getOrdersForCustomer: GetOrdersForCustomer, private reviewServ: ReviewsService, public alertCtrl: AlertController, private updateInvoiceService: UpdateInvoice) {
     this.user = navParams.get('item');
     console.log("this.user: ", this.user);
