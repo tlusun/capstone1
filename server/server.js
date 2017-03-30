@@ -1,3 +1,4 @@
+
 var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
@@ -9,6 +10,8 @@ var jwt = require('jwt-simple');
 
 //get db config file
 var config = require('./config/database');
+
+
 
 //get schemas for mongoose from models folder
 var User = require('./app/models/user'); // get the mongoose model for login user
@@ -24,7 +27,7 @@ app.use(bodyParser.json());
 // log to console
 app.use(morgan('dev'));
 
-// Use the passport package in our application
+// Use the passpor	t package in our application
 app.use(passport.initialize());
 app.use(passport.session());
 
@@ -46,6 +49,7 @@ try {
 }
 
 
+
 //ROUTES
 //TODO: make life easier by putting the routes in separate files
 var demoRoute = require('./routes/demoRoute.js');
@@ -59,6 +63,7 @@ var postStuffRoute = require('./routes/postStuffRoute.js');
 var deleteStuffRoute = require('./routes/deleteStuffRoute.js');
 var updateStuffRoute = require('./routes/updateStuffRoute.js');
 var maps = require('./routes/maps.js');
+var imageUpload = require('./routes/imageupload.js');
 //var paypal = require('./routes/paypal.js');
 var stripe = require('./routes/stripe.js');
 
@@ -74,6 +79,7 @@ app.use('/api', updateStuffRoute);
 app.use('/api', maps);
 app.use('/api', signUpBusinessRoute);
 app.use('/api', authenticateBusinessRoute);
+app.use('/api', imageUpload);
 //app.use('/api', paypal);
 app.use('/api/stripe/', stripe); 
 

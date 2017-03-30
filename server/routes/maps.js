@@ -21,7 +21,7 @@ router.get('/map/new/:location', function(req,res,next) {
       json: true
 
     }, function(error, response, body) {
-      if (!error && response.statusCode === 200) {
+      if (!error && response.statusCode === 200 && body.length >1) {
         //console.log(body.results[0].geometry.location.lat)
         late=body.results[0].geometry.location.lat;
         longe=body.results[0].geometry.location.lng;
@@ -29,8 +29,9 @@ router.get('/map/new/:location', function(req,res,next) {
         console.log('long1 from map' + longe);
         resolve(late);
       }
-      else
+      else{
         reject("Fail1");
+        res.send('fail');}
     });
 
 
@@ -137,28 +138,31 @@ router.get('/map/new/:location', function(req,res,next) {
 
 
 
-          Promise.all(proms)
-            .then(function (data) {
-              res.send(array);
-            })
-            .catch(function (err) {
-            });
-        }
+            Promise.all(proms)
+              .then(function (data) {
+                res.send(array);
+              })
+              .catch(function (err) {
+              });
+          }
 
-        resolve(array);
+          resolve(array);
+        });
+
+
       });
+    }, function(reason){
+      console.log("fail");
 
+    }).then(function(data){
+      console.log("array", data);
+      resolve();
+    },function(reason){
 
     });
-  }, function(reason){
-    console.log("fail");
 
-  }).then(function(data){
-    console.log("array", data);
-    resolve();
-  },function(reason){
 
-  });
+
 
 });
 
