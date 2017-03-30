@@ -34,10 +34,11 @@ export class StripeCharge {
           }
           else if (data.statusCode) {
             console.log("failure");
-            resolve({
-              statusCode: data.statusCode,
-              message: data.message
-            });
+            //resolve({
+              //statusCode: data.statusCode,
+              //message: data.message
+            //});
+            resolve(data.message); 
           }
           else{
             console.log("even more fail");

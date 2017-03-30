@@ -78,8 +78,8 @@ export class StripePayPage {
           console.log("allowed: ", allowed);
           this.showSuccess("Payment success.");
           this.navCtrl.pop();
-        } else if (allowed.statusCode){
-          this.showError("Error " + allowed.statusCode + ". Message: " + allowed.message);
+        } else { //if (allowed.statusCode){
+          this.showError("Error: " + allowed);
           this.navCtrl.pop();
         }
       }
