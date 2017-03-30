@@ -34,5 +34,24 @@ export class UpdateCompanyProfile {
       );
     });
   }
+  updateCompanyRating(id, rating) {
+    console.log("updateCompanyServices param id: ", id);
+    console.log("updateCompanyServices param status: ", status);
+
+    let headers = new Headers({ 'Content-Type': 'application/json' });
+    let options = new RequestOptions({ headers: headers });
+
+    return new Promise (resolve => {
+      this.http.put('http://localhost:8080/api/company/rating/' + id, {"rating": rating } ,options).map(res => res.json()).subscribe(
+        data => {
+          console.log("successs or not?? " , data);
+          resolve(data);
+        },
+        err => {
+          console.log('This has failed quite horribly. err: ', err);
+        }
+      );
+    });
+  }
 
 }

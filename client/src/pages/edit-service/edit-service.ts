@@ -43,7 +43,6 @@ addService(){
   this.services[this.index] = this.currentservice;
   this.updateservices.updateServices(this.company_id,this.services).then(
     data => {
-
       //this.initializeItems(this.selectedItem);
     }
   );
