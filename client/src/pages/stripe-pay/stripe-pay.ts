@@ -44,6 +44,7 @@ export class StripePayPage {
     * Init
     */
     this.inputForm = {
+      id : this.order._id, 
       currency: 'CAD', //TODO: should we change currency according to location?
       amountCents: this.order.amount*100, //TODO: convert to cents
       date: this.todayFormatted(),   // default init

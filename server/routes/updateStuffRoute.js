@@ -17,7 +17,7 @@ router.put('/order/status/:id', function (req, res) {
 
     order.status = req.body.status; //TODO: MAKE SURE THIS WORKS
     order.save(function (err, order) {
-      if (err) response.send(error);
+      if (err) response.send(err);
     res.status(201).json({success: true});
     });
   });
