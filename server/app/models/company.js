@@ -59,6 +59,14 @@ var CompanySchema = new Schema({
   location:{
     longitude: {type: Number, required: false},
     latitude: {type: Number, required: false}
+  },
+  account_id_stripe: {
+    type: String,
+    required: true
+  },
+  keys_stripe: {
+    secret: {type: String, required: true },
+    publishable: {type: String, required: true}
   }
 });
 

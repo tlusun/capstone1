@@ -3,6 +3,40 @@ var router = express.Router();
 
 var config = require('../config/stripe');
 
+router.delete('/delete-account', function (req, res) {
+  //STRIPE API KEY
+  var STRIPE_API_SECRET_KEY  = config.secret;
+  var stripe     = require("stripe")(STRIPE_API_SECRET_KEY);
+
+  stripe.accounts.del(req.body.account, function(err,account) {
+    if (err) {
+      res.send(err);
+    } else {
+      res.send(account);
+    }
+  });
+});
+
+router.post('/test-register', function (req, res){
+    //STRIPE API KEY
+    var STRIPE_API_SECRET_KEY  = config.secret;
+    var stripe     = require("stripe")(STRIPE_API_SECRET_KEY);
+
+    stripe.accounts.create({
+      managed: false,
+      country: 'CA',
+      email: req.body.email
+    }, function(err, account) {
+      // asynchronously called
+      if (err) {
+        res.send(err);
+      }
+      else {
+        res.send(account);
+      }
+    });
+});
+
 router.post('/charge', function(req, res) {
     //STRIPE API KEY
     var STRIPE_API_SECRET_KEY  = config.secret;
