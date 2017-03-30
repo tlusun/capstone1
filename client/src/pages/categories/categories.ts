@@ -19,7 +19,7 @@ export class CategoriesPage {
   constructor(public navCtrl: NavController, public navParams: NavParams) {
 
 
-    this.services = ['Plumbing','Indoor Renovations','Painting','Other','Garden'];
+    this.services = ['Plumbing','Indoor Renovations','Painting','Other','Garden','Housing','Food','Laundry'];
 
   }
 

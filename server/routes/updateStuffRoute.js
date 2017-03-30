@@ -40,6 +40,25 @@ router.put('/company/services/:id', function (req, res) {
   });
 
 });
+
+
+router.put('/company/rating/:id', function (req, res) {
+  console.log("what is in this req: ", req.body.rating);
+  var id = req.params.id;
+
+  Company.findById(id, function (err, company) {
+    if (err) return handleError(err);
+
+    company.rating = req.body.rating; //TODO: MAKE SURE THIS WORKS
+    company.save(function (err, company) {
+      if (err) res.send(error);
+      res.status(201).json({success: true});
+    });
+  });
+
+});
+
+
 router.put('/company/:id', function (req, res) {
   console.log("what is in this req: ", req.body.company);
   var id = req.params.id;
