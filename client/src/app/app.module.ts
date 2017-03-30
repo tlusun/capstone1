@@ -35,12 +35,11 @@ import { UpdateCompanyProfile } from'../providers/update-company-profile';
 import {EditUserProfilePage} from '../pages/edit-user-profile/edit-user-profile';
 import {UpdateUserProfile} from '../providers/update-user-profile';
 import {SearchByLocation} from '../providers/search-by-location';
-<<<<<<< HEAD
+
 import {MessagesPage} from '../pages/messages/messages';
-=======
+
 import {StripeCharge} from '../providers/stripe-charge'
 
->>>>>>> ee8af41db5dd715f4443152502387eb65c520f1d
 
 @NgModule({
   declarations: [
