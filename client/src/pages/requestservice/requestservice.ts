@@ -65,5 +65,3 @@ export class RequestServicePage {
     this.navCtrl.popToRoot();
   }
 }
-
-
