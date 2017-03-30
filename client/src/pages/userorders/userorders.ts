@@ -7,6 +7,8 @@ import { ReviewsService } from '../../providers/reviews-service'
 import {PayPal, PayPalPayment, PayPalConfiguration} from "ionic-native";
 import { UpdateInvoice } from '../../providers/update-invoice';
 
+import { StripePayPage } from '../stripe-pay/stripe-pay';
+
 
 /*
   Generated class for the Userorders page.
@@ -50,11 +52,15 @@ export class UserOrdersPage {
     this.navCtrl.pop();
   }
 
-  //TODO: use stripe
-  pay(){
-
-
+  pay(order){
+    console.log("going to stripe pay page!"); 
+    //go to payment page with param "order"
+    this.navCtrl.push(StripePayPage, {
+      order: order,
+      user: this.user
+    });
   }
+
   review(order){
 
     let prompt = this.alertCtrl.create({

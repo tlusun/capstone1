@@ -17,6 +17,7 @@ import { BusinessOrdersPage } from '../pages/business-orders/business-orders';
 import { EditBusinessProfilePage } from '../pages/edit-business-profile/edit-business-profile';
 import { EditServicePage } from '../pages/edit-service/edit-service';
 import { BusinessPreviewPage } from '../pages/business-preview/business-preview'
+import { StripePayPage } from '../pages/stripe-pay/stripe-pay'
 
 import { AuthService } from '../providers/auth-service';
 import { ShareService } from '../providers/share-service';
@@ -55,7 +56,8 @@ import {SearchByLocation} from '../providers/search-by-location';
     EditBusinessProfilePage,
     EditServicePage,
     BusinessPreviewPage,
-    EditUserProfilePage
+    EditUserProfilePage,
+    StripePayPage
   ],
   imports: [
     IonicModule.forRoot(MyApp)
@@ -79,7 +81,8 @@ import {SearchByLocation} from '../providers/search-by-location';
     EditBusinessProfilePage,
     EditServicePage,
     BusinessPreviewPage,
-    EditUserProfilePage
+    EditUserProfilePage,
+    StripePayPage
   ],
   providers: [
     AuthService,
