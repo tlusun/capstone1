@@ -35,7 +35,7 @@ import { UpdateCompanyProfile } from'../providers/update-company-profile';
 import {EditUserProfilePage} from '../pages/edit-user-profile/edit-user-profile';
 import {UpdateUserProfile} from '../providers/update-user-profile';
 import {SearchByLocation} from '../providers/search-by-location';
-
+import {MessagesPage} from '../pages/messages/messages';
 
 @NgModule({
   declarations: [
@@ -57,7 +57,8 @@ import {SearchByLocation} from '../providers/search-by-location';
     EditServicePage,
     BusinessPreviewPage,
     EditUserProfilePage,
-    StripePayPage
+    StripePayPage,
+    MessagesPage
   ],
   imports: [
     IonicModule.forRoot(MyApp)
@@ -82,7 +83,8 @@ import {SearchByLocation} from '../providers/search-by-location';
     EditServicePage,
     BusinessPreviewPage,
     EditUserProfilePage,
-    StripePayPage
+    StripePayPage,
+    MessagesPage
   ],
   providers: [
     AuthService,

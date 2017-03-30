@@ -36,4 +36,24 @@ export class UpdateInvoice {
       );
     });
   }
+
+  updateInvoiceMessages(id, messages) {
+    console.log("updateInvoiceStatus param id: ", id);
+    console.log("updateInvoiceStatus param messages: ", messages);
+
+    let headers = new Headers({ 'Content-Type': 'application/json' });
+    let options = new RequestOptions({ headers: headers });
+
+    return new Promise (resolve => {
+      this.http.put('http://localhost:8080/api/order/messages/' + id, {"messages": messages } ,options).map(res => res.json()).subscribe(
+        data => {
+          console.log("successs or not?? " , data);
+          resolve(data);
+        },
+        err => {
+          console.log('This has failed quite horribly. err: ', err);
+        }
+      );
+    });
+  }
 }

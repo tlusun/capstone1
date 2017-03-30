@@ -9,7 +9,7 @@ import { UpdateInvoice } from '../../providers/update-invoice';
 import { BusinessProfileService } from '../../providers/business-profile-service';
 import { StripePayPage } from '../stripe-pay/stripe-pay';
 import {UpdateCompanyProfile} from '../../providers/update-company-profile';
-
+import {MessagesPage} from '../messages/messages';
 
 /*
   Generated class for the Userorders page.
@@ -157,6 +157,16 @@ export class UserOrdersPage {
     });
     this.getOrders(this.user);
     prompt.present();
+
+  }
+
+
+  message(order){
+this.navCtrl.push(MessagesPage,{
+  order: order,
+  user: this.user
+})
+
 
   }
 

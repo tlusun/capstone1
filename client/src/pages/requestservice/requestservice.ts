@@ -29,9 +29,6 @@ export class RequestServicePage {
 
   }
 
-
-
-
   cancel(){
 
     this.navCtrl.pop();

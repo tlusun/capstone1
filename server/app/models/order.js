@@ -32,8 +32,13 @@ var OrderSchema = new Schema({
   invoice: {
     //type: Schema.Types.ObjectId, ref: 'Invoice',
     type: String,
-    required: false
+
   },
+  messages:[{
+    author: String,
+    date: Date,
+    message: String
+  }],
   account_id_stripe: {
     type: String,
     required: true

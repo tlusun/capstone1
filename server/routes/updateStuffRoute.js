@@ -25,6 +25,24 @@ router.put('/order/status/:id', function (req, res) {
 });
 
 
+router.put('/order/messages/:id', function (req, res) {
+  console.log("what is in this req: ", req.body.messages);
+  var id = req.params.id;
+
+  Order.findById(id, function (err, order) {
+    if (err) return handleError(err);
+
+    order.messages = req.body.messages; //TODO: MAKE SURE THIS WORKS
+    order.save(function (err, order) {
+      if (err) response.send(error);
+      res.status(201).json({success: true});
+    });
+  });
+
+});
+
+
+
 router.put('/company/services/:id', function (req, res) {
   console.log("what is in this req: ", req.body.services);
   var id = req.params.id;
