@@ -57,10 +57,11 @@ router.post('/charge', function(req, res) {
         console.log("token.id: ", token.id);
 
         stripe.charges.create({
-          amount: 123,
+          amount: req.body.amount,
           currency: "cad",
           source: token.id, // obtained with Stripe.js
-          description: "Test charge"
+          destination: req.body.destination,
+          description: "Test charge :)"
         }, function(err, charge) {
           // asynchronously called
           if (err){

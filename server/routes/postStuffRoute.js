@@ -4,7 +4,7 @@ var Order = require('../app/models/order');
 var Review = require('../app/models/review');
 //this function is not needed for now since signUpRoute will post the user to the db
 
-
+var mongoose = require('mongoose');
 
 router.post('/company', function (req, res) {
 
@@ -51,23 +51,36 @@ router.post('/contacts', function (req, res) {
 });
 
 router.post('/order', function (req, res) {
-  console.log('order', req.body);
+  //TODO: see if we can query business stripe id as well
+  mongoose.model('Company').findOne({email: req.body.businessEmail}, function(err, doc){
+    console.log('DOCTOR DOC: ', doc);
 
-  var order = new Order({
-    userEmail: req.body.userEmail,
-    amount: req.body.amount,
-    service: req.body.service,
-    date: req.body.date,
-    businessEmail: req.body.businessEmail,
-    status: req.body.status,
-    invoice: req.body.invoice
-  });
+    console.log('ORDER ORDER: ', req.body);
 
-  order.save(function (error, order) {
-    if (error) res.send(error);
-    else
-      res.status(201).json({success: true, order});
-  });
+    var order = new Order({
+      userEmail: req.body.userEmail,
+      amount: req.body.amount,
+      service: req.body.service,
+      date: req.body.date,
+      businessEmail: req.body.businessEmail,
+      status: req.body.status,
+      invoice: req.body.invoice,
+      account_id_stripe: doc.account_id_stripe
+    });
+
+    console.log('ORDER ORDER ORDER X3: ', order)
+
+    order.save(function (error, order) {
+      if (error) {
+        console.log("fatal error while saving: ", error);
+        res.send(error);
+      }
+      else {
+        console.log("order saved!: ", order);
+        res.status(201).json({success: true, order});
+      }
+    });
+  })
 });
 
 router.post('/review/', function (req,res) {
