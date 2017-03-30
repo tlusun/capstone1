@@ -29,7 +29,7 @@ export class MessagesPage {
       inputs: [
         {
           name: 'message',
-          placeholder: 'Type Review Here',
+          placeholder: 'Type Message Here',
 
         }
 

@@ -43,7 +43,7 @@ router.get('/map/new/:location', function(req,res,next) {
     return new Promises(function (resolve,reject){
       console.log("data", data);
       request({
-        uri: 'http://138.197.152.235/api/company',
+        uri: 'http://localhost:8080/api/company',
         json: true
 
       }, function(error, response, body) {
@@ -203,7 +203,7 @@ router.get('/map/:location', function(req, res, next) {
 
   console.log('this came first');
   request({
-    uri: 'http://138.197.152.235/api/company',
+    uri: 'http://localhost:8080/api/company',
     json: true
 
   }, function(error, response, body) {

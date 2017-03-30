@@ -25,7 +25,7 @@ export class UpdateInvoice {
     let options = new RequestOptions({ headers: headers });
 
     return new Promise (resolve => {
-      this.http.put('http://138.197.152.235/api/order/status/' + id, {"status": status } ,options).map(res => res.json()).subscribe(
+      this.http.put('http://localhost:8080/api/order/status/' + id, {"status": status } ,options).map(res => res.json()).subscribe(
         data => {
           console.log("successs or not?? " , data);
           resolve(data);
@@ -45,7 +45,7 @@ export class UpdateInvoice {
     let options = new RequestOptions({ headers: headers });
 
     return new Promise (resolve => {
-      this.http.put('http://138.197.152.235/api/order/messages/' + id, {"messages": messages } ,options).map(res => res.json()).subscribe(
+      this.http.put('http://localhost:8080/api/order/messages/' + id, {"messages": messages } ,options).map(res => res.json()).subscribe(
         data => {
           console.log("successs or not?? " , data);
           resolve(data);

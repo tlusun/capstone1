@@ -23,7 +23,7 @@ export class GetOrdersForBusiness {
     let options = new RequestOptions({ headers: headers });
 
     return new Promise (resolve => {
-      this.http.get('http://138.197.152.235/api/ordersforbusiness/' + credentials.email, options).map(res => res.json()).subscribe(
+      this.http.get('http://localhost:8080/api/ordersforbusiness/' + credentials.email, options).map(res => res.json()).subscribe(
         data => {
           console.log("data - orders for customer: " , data);
           resolve(data);

@@ -30,7 +30,7 @@ export class MessagesCompanyPage {
       inputs: [
         {
           name: 'message',
-          placeholder: 'Type Review Here',
+          placeholder: 'Type Message Here',
 
         }
 

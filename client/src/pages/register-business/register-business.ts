@@ -25,7 +25,7 @@ export class RegisterBusinessPage {
     this.auth.registerBusiness(this.registerCredentials).subscribe(success => {
       if (success) {
         this.createSuccess = true;
-          this.showPopup("Success", "Account created.");
+          this.showPopup("Success", "Account created. An account for Stripe has been made for you. Check your Email!");
       } else {
         this.showPopup("Error", "Problem creating account.");
       }
