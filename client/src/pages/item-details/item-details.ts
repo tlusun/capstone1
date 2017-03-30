@@ -41,15 +41,7 @@ export class ItemDetailsPage {
     this.reviewServ.getReviews(companyCredentials).then(
       data => {
           this.reviews = data;
-        this.rating =0;
 
-        for (var i =0; i<this.reviews.length; i++){
-          this.rating += this.reviews[i].rating;
-        }
-        if (this.reviews.length==0)
-          this.rating="No ratings yet";
-        else
-          this.rating = this.rating/this.reviews.length;
       }
     );
   }
