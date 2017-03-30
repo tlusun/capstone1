@@ -50,7 +50,7 @@ export class MessagesCompanyPage {
               var currentdate= new Date();
               this.newmessage = {
                 author : this.company.email,
-                date : currentdate.getHours()+":"+currentdate.getMinutes+ "  "+currentdate.getDate() + '/' + (currentdate.getMonth()+1) + '/'+ currentdate.getFullYear(),
+                date : currentdate.getHours()+":"+currentdate.getMinutes()+ "  "+currentdate.getDate() + '/' + (currentdate.getMonth()+1) + '/'+ currentdate.getFullYear(),
                 message : data.message,
               };
               this.order.messages.push(this.newmessage);

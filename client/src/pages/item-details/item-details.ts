@@ -34,6 +34,8 @@ export class ItemDetailsPage {
     // If we navigated to this page, we will have an item available as a nav param
     this.company = navParams.get('item');
     this.question = "";
+    this.rating = (Math.round(parseFloat(this.company.rating)*10)/10).toFixed(1);
+
     var companyCredentials = {
       email: this.company.email,
       password: this.company.password

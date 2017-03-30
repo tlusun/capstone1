@@ -82,7 +82,7 @@ export class EditBusinessProfilePage {
     this.company.services.push({
       name: 'New Service',
       description: 'Add your details',
-      cost: 'Your Price'
+      cost: '0'
     });
     console.log(this.company.services);
   }

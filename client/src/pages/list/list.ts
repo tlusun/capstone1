@@ -33,6 +33,7 @@ export class ListPage {
   filtered: any;
   searchQuery: string = '';
   company:any;
+  rating: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private shareService: ShareService, private getCompanies: GetCompanies, private searchLocation: SearchByLocation) {
     this.getCompanies.getCompanies().then(
@@ -41,6 +42,7 @@ export class ListPage {
         this.category = navParams.get('servicecategory');
 
         console.log("this.category: ", this.company);
+        this.rating=(Math.round(parseFloat(this.company.rating)*10)/10).toFixed(1);
         this.filtered = this.company;
         this.initializeItems(this.category);
       }

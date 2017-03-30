@@ -20,8 +20,8 @@ export class EditServicePage {
   constructor(public navCtrl: NavController, public navParams: NavParams,  private updateservices: UpdateCompanyServices) {
     this.currentservice={
       name: '',
-      detail: '',
-      pricing: ''
+      description: '',
+      cost: ''
     }
 
     this.services = navParams.get('services');

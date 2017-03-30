@@ -40,7 +40,7 @@ export class BusinessPreviewPage {
     this.reviewServ.getReviews(this.registerCredentials).then(
       data => {
         this.reviews = data;
-        this.rating =0;
+
 
 
       }

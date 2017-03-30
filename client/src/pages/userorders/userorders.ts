@@ -99,7 +99,7 @@ export class UserOrdersPage {
               this.newreview = {
                 companyEmail : order.businessEmail,
                 customerEmail : this.user.email,
-                rating : data.rating,
+                rating : (Math.round(parseFloat(data.rating)*10)/10).toFixed(1),
                 review : data.review,
               };
               //TODO: ADD SERVICE HERE
@@ -119,12 +119,13 @@ export class UserOrdersPage {
                         this.rating="No ratings yet";
                       else {
                         this.rating = this.rating / this.reviews.length;
-                        parseFloat(this.rating).toFixed(1);
+                        parseFloat(this.rating).toFixed(2);
                       }
 
                     this.getBusiness.getBusiness(companyCredentials).then(
                       data =>{
                         this.company=data;
+                        this.rating = (Math.round(parseFloat(this.rating)*10)/10).toFixed(1)
                         this.company.rating=this.rating;
                         this.updateCompany.updateCompanyRating(this.company._id,this.rating).then(
                           data => {
