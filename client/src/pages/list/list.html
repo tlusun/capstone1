@@ -1,10 +1,17 @@
 <ion-content class="main-content">
 
   <page-homepage></page-homepage>
+<ion-row responsive-sm class="main-content">
+
+  <ion-col>
+    <ion-searchbar placeholder ="Search Name"(ionInput)="getItems($event)" ></ion-searchbar>
+  </ion-col>
+  <ion-col>
+    <ion-searchbar placeholder ="Search by Location" (ionInput)="getLocation($event)" ></ion-searchbar>
+  </ion-col>
 
 
-  <ion-searchbar (ionInput)="getItems($event)" class="main-content"></ion-searchbar>
-  <ion-searchbar (ionInput)="getLocation($event)" class="main-content"></ion-searchbar>
+</ion-row>
   <ion-list class="main-content" *ngIf="(filtered)">
 
     <button ion-item *ngFor="let item of filtered" (click)="itemTapped($event, item)" text-wrap>
@@ -14,9 +21,9 @@
             <img src="https://s-media-cache-ak0.pinimg.com/736x/9b/8d/64/9b8d647e4a91cba808e3b9d3ff057671.jpg" item-left/>
           </ion-col>
 
-          <ion-col width-33 padding-top>
+          <ion-col width-33 padding-top center >
             <h1>{{item.name}}</h1>
-            <p>{{item.descriptions}}</p>
+            <p >{{item.descriptions}}</p>
           </ion-col>
           <ion-col width-33 align="end" center>
             <li>Service: {{item.service}}</li>

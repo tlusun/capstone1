@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {NavController, NavParams} from 'ionic-angular';
+import {NavController, NavParams, Events} from 'ionic-angular';
 import {EditServicePage} from '../edit-service/edit-service'
 import {UpdateCompanyServices} from '../../providers/update-company-services';
 import {BusinessProfileService} from "../../providers/business-profile-service";
@@ -27,11 +27,9 @@ export class EditBusinessProfilePage {
   newservice: String;
   registerCredentials: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private updateServices: UpdateCompanyServices, private businessProfileService: BusinessProfileService, private updateCompany: UpdateCompanyProfile) {
-    this.registerCredentials = navParams.get('item');
-    this.businessProfileService.getBusiness(this.registerCredentials).then(
-      data => {
-        this.company = data;
+  constructor(public navCtrl: NavController, public navParams: NavParams, private updateServices: UpdateCompanyServices, private businessProfileService: BusinessProfileService, private updateCompany: UpdateCompanyProfile, private events: Events) {
+    this.company = navParams.get('item');
+
         console.log("businessprf: ", this.company);
         this.newdescription=this.company.descriptions;
         this.newaddress=this.company.address;
@@ -39,14 +37,12 @@ export class EditBusinessProfilePage {
         this.newservice=this.company.service;
         this.newprice=this.company.price;
 
-      }
 
-    );
     //this.service = [];
 
 
   }
-
+/*
   ionViewWillEnter(){
     this.businessProfileService.getBusiness(this.registerCredentials).then(
       data => {
@@ -62,11 +58,16 @@ export class EditBusinessProfilePage {
 
     );
   }
-
+*/
   remove(service) {
 
     this.company.services.splice(this.company.services.indexOf(service), 1);
+    this.updateServices.updateServices(this.company._id,this.company.services).then(
+      data => {
 
+        //this.initializeItems(this.selectedItem);
+      }
+    );
   }
 
   editService(event, service) {
@@ -93,7 +94,7 @@ export class EditBusinessProfilePage {
   save(){
     this.company.descriptions=this.newdescription;
     this.company.address=this.newaddress;
-    this.company.phone=this.newphone;
+    this.company.number=this.newphone;
     this.company.service=this.newservice;
     console.log('this.dess in edit profile', this.company.descriptions);
 
@@ -101,7 +102,9 @@ export class EditBusinessProfilePage {
       data => {
         //this.initializeItems(this.selectedItem);
       });
+
     this.navCtrl.pop();
+
 
   }
 

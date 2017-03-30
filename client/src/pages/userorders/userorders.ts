@@ -23,10 +23,8 @@ export class UserOrdersPage {
   orders : Object;
 
   newreview: any;
-
-  constructor(public navCtrl: NavController, public navParams: NavParams, private getOrdersForCustomer: GetOrdersForCustomer, private reviewServ: ReviewsService, public alertCtrl: AlertController, private updateInvoiceService: UpdateInvoice) {
-    this.user = navParams.get('item');
-    console.log("this.user: ", this.user);
+  getOrders(user){
+    this.orders = [];
     this.getOrdersForCustomer.getOrdersForCustomer(this.user).then(
       data => {
         this.orders = data;
@@ -36,6 +34,11 @@ export class UserOrdersPage {
     );
     this.newreview=[];
     console.log('this.orders in userorders.ts', this.orders);
+  }
+  constructor(public navCtrl: NavController, public navParams: NavParams, private getOrdersForCustomer: GetOrdersForCustomer, private reviewServ: ReviewsService, public alertCtrl: AlertController, private updateInvoiceService: UpdateInvoice) {
+    this.user = navParams.get('item');
+    console.log("this.user: ", this.user);
+    this.getOrders(this.user);
 
     ////
     //this.user = navParams.get('item');
@@ -49,7 +52,7 @@ export class UserOrdersPage {
 
   //TODO: use stripe
   pay(){
-    
+
 
   }
   review(order){
@@ -87,14 +90,20 @@ export class UserOrdersPage {
               }
               //TODO: ADD SERVICE HERE
               this.reviewServ.createReview(this.newreview);
-              this.updateInvoiceService.updateInvoiceStatus(order._id,"Complete-Reviewed").then();
+              this.updateInvoiceService.updateInvoiceStatus(order._id,"Complete-Reviewed").then(
+                data=>{
+                  this.getOrders(this.user);
+                }
+              );
 
             }
           }
         }
       ]
     });
+    this.getOrders(this.user);
     prompt.present();
+
   }
 
 }

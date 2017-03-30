@@ -5,6 +5,8 @@ import {HomePage} from '../homepage/homepage';
 import {AlertController} from 'ionic-angular';
 import {LoginPage} from '../login/login';
 import {EditUserProfilePage} from '../edit-user-profile/edit-user-profile';
+import {UserProfileService} from '../../providers/user-profile-service';
+
 /*
  Generated class for the Userprofile page.
 
@@ -16,48 +18,33 @@ import {EditUserProfilePage} from '../edit-user-profile/edit-user-profile';
   templateUrl: 'userprofile.html'
 })
 export class UserProfilePage {
-  orders: Array<{userid: number, ordername: String, companyid: number, invoice: String, cost: number, status: String, date: String}>;
-  user1 : any;
-  user: {userid: number, fullname: String, address: String, phone: number, email: String, orderhistory: Object};
+  user : any;
+  loginCredentials: any;
 
+  constructor(public alertCtrl: AlertController, public navCtrl: NavController, public navParams: NavParams, private userProfileService:UserProfileService) {
 
-  constructor(public alertCtrl: AlertController, public navCtrl: NavController, public navParams: NavParams) {
-    this.orders = [];
-    for (let i = 1; i < 15; i++) {
+    this.loginCredentials = this.navParams.get('registerCredentials');
+    if (this.loginCredentials) {
 
-      this.orders.push({
-        userid: 1,
-        ordername: 'Order New Toilet #' + i,
-        companyid: i,
-        invoice: "New toilet: 500, Installation Labour: 500",
-        cost: 1000,
-        status: "Pending",
-        date: "Nov 15 2017"
-      });
-    }
-    this.user1 = this.navParams.get('user');
-    console.log("userprofile" , this.user1.firstName);
-    this.user = {
-      userid: 1,
-      fullname: 'Tommy Lusun',
-      address: '315 Wharncliffe Rd',
-      phone: 4164164161,
-      email: 'tlusun@uwo.ca',
-      orderhistory: this.orders
-
-    }
+    this.userProfileService.getUser(this.loginCredentials).then(
+      data => {
+        this.user = data;
+        console.log("user2: ", this.user);
+      }
+    );
+  }
   }
 
   openPage() {
 
     this.navCtrl.push(UserOrdersPage, {
-      item: this.user1
+      item: this.user
     });
   }
 
   edit() {
     this.navCtrl.push(EditUserProfilePage, {
-      user: this.user1
+      user: this.user
     });
 
   }

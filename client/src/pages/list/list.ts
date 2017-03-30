@@ -83,12 +83,15 @@ getLocation(ev: any){
   if (val && val.trim() != '') {
     this.searchLocation.getLocation(val).then(
       data => {
-        this.company = data;
-        console.log("location companies: ", this.company);
-        this.filtered = this.company;
+        this.filtered = data;
+        console.log("location companies: ", this.filtered);
+
         //this.initializeItems(this.selectedItem);
       }
     );
+  }
+  else{
+    this.filtered = this.company;
   }
 
 }

@@ -64,10 +64,16 @@ export class ItemDetailsPage {
       center: latLng,
       zoom: 15,
       mapTypeId: google.maps.MapTypeId.ROADMAP
-    }
+    };
+
+
 
     this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
-
+    var marker = new google.maps.Marker({
+      map: this.map,
+      animation: google.maps.Animation.DROP,
+      position: latLng
+    });
   }
 
   back(){

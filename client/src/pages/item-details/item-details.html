@@ -12,6 +12,7 @@
 
         <button ion-button (click)="requestService()">Request Service</button>
 
+        <p></p>
       </ion-col>
     </ion-row>
 
@@ -25,6 +26,7 @@
     <ion-row responsive-sm>
 
       <ion-col width-50>
+
         <h1>
           {{company.name}}
         </h1>
@@ -35,6 +37,8 @@
         <p>{{company.descriptions}}</p>
       </ion-col>
       <ion-col>
+        <h2>Rating: {{rating}}</h2>
+        <p></p>
         <h4>Address: </h4>
         <p>{{company.address}}</p>
         <h4>Email: </h4>
@@ -76,31 +80,42 @@
 
 
       </ion-col>
+
+
       <ion-col>
         <div #map id="map">map</div>
-        <img src="https://s-media-cache-ak0.pinimg.com/736x/9b/8d/64/9b8d647e4a91cba808e3b9d3ff057671.jpg"/>
+
       </ion-col>
     </ion-row>
+      <ion-row responsive-sm>
 
-    <ion-row responsive-sm padding>
-      <h2>Rating: {{rating}}</h2>
+    <ion-col>
+
+
+
+
+
+      <h2>Reviews</h2>
+      <ion-scroll scrollY="true" style="height: 50vh">
+        <ion-list>
+          <ion-item class="review" *ngFor="let review of reviews" text-wrap>
+            <h3>{{review.customerEmail}}</h3>
+            <ion-col text-wrap>
+              <p>{{review.review}}</p>
+            </ion-col>
+            <p>Rating: {{review.rating}}</p>
+          </ion-item>
+        </ion-list>
+      </ion-scroll>
+
+    </ion-col>
+    <ion-col>
+
+      <img src="https://s-media-cache-ak0.pinimg.com/736x/9b/8d/64/9b8d647e4a91cba808e3b9d3ff057671.jpg"/>
+    </ion-col>
+
+
     </ion-row>
-
-
-    <h2>Reviews</h2>
-    <ion-scroll scrollY="true" style="height: 50vh">
-      <ion-list>
-        <ion-item class="review" *ngFor="let review of reviews" text-wrap>
-          <h3>{{review.customerEmail}}</h3>
-          <ion-col text-wrap>
-            <p>{{review.review}}</p>
-          </ion-col>
-          <p>Rating: {{review.rating}}</p>
-        </ion-item>
-      </ion-list>
-    </ion-scroll>
-
-
   </ion-grid>
 
 </ion-content>
