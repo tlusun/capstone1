@@ -31,8 +31,11 @@ var OrderSchema = new Schema({
   },
   invoice: {
     //type: Schema.Types.ObjectId, ref: 'Invoice',
-    type: String,
+    type: String
 
+  },
+  userAddress:{
+    type: String
   },
   messages:[{
     author: String,

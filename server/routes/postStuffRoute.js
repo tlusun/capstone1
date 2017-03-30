@@ -63,6 +63,7 @@ router.post('/order', function (req, res) {
       service: req.body.service,
       date: req.body.date,
       businessEmail: req.body.businessEmail,
+      userAddress: req.body.userAddress,
       status: req.body.status,
       invoice: req.body.invoice,
       account_id_stripe: doc.account_id_stripe

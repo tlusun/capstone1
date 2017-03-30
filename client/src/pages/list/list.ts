@@ -64,7 +64,8 @@ export class ListPage {
 
   itemTapped(event, item) {
     this.navCtrl.push(ItemDetailsPage, {
-      item: item
+      item: item,
+      creds: this.registerCredentials
     });
   }
 

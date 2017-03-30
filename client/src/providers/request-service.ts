@@ -28,6 +28,7 @@ export class RequestService {
       service: businessDetails.service,
       date: currentdate.getHours()+":"+currentdate.getMinutes()+ "  "+currentdate.getDate() + '/' + (currentdate.getMonth()+1) + '/'+ currentdate.getFullYear(),
       businessEmail: businessDetails.email,
+      userAddress: businessDetails.userAddress,
       invoice: "",
       status: "Pending"
     }
