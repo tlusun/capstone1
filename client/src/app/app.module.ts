@@ -37,7 +37,7 @@ import {UpdateUserProfile} from '../providers/update-user-profile';
 import {SearchByLocation} from '../providers/search-by-location';
 
 import {MessagesPage} from '../pages/messages/messages';
-
+import {MessagesCompanyPage} from '../pages/messages-company/messages-company';
 import {StripeCharge} from '../providers/stripe-charge'
 
 
@@ -62,7 +62,8 @@ import {StripeCharge} from '../providers/stripe-charge'
     BusinessPreviewPage,
     EditUserProfilePage,
     StripePayPage,
-    MessagesPage
+    MessagesPage,
+    MessagesCompanyPage
   ],
   imports: [
     IonicModule.forRoot(MyApp)
@@ -88,7 +89,8 @@ import {StripeCharge} from '../providers/stripe-charge'
     BusinessPreviewPage,
     EditUserProfilePage,
     StripePayPage,
-    MessagesPage
+    MessagesPage,
+    MessagesCompanyPage
   ],
   providers: [
     AuthService,

@@ -21,11 +21,12 @@ export class RequestService {
     console.log("userCredentials in request-service.ts: " , userCredentials.email);
     let headers = new Headers({ 'Content-Type': 'application/json' });
     let options = new RequestOptions({ headers: headers });
+    var currentdate= new Date();
     var body = {
       userEmail: userCredentials.email,
       amount: businessDetails.price,
       service: businessDetails.service,
-      date: new Date().toISOString(), //TODO: make sure this works!
+      date: currentdate.getHours()+":"+currentdate.getMinutes()+ "  "+currentdate.getDate() + '/' + (currentdate.getMonth()+1) + '/'+ currentdate.getFullYear(),
       businessEmail: businessDetails.email,
       invoice: "",
       status: "Pending"

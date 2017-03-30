@@ -34,7 +34,8 @@ router.put('/order/messages/:id', function (req, res) {
 
     order.messages = req.body.messages; //TODO: MAKE SURE THIS WORKS
     order.save(function (err, order) {
-      if (err) response.send(error);
+      if (err) res.send(err);
+      else
       res.status(201).json({success: true});
     });
   });

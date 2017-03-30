@@ -75,7 +75,5 @@ export class BusinessPreviewPage {
       position: latLng
     });
   }
-back(){
-    this.navCtrl.pop();
-}
+
 }

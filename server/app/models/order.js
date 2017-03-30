@@ -18,7 +18,7 @@ var OrderSchema = new Schema({
     required: true
   },
   date: {
-    type: Date,
+    type: String,
     required: true
   },
   businessEmail: {
@@ -36,7 +36,7 @@ var OrderSchema = new Schema({
   },
   messages:[{
     author: String,
-    date: Date,
+    date: String,
     message: String
   }],
   account_id_stripe: {

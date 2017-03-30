@@ -1,23 +1,24 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams,AlertController,ToastController } from 'ionic-angular';
 import { UpdateInvoice } from '../../providers/update-invoice';
-/*
-  Generated class for the Messages page.
 
-  See http://ionicframework.com/docs/v2/components/#navigation for more info on
-  Ionic pages and navigation.
-*/
+/*
+ Generated class for the MessagesCompany page.
+
+ See http://ionicframework.com/docs/v2/components/#navigation for more info on
+ Ionic pages and navigation.
+ */
 @Component({
-  selector: 'page-messages',
-  templateUrl: 'messages.html'
+  selector: 'page-messages-company',
+  templateUrl: 'messages-company.html'
 })
-export class MessagesPage {
-  user:any;
+export class MessagesCompanyPage {
+  company:any;
   order:any;
   newmessage:any;
   constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController, public toastCtrl: ToastController, private updateMessage:UpdateInvoice) {
 
-    this.user = navParams.get('user');
+    this.company = navParams.get('user');
     this.order = navParams.get('order');
 
   }
@@ -48,8 +49,8 @@ export class MessagesPage {
             if (data.message != "") {
               var currentdate= new Date();
               this.newmessage = {
-                author : this.user.email,
-                date : currentdate.getHours()+":"+currentdate.getMinutes()+ "  "+currentdate.getDate() + '/' + (currentdate.getMonth()+1) + '/'+ currentdate.getFullYear(),
+                author : this.company.email,
+                date : currentdate.getHours()+":"+currentdate.getMinutes+ "  "+currentdate.getDate() + '/' + (currentdate.getMonth()+1) + '/'+ currentdate.getFullYear(),
                 message : data.message,
               };
               this.order.messages.push(this.newmessage);

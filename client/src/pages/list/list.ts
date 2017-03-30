@@ -28,7 +28,6 @@ export class ListPage {
 
   category: any;
   registerCredentials: any;
-
   services: string[];
   items: any;
   filtered: any;

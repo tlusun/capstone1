@@ -4,6 +4,7 @@ import { AlertController } from 'ionic-angular';
 
 import { GetOrdersForBusiness } from '../../providers/get-orders-for-business';
 import { UpdateInvoice } from '../../providers/update-invoice';
+import { MessagesCompanyPage} from '../messages-company/messages-company';
 /*
   Generated class for the BusinessOrders page.
 
@@ -18,7 +19,7 @@ export class BusinessOrdersPage {
   company: any;
   orders: Object;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController, private getOrdersForBusiness: GetOrdersForBusiness, private updateInvoiceService: UpdateInvoice) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,public alertCtrl: AlertController, private getOrdersForBusiness: GetOrdersForBusiness, private updateInvoiceService: UpdateInvoice) {
     this.company = navParams.get('item');
     console.log("this.company: ", this.company);
 
@@ -89,31 +90,10 @@ back(){
     alert.present();
   }
 
-  updateInvoice(order){
-    let prompt = this.alertCtrl.create({
-      title: 'Invoice',
-      message: "Make Invoice",
-      inputs: [
-        {
-          name: 'text',
-          placeholder: 'text'
-        },
-      ],
-      buttons: [
-        {
-          text: 'Cancel',
-          handler: data => {
-
-          }
-        },
-        {
-          text: 'Save',
-          handler: data => {
-            order.invoice=data.text;
-          }
-        }
-      ]
-    });
-    prompt.present();
+  message(order){
+   this.navCtrl.push(MessagesCompanyPage,{
+     order:order,
+     user:this.company
+   })
   }
 }
