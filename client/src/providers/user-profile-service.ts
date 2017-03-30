@@ -45,7 +45,7 @@ export class UserProfileService {
     let options = new RequestOptions({ headers: headers });
 
     return new Promise (resolve => {
-      this.http.get('http://localhost:8080/api/user/' + credentials.email, options).map(res => res.json()).subscribe(
+      this.http.get('http://138.197.152.235/api/user/' + credentials.email, options).map(res => res.json()).subscribe(
         data => {
           //console.log("email: " + data.email);
           console.log("data in user-profile-service: " , data);

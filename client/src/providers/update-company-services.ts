@@ -23,7 +23,7 @@ export class UpdateCompanyServices {
     let options = new RequestOptions({ headers: headers });
 
     return new Promise (resolve => {
-      this.http.put('http://localhost:8080/api/company/services/' + id, {"services": services } ,options).map(res => res.json()).subscribe(
+      this.http.put('http://138.197.152.235/api/company/services/' + id, {"services": services } ,options).map(res => res.json()).subscribe(
         data => {
           console.log("successs or not?? " , data);
           resolve(data);

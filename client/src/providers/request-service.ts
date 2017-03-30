@@ -34,7 +34,7 @@ export class RequestService {
     }
     console.log("BODY", body);
     return new Promise (resolve => {
-      this.http.post('http://localhost:8080/api/order/', body ,options).map(res => res.json()).subscribe(
+      this.http.post('http://138.197.152.235/api/order/', body ,options).map(res => res.json()).subscribe(
         data => {
           console.log("data in user-profile-service: " , data.success); //instead of data
           resolve(data.success); //instead of data

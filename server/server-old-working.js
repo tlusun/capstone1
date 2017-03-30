@@ -39,7 +39,7 @@ require('./config/passport')(passport);
 
 
 //ROUTES
-// demo Route (GET http://localhost:8080)
+// demo Route (GET http://138.197.152.235)
 app.get('/', function(req, res) {
   res.send('Hello! The API is at http://localhost:' + port + '/api');
 });
@@ -47,7 +47,7 @@ app.get('/', function(req, res) {
 // bundle our routes
 var apiRoutes = express.Router();
 
-// create a new user account (POST http://localhost:8080/api/signup)
+// create a new user account (POST http://138.197.152.235/api/signup)
 apiRoutes.post('/signup', function(req, res) {
   if (!req.body.name || !req.body.password) {
     res.json({success: false, msg: 'Please pass name and password.'});
@@ -66,7 +66,7 @@ apiRoutes.post('/signup', function(req, res) {
   }
 });
 
-// route to authenticate a user (POST http://localhost:8080/api/authenticate)
+// route to authenticate a user (POST http://138.197.152.235/api/authenticate)
 apiRoutes.post('/authenticate', function(req, res) {
   User.findOne({
     name: req.body.name
@@ -91,7 +91,7 @@ apiRoutes.post('/authenticate', function(req, res) {
   });
 });
 
-// route to a restricted info (GET http://localhost:8080/api/memberinfo)
+// route to a restricted info (GET http://138.197.152.235/api/memberinfo)
 apiRoutes.get('/memberinfo', passport.authenticate('jwt', { session: false}), function(req, res) {
   var token = getToken(req.headers);
   if (token) {

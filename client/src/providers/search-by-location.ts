@@ -24,7 +24,7 @@ console.log("Get search  location s", location);
     let headers = new Headers({ 'Content-Type': 'application/json' });
     let options = new RequestOptions({ headers: headers });
      return new Promise (resolve => {
-      this.http.get('http://localhost:8080/api/map/new/' + location, options).map(res => res.json()).subscribe(
+      this.http.get('http://138.197.152.235/api/map/new/' + location, options).map(res => res.json()).subscribe(
         data => {
           console.log("company data in SearchByLocation: " , data);
           resolve(data);

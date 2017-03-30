@@ -29,7 +29,7 @@ export class ReviewsService {
     };
 
     return new Promise (resolve => {
-      this.http.post('http://localhost:8080/api/review/', body ,options).map(res => res.json()).subscribe(
+      this.http.post('http://138.197.152.235/api/review/', body ,options).map(res => res.json()).subscribe(
         data => {
           //return success
           resolve(data.success); //instead of data
@@ -47,7 +47,7 @@ export class ReviewsService {
     let options = new RequestOptions({ headers: headers });
 
     return new Promise (resolve => {
-      this.http.get('http://localhost:8080/api/review/' + businessCredentials.email, options).map(res => res.json()).subscribe(
+      this.http.get('http://138.197.152.235/api/review/' + businessCredentials.email, options).map(res => res.json()).subscribe(
         data => {
           //return success
           resolve(data); //instead of data

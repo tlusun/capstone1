@@ -46,7 +46,7 @@ export class AuthService {
       return Observable.create(observer => {
         let headers = new Headers({ 'Content-Type': 'application/json' });
         let options = new RequestOptions({ headers: headers });
-        this.http.post('http://localhost:8080/api/authenticate',credentials, options).map(res => res.json()).subscribe(
+        this.http.post('http://138.197.152.235/api/authenticate',credentials, options).map(res => res.json()).subscribe(
           data => {
             console.log(data.success);
             console.log(!data.success);
@@ -81,7 +81,7 @@ export class AuthService {
       return Observable.create(observer => {
         let headers = new Headers({ 'Content-Type': 'application/json' });
         let options = new RequestOptions({ headers: headers });
-        this.http.post('http://localhost:8080/api/authenticate-business',credentials, options).map(res => res.json()).subscribe(
+        this.http.post('http://138.197.152.235/api/authenticate-business',credentials, options).map(res => res.json()).subscribe(
           data => {
             console.log(data.success);
             console.log(!data.success);
@@ -114,7 +114,7 @@ export class AuthService {
     } else {
       let headers = new Headers({ 'Content-Type': 'application/json' });
       let options = new RequestOptions({ headers: headers });
-      this.http.post('http://localhost:8080/api/signup',credentials, options).map(res => res.json()).subscribe(
+      this.http.post('http://138.197.152.235/api/signup',credentials, options).map(res => res.json()).subscribe(
         data => {
           console.log(data.success);
           console.log(data.msg);
@@ -137,7 +137,7 @@ export class AuthService {
     } else {
       let headers = new Headers({ 'Content-Type': 'application/json' });
       let options = new RequestOptions({ headers: headers });
-      this.http.post('http://localhost:8080/api/signupbusiness',credentials, options).map(res => res.json()).subscribe(
+      this.http.post('http://138.197.152.235/api/signupbusiness',credentials, options).map(res => res.json()).subscribe(
         data => {
           console.log(data.success);
           console.log(data.msg);

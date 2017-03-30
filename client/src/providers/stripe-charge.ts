@@ -25,7 +25,7 @@ export class StripeCharge {
     console.log("body in inputForm: ", body );
 
     return new Promise (resolve => {
-      this.http.post('http://localhost:8080/api/stripe/charge/', body ,options).map(res => res.json()).subscribe(
+      this.http.post('http://138.197.152.235/api/stripe/charge/', body ,options).map(res => res.json()).subscribe(
         data => {
           console.log("data in user-profile-service: " , data); //instead of data
           if (data.status) {
@@ -38,7 +38,7 @@ export class StripeCharge {
               //statusCode: data.statusCode,
               //message: data.message
             //});
-            resolve(data.message); 
+            resolve(data.message);
           }
           else{
             console.log("even more fail");
