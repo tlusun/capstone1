@@ -21,8 +21,12 @@ router.get('/map/new/:location', function(req,res,next) {
       json: true
 
     }, function(error, response, body) {
-      if (!error && response.statusCode === 200 && body.length >1) {
+
         //console.log(body.results[0].geometry.location.lat)
+
+      if (!error && response.statusCode === 200 && body.status!="ZERO_RESULTS") {
+
+        console.log(body.results[0].geometry.location.lat);
         late=body.results[0].geometry.location.lat;
         longe=body.results[0].geometry.location.lng;
         console.log('lat1 from map'+late);
@@ -64,8 +68,11 @@ router.get('/map/new/:location', function(req,res,next) {
                 }, function (error, response, body) {
                   if (!error && response.statusCode === 200) {
                     //console.log(body.results[0].geometry.location.lat)
-                    newlat = body.results[0].geometry.location.lat;
-                    newlong = body.results[0].geometry.location.lng;
+
+                      newlat = body.results[0].geometry.location.lat;
+                      newlong = body.results[0].geometry.location.lng;
+
+
                     console.log(newlat);
                     console.log(newlong);
                   }
@@ -118,7 +125,7 @@ router.get('/map/new/:location', function(req,res,next) {
                 var num = Math.floor(lat1);
                 var chicken = Math.cos(num);
 
-                if (d < 50){
+                if (d < 25){
                   array.push(body[count]);
 
                 }

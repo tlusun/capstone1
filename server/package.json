@@ -11,6 +11,7 @@
     "passport": "^0.3.2",
     "passport-jwt": "^2.2.1",
     "paypal-rest-sdk": "^1.7.1",
+    "promise": "^7.1.1",
     "stripe": "^4.16.0"
   }
 }

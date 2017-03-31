@@ -1,11 +1,12 @@
 import {Component} from '@angular/core';
-import {NavController, NavParams, Loading, LoadingController} from 'ionic-angular';
+import {NavController, NavParams, Loading, LoadingController, Events} from 'ionic-angular';
 import {BusinessOrdersPage} from '../business-orders/business-orders';
 import {EditBusinessProfilePage} from "../edit-business-profile/edit-business-profile";
 import {ShareService} from "../../providers/share-service";
 import {BusinessProfileService} from "../../providers/business-profile-service";
 import {ReviewsService } from '../../providers/reviews-service'
 import {LoginPage} from '../login/login';
+import {HomePage} from '../homepage/homepage';
 
 /*
  Generated class for the BusinessProfile page.
@@ -18,62 +19,61 @@ import {LoginPage} from '../login/login';
   templateUrl: 'business-profile.html'
 })
 export class BusinessProfilePage {
-  orders: Array<{userid: number, ordernumber: number, ordername: String, companyid: number, invoice: String, cost: number, status: String, date: String}>;
-  services: Array<{service: String, details: String, price: any}>;
-  reviews: any;
-  company: {username: String, companyid: number, companyname: String, services: any, description: String, address: String, phone: number, email: String, orders: Object, reviews: any, notifications: any};
-  notifications: Array<{title: String, description: String, time: any}>;
-  company1: any;
+ reviews: any;
+  company: any;
   rating: any;
   registerCredentials: any;
   loading: Loading;
+  //events:Events;
 
-
-  constructor(public navCtrl: NavController, public navParams: NavParams, private shareService: ShareService, private businessProfileService: BusinessProfileService, private loadCtl: LoadingController, private reviewServ : ReviewsService) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private shareService: ShareService, private businessProfileService: BusinessProfileService, private loadCtl: LoadingController, private reviewServ : ReviewsService, public events: Events) {
       this.registerCredentials=this.navParams.get('registerCredentials');
-      this.shareService.setCredentials(this.registerCredentials);
+      //this.shareService.setCredentials(this.registerCredentials);
 
-
-      this.businessProfileService.getBusiness(this.registerCredentials).then(
-        data => {
-              this.company1 = data;
-              console.log("businessprf: ", this.company1);
-            }
-          );
-
-      console.log("businessprof2: ", this.company1);
-
-      this.reviewServ.getReviews(this.registerCredentials).then(
-        data => {
-            this.reviews = data;
-          this.rating =0;
-
-          for (var i =0; i<this.reviews.length; i++){
-            this.rating += this.reviews[i].rating;
+      if (this.registerCredentials) {
+        this.businessProfileService.getBusiness(this.registerCredentials).then(
+          data => {
+            this.company = data;
+            console.log("businessprf: ", this.company);
           }
-          if (this.reviews.length==0)
-            this.rating="No ratings yet";
-          else
-            this.rating = this.rating/this.reviews.length;
+        );
 
-        }
-      );
+        console.log("businessprof2: ", this.company);
+
+        this.reviewServ.getReviews(this.registerCredentials).then(
+          data => {
+            this.reviews = data;
+            this.rating = 0;
+
+            for (var i = 0; i < this.reviews.length; i++) {
+              this.rating += this.reviews[i].rating;
+            }
+            if (this.reviews.length > 0) {
+              this.rating = this.rating / this.reviews.length;
+            }
+            else
+              this.rating = "No ratings yet";
+
+          }
+        );
+      }
 
 
   }
 
+/*
   ionViewWillEnter(){
     this.shareService.setCredentials(this.registerCredentials);
 
 
     this.businessProfileService.getBusiness(this.registerCredentials).then(
       data => {
-        this.company1 = data;
-        console.log("businessprf: ", this.company1);
+        this.company = data;
+        console.log("businesfdasfdsafsdafsdafsdfsasprf: ", this.company);
       }
     );
 
-    console.log("businessprof2: ", this.company1);
+    console.log("businessprofdsfsadfsadfsdfsdafdsafasf2: ", this.company);
 
     this.reviewServ.getReviews(this.registerCredentials).then(
       data => {
@@ -87,17 +87,17 @@ export class BusinessProfilePage {
       }
     );
   }
-
+*/
   editBusinessProfile(){
     this.navCtrl.push(EditBusinessProfilePage,{
-      item: this.company1
+      item: this.company
     });
 
   }
 
   gotoOrders(){
     this.navCtrl.push(BusinessOrdersPage,{
-      item: this.company1
+      item: this.company
     });
   }
   logOut(){

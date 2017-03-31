@@ -11,8 +11,8 @@
   <page-homepage></page-homepage>
 
 
-  <div class="form-content" *ngIf="(user1)">
-    <h1>{{user1.firstName}}'s profile</h1>
+  <div class="form-content" *ngIf="(user)">
+    <h1>{{user.firstName}}'s profile</h1>
     <p></p>
 
     <ion-list>
@@ -22,21 +22,21 @@
       </ion-avatar>
       <ion-item>
         <p> email </p>
-        <h2>{{user1.email}}</h2>
+        <h2>{{user.email}}</h2>
       </ion-item>
       <ion-item>
         <p>name</p>
-        <h2>{{user1.firstName}}  </h2>
+        <h2>{{user.firstName}}  </h2>
 
       </ion-item>
 
       <ion-item>
         <p>address </p>
-        <h2>{{user1.address}}</h2>
+        <h2>{{user.address}}</h2>
       </ion-item>
       <ion-item>
         <p>phone</p>
-        <h2>{{user1.number}}</h2>
+        <h2>{{user.number}}</h2>
       </ion-item>
 
 

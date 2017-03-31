@@ -38,7 +38,7 @@
         <ion-col >
           <h3>Status: {{order.status}}</h3>
           <div *ngIf="order.status=='Complete-WaitingPayment'">
-            <button ion-button (click)="pay()">
+            <button ion-button (click)="pay(order)">
               Pay
             </button>
           </div>

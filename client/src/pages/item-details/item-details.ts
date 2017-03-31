@@ -58,16 +58,22 @@ export class ItemDetailsPage {
   }
   loadMap(){
     console.log("lat",this.company.location.latitude);
-    let latLng = new google.maps.LatLng(this.company.location.longitude,this.company.location.latitude);
+    let latLng = new google.maps.LatLng(this.company.location.latitude,this.company.location.longitude);
 
     let mapOptions = {
       center: latLng,
       zoom: 15,
       mapTypeId: google.maps.MapTypeId.ROADMAP
-    }
+    };
+
+
 
     this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
-
+    var marker = new google.maps.Marker({
+      map: this.map,
+      animation: google.maps.Animation.DROP,
+      position: latLng
+    });
   }
 
   back(){

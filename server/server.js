@@ -19,6 +19,7 @@ var Company = require('./app/models/company'); //get the mongoose model for Comp
 var Contact = require('./app/models/contact'); //get the mongoose model for Contact
 var Invoice = require('./app/models/invoice'); //get the mongoose model for Invoice
 var Review = require('./app/models/review'); //get the mongoose model for Review
+var Item = require('./app/models/image');
 
 // get our request parameters
 app.use(bodyParser.urlencoded({ extended: false }));

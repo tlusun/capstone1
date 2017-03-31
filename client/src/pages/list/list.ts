@@ -15,8 +15,6 @@ export class ListPage {
 
   initializeItems(category) {
 
-
-
     if (category){
       this.filtered = this.company.filter((company) => {
         return (company.service.toLowerCase().indexOf(category.toLowerCase()) > -1); //|| item.service.toLowerCase().indexOf(val.toLowerCase()) > -1
@@ -25,7 +23,10 @@ export class ListPage {
     else
       this.filtered = this.company;
   }
-  selectedItem: any;
+
+
+
+  category: any;
   registerCredentials: any;
 
   services: string[];
@@ -38,20 +39,25 @@ export class ListPage {
     this.getCompanies.getCompanies().then(
       data => {
         this.company = data;
-        console.log("this.selectedItem: ", this.company);
+        this.category = navParams.get('servicecategory');
+
+        console.log("this.category: ", this.company);
         this.filtered = this.company;
-        //this.initializeItems(this.selectedItem);
+        this.initializeItems(this.category);
       }
     );
 
     // If we navigated to this page, we will have an item available as a nav param
-    this.selectedItem = navParams.get('servicecategory');
     this.registerCredentials = navParams.get('registerCredentials');
-    console.log("REGISTER CREDENTIALS: ", this.registerCredentials);
-    this.services = ['Plumbing','Indoor Renovations','Painting','Other','Garden'];
-    this.items = [];
     if(this.registerCredentials)
       this.shareService.setCredentials(this.registerCredentials);
+
+
+
+
+
+
+    this.items = [];
 
   }
 
@@ -63,7 +69,7 @@ export class ListPage {
 
   getItems(ev: any) {
     // Reset items back to all of the items
-    this.initializeItems(this.selectedItem);
+    this.initializeItems(this.category);
 
     // set val to the value of the searchbar
     let val = ev.target.value;
@@ -78,17 +84,20 @@ export class ListPage {
   }
 getLocation(ev: any){
 
-  this.initializeItems(this.selectedItem);
+  this.initializeItems(this.category);
   let val = ev.target.value;
   if (val && val.trim() != '') {
     this.searchLocation.getLocation(val).then(
       data => {
-        this.company = data;
-        console.log("location companies: ", this.company);
-        this.filtered = this.company;
-        //this.initializeItems(this.selectedItem);
+        this.filtered = data;
+        console.log("location companies: ", this.filtered);
+
+        //this.initializeItems(this.category);
       }
     );
+  }
+  else{
+    this.filtered = this.company;
   }
 
 }

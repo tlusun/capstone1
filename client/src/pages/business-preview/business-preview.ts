@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
+import { Component ,ElementRef,ViewChild} from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
-import {ShareService} from "../../providers/share-service";
+import {ShareService,} from "../../providers/share-service";
 import {BusinessProfileService} from "../../providers/business-profile-service";
 import {ReviewsService } from '../../providers/reviews-service'
 /*
@@ -9,11 +9,15 @@ import {ReviewsService } from '../../providers/reviews-service'
   See http://ionicframework.com/docs/v2/components/#navigation for more info on
   Ionic pages and navigation.
 */
+declare var google;
+
 @Component({
   selector: 'page-business-preview',
   templateUrl: 'business-preview.html'
 })
 export class BusinessPreviewPage {
+  @ViewChild('map') mapElement: ElementRef;
+  map: any;
     company: any;
     registerCredentials: any;
     rating: any;
@@ -49,7 +53,28 @@ export class BusinessPreviewPage {
     );
   }
 
+  ionViewDidLoad(){
+    this.loadMap();
+  }
+  loadMap(){
+    console.log("lat",this.company.location.latitude);
+    let latLng = new google.maps.LatLng(this.company.location.latitude,this.company.location.longitude);
 
+    let mapOptions = {
+      center: latLng,
+      zoom: 15,
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    };
+
+
+
+    this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
+    var marker = new google.maps.Marker({
+      map: this.map,
+      animation: google.maps.Animation.DROP,
+      position: latLng
+    });
+  }
 back(){
     this.navCtrl.pop();
 }

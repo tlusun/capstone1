@@ -8,18 +8,16 @@ var multer = require("multer");
 var upload = multer({dest: "./uploads"});
 var mongoose = require('mongoose');
 var gfs;
-
+var Item = require('../app/models/image');
 
 var Grid = require("gridfs-stream");
 var conn = mongoose.connection;
 Grid.mongo = mongoose.mongo;
 
 
- 
-//path and originalname are the fields stored in mongoDB
 
- 
- 
+ //var Image = module.exports = mongoose.model('files', imageSchema);
+
 router.getImages = function(callback, limit) {
  
  Image.find(callback).limit(limit);
@@ -51,31 +49,42 @@ var upload = multer({
  storage: storage
 });
  
-router.get('/', function(req, res, next) {
- res.render('index.ejs');
+router.get('/images/:id', function(req, res, next) {
+ mongoose.model('Item').find({id: req.params._id},function (err,item){
+    res.send(item);
+  })
 });
  
 router.post('/upload', upload.any(), function(req, res, next) {
  console.log(req.files);
  
- res.send(req.files);
+ //res.send(req.files);
  
 /*req.files has the information regarding the file you are uploading...
 from the total information, i am just using the path and the imageName to store in the mongo collection(table)
 */
- var path = req.files[0].path;
- var imageName = req.files[0].originalname;
+
+var item = new Item ({ 
+  path: req.files[0].path,
+  originalname : req.files[0].originalname
+
+});
 
  
- var imagepath = {};
- imagepath['path'] = path;
- imagepath['originalname'] = imageName;
+ //var imagepath = {};
+ //imagepath['path'] = path;
+ //imagepath['originalname'] = imageName;
  
  //imagepath contains two objects, path and the imageName
  
  //we are passing two objects in the addImage method.. which is defined above..
- router.addImage(imagepath, function(err) {
  
+
+ item.save(function (error, item ){
+  if 
+    (error) res.send(error);
+  else
+  res.status(201).json({item});
  });
  
 });

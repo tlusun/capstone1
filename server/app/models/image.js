@@ -1,20 +1,18 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
-
-var Item = new ItemSchema(
+var ItemSchema = new Schema({
  path: {
- type: String,
- required: true,
- trim: true
+	 type: String,
+	 required: true,
+	 trim: true
  },
  originalname: {
- type: String,
- required: true
+	 type: String,
+	 required: true
  }
  
-);
-
+});
 
 
 module.exports = mongoose.model('Item', ItemSchema);

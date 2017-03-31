@@ -8,7 +8,7 @@
 
 <ion-content>
   <page-homepage></page-homepage>
-  <div class="form-content" *ngIf="(company1)">
+  <div class="form-content" *ngIf="(company)">
     <ion-grid responsive-sm>
       <ion-row padding>
         <button ion-button (click)="editBusinessProfile()">Edit business page</button>
@@ -19,7 +19,7 @@
       <p></p>
       <p></p>
       <ion-row padding>
-        <h1>{{company1.name}}</h1>
+        <h1>{{company.name}}</h1>
       </ion-row>
       <ion-row padding>
         <ion-col>
@@ -27,18 +27,18 @@
 
             <ion-item>
               <h2>Description:</h2>
-              <p> {{company1.descriptions}}</p>
+              <p> {{company.descriptions}}</p>
             </ion-item>
             <ion-item>
               <h2>Address:</h2>
-              <p> {{company1.address}}</p></ion-item>
+              <p> {{company.address}}</p></ion-item>
             <ion-item>
               <h2>Phone:</h2>
-              <p> {{company1.number}}</p>
+              <p> {{company.number}}</p>
             </ion-item>
             <ion-item>
               <h2>Service:</h2>
-              <p> {{company1.service}}</p>
+              <p> {{company.service}}</p>
             </ion-item>
           </ion-list>
         </ion-col>
@@ -50,7 +50,7 @@
       <ion-row padding responsive-sm>
         <ion-col>
           <ion-list>
-            <ion-item *ngFor="let service of company1.services" text-wrap>
+            <ion-item *ngFor="let service of company.services" text-wrap>
               <ion-row>
                 <ion-col width-75>
                   <h3> {{service.name}}</h3>
@@ -95,8 +95,12 @@
       <p></p>
 -->
       <div *ngIf="(reviews)">
-      <h2>Your reviews</h2>
-      <h3>Average rating: {{rating}}</h3>
+
+
+        <h3>Average rating: {{rating}}</h3>
+        <p></p>
+        <h2>Your reviews</h2>
+
       <ion-scroll scrollY="true" style="height: 50vh">
         <ion-list>
           <ion-item class="review" *ngFor="let review of reviews" text-wrap>
