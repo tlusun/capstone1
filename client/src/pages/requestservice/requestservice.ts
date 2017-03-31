@@ -3,7 +3,7 @@ import { NavController, NavParams } from 'ionic-angular';
 import { ToastController } from 'ionic-angular';
 import { HomePage} from '../homepage/homepage';
 import { RequestService } from '../../providers/request-service'
-
+import { UserProfileService } from '../../providers/user-profile-service';
 /*
   Generated class for the Requestservice page.
 
@@ -21,16 +21,20 @@ export class RequestServicePage {
   requestedservice: any;
   usernote: String;
   cost: any;
+  user: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public toastCtrl: ToastController,private requestServ: RequestService) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public toastCtrl: ToastController,private requestServ: RequestService, private userServ: UserProfileService) {
 
     this.company = navParams.get('item');
     this.registerCredentials =  navParams.get('credentials');
+    this.userServ.getUser(this.registerCredentials).then(
+      data => {
+        this.user = data;
+        console.log("user2: ", this.user);
+      }
+    );
 
   }
-
-
-
 
   cancel(){
 
@@ -42,7 +46,8 @@ export class RequestServicePage {
     this.businessDetails = {
       email: this.company.email,
       service: this.requestedservice,
-      price: this.cost[0].cost
+      price: this.cost[0].cost,
+      userAddress: this.user.address
 
     };
     console.log(this.businessDetails);
@@ -68,5 +73,3 @@ export class RequestServicePage {
     this.navCtrl.popToRoot();
   }
 }
-
-

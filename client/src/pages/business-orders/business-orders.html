@@ -23,12 +23,12 @@
         <ion-item *ngFor="let order of orders" text-wrap>
           <ion-col width-33>
             <h2>{{order.ordername}}</h2>
-            <h2>User #{{order.userEmail}}</h2>
+            <h2>User Email: {{order.userEmail}}</h2>
             <h3>Date: {{order.date}}</h3>
-
+            <h3>User Address: {{order.userAddress}}</h3>
           </ion-col>
           <ion-col width-33>
-            <p>Invoice: {{order.invoice}}</p>
+
             <h4>Total: {{order.amount}}</h4>
 
           </ion-col>
@@ -40,6 +40,9 @@
               Change Order Status
             </button>
               </div>
+              <button ion-button small (click)="message(order)">
+                Messages
+              </button>
             </ion-buttons>
           </ion-col>
         </ion-item>

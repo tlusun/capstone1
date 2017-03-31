@@ -18,7 +18,7 @@ export class LoginBusinessPage {
   loading: Loading;
   registerCredentials = {email: '', password: '', type: 'business'};
 
-  constructor(private nav: NavController, private auth: AuthService, private alertCtrl: AlertController, private loadingCtrl: LoadingController) {
+  constructor(private nav: NavController, private auth: AuthService, private alertCtrl: AlertController, private loadingCtrl: LoadingController,private shareServ:ShareService) {
     this.registerCredentials = {email: '', password: '', type: 'business'};
 
   }
@@ -42,6 +42,9 @@ export class LoginBusinessPage {
         setTimeout(() => {
         this.loading.dismiss();
         this.registerCredentials.type='business';
+        this.shareServ.setCredentials(this.registerCredentials);
+
+          console.log("logingignignign", this.registerCredentials);
         this.nav.setRoot(BusinessProfilePage,{
           registerCredentials : this.registerCredentials
         })

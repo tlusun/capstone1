@@ -1,0 +1,85 @@
+<!--
+  Generated template for the MessagesCompany page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-content>
+  <page-homepage></page-homepage>
+  <div class="form-content" *ngIf="(order)">
+    <ion-grid responsive-sm>
+      <ion-row padding>
+        <button ion-button (click)="back()">Back</button>
+        <button ion-button (click)="sendMessage()">Send New Message</button>
+      </ion-row>
+
+
+
+      <h2>Messages</h2>
+      <ion-row padding responsive-sm>
+        <ion-col>
+          <ion-list>
+            <ion-item *ngFor="let message of order.messages" text-wrap>
+              <ion-row>
+                <ion-col width-75>
+                  <h3> {{message.author}}</h3>
+                </ion-col>
+                <ion-col width-25 align="right">
+                  <p>{{message.date}}</p>
+                </ion-col>
+              </ion-row>
+              <ion-row text-wrap>
+                <ion-col><p>{{message.message}}</p></ion-col>
+              </ion-row>
+            </ion-item>
+          </ion-list>
+        </ion-col>
+      </ion-row>
+
+    </ion-grid>
+  </div>
+</ion-content>
+<!--
+  Generated template for the MessagesCompany page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-content>
+  <page-homepage></page-homepage>
+  <div class="form-content" *ngIf="(order)">
+    <ion-grid responsive-sm>
+      <ion-row padding>
+        <button ion-button (click)="back()">Back</button>
+        <button ion-button (click)="sendMessage()">Send New Message</button>
+      </ion-row>
+
+
+
+      <h2>Messages</h2>
+
+
+          <ion-scroll scrollY="true" style="height: 50vh">
+
+          <ion-list>
+            <ion-item *ngFor="let message of order.messages" text-wrap>
+              <ion-row>
+                <ion-col width-75>
+                  <h3> {{message.author}}</h3>
+                </ion-col>
+                <ion-col width-25 align="right">
+                  <p>{{message.date}}</p>
+                </ion-col>
+              </ion-row>
+              <ion-row text-wrap>
+                <ion-col><p>{{message.message}}</p></ion-col>
+              </ion-row>
+            </ion-item>
+          </ion-list>
+          </ion-scroll>
+
+
+
+    </ion-grid>
+  </div>
+</ion-content>

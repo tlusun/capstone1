@@ -13,5 +13,8 @@
     "paypal-rest-sdk": "^1.7.1",
     "promise": "^7.1.1",
     "stripe": "^4.16.0"
+  },
+  "engines": {
+    "node" : "6.9.4"
   }
 }

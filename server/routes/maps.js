@@ -66,7 +66,7 @@ router.get('/map/new/:location', function(req,res,next) {
                   json: true
 
                 }, function (error, response, body) {
-                  if (!error && response.statusCode === 200) {
+                  if (!error && response.statusCode === 200 && body.status!="ZERO_RESULTS") {
                     //console.log(body.results[0].geometry.location.lat)
 
                       newlat = body.results[0].geometry.location.lat;

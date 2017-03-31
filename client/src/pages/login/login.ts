@@ -17,7 +17,7 @@ export class LoginPage {
   registerCredentials = {email: '', password: '', type: 'user'};
 
   constructor(private nav: NavController, private auth: AuthService, private alertCtrl: AlertController, private loadingCtrl: LoadingController, private shareServ: ShareService) {
-    this.registerCredentials = {email: '', password: '', type: 'user'};
+    this.registerCredentials = {email: '', password: '', type: ''};
 
   }
 

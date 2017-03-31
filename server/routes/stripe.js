@@ -3,6 +3,9 @@ var router = express.Router();
 
 var config = require('../config/stripe');
 
+var Order = require('../app/models/order');
+var mongoose = require('mongoose');
+
 router.delete('/delete-account', function (req, res) {
   //STRIPE API KEY
   var STRIPE_API_SECRET_KEY  = config.secret;
@@ -55,19 +58,42 @@ router.post('/charge', function(req, res) {
       } else {
         // asynchronously called
         console.log("token.id: ", token.id);
+        console.log("PAY ATTENION HERE, ID OF ORDER: ", req.body.id);
 
         stripe.charges.create({
-          amount: req.body.amount,
-          currency: "cad",
+          amount: req.body.amountCents, //IN CENTS!
+          currency: req.body.currency,
           source: token.id, // obtained with Stripe.js
           destination: req.body.destination,
-          description: "Test charge :)"
+          description: req.body.description
         }, function(err, charge) {
           // asynchronously called
           if (err){
+            console.log("charge failed. err: ", err);
+            //DON'T CHANGE THE STATUS OF THE ORDER
             res.send(err);
           } else{
-            res.send(charge);
+            console.log("charge: ", charge);
+
+            //TODO: CHANGE THE STATUS OF THE ORDER
+            Order.findById(req.body.id, function (err, order) {
+              if (err) return handleError(err);
+
+              order.status = "Complete-Paid"; //TODO: HARDCODED?
+              order.save(function (err, order) {
+                if (err) {
+                  response.send({
+                      statusCode: "402",
+                      message: "Payment succeeded, but database failed."
+                  });
+                } else {
+                  res.send(charge);
+                }
+              });
+            });
+
+
+            //res.send(charge);
           }
         });
     }

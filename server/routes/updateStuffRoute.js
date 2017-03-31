@@ -17,12 +17,32 @@ router.put('/order/status/:id', function (req, res) {
 
     order.status = req.body.status; //TODO: MAKE SURE THIS WORKS
     order.save(function (err, order) {
-      if (err) response.send(error);
-    res.status(201).json({success: true});
+      if (err) res.send(err);
+    else
+      res.status(201).json({success: true});
     });
   });
 
 });
+
+
+router.put('/order/messages/:id', function (req, res) {
+  console.log("what is in this req: ", req.body.messages);
+  var id = req.params.id;
+
+  Order.findById(id, function (err, order) {
+    if (err) return handleError(err);
+
+    order.messages = req.body.messages; //TODO: MAKE SURE THIS WORKS
+    order.save(function (err, order) {
+      if (err) res.send(err);
+      else
+      res.status(201).json({success: true});
+    });
+  });
+
+});
+
 
 
 router.put('/company/services/:id', function (req, res) {
@@ -34,8 +54,9 @@ router.put('/company/services/:id', function (req, res) {
 
     company.services = req.body.services; //TODO: MAKE SURE THIS WORKS
     company.save(function (err, company) {
-      if (err) res.send(error);
-      res.status(201).json({success: true});
+      if (err) res.send(err);
+      else
+        res.status(201).json({success: true});
     });
   });
 
@@ -51,8 +72,9 @@ router.put('/company/rating/:id', function (req, res) {
 
     company.rating = req.body.rating; //TODO: MAKE SURE THIS WORKS
     company.save(function (err, company) {
-      if (err) res.send(error);
-      res.status(201).json({success: true});
+      if (err) res.send(err);
+      else
+        res.status(201).json({success: true});
     });
   });
 
@@ -99,8 +121,9 @@ var longe;
     });
     promise.then(function (data) {
       company.save(function (err, company) {
-        if (err) res.send(error);
-        res.status(201).json({success: true});
+        if (err) res.send(err);
+        else
+          res.status(201).json({success: true});
       });
     });
     });
@@ -119,8 +142,9 @@ router.put('/user/:id', function (req, res) {
     user.address = req.body.user.address;
     user.number = req.body.user.number;
     user.save(function (err, user) {
-      if (err) res.send(error);
-      res.status(201).json({success: true});
+      if (err) res.send(err);
+      else
+        res.status(201).json({success: true});
     });
   });
 

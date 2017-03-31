@@ -2,10 +2,10 @@
 
 <ion-content>
   <page-homepage></page-homepage>
-  <ion-grid class="main-content">
+  <ion-grid class="main-content" *ngIf="(company)">
     <ion-row>
       <ion-col>
-        <button ion-button (click)="back()">Back</button>
+
         <p></p>
       </ion-col>
       <ion-col item-right>
@@ -31,7 +31,7 @@
         <p>{{company.descriptions}}</p>
       </ion-col>
       <ion-col>
-        <h2>Rating: {{rating}}</h2>
+        <h2>Rating: {{company.rating}}</h2>
         <p></p>
         <h4>Address: </h4>
         <p>{{company.address}}</p>
@@ -86,6 +86,7 @@
       <ion-col>
 
         <h2>Reviews</h2>
+        <div *ngIf="(reviews)">
         <ion-scroll scrollY="true" style="height: 50vh">
           <ion-list>
             <ion-item class="review" *ngFor="let review of reviews" text-wrap>
@@ -97,7 +98,7 @@
             </ion-item>
           </ion-list>
         </ion-scroll>
-
+        </div>
       </ion-col>
       <ion-col>
 

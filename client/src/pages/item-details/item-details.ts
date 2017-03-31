@@ -34,6 +34,10 @@ export class ItemDetailsPage {
     // If we navigated to this page, we will have an item available as a nav param
     this.company = navParams.get('item');
     this.question = "";
+    if (this.company.rating>0)
+    this.rating = (Math.round(parseFloat(this.company.rating)*10)/10).toFixed(1);
+  else
+    this.rating = "No reviews yet";
     var companyCredentials = {
       email: this.company.email,
       password: this.company.password
@@ -41,15 +45,7 @@ export class ItemDetailsPage {
     this.reviewServ.getReviews(companyCredentials).then(
       data => {
           this.reviews = data;
-        this.rating =0;
 
-        for (var i =0; i<this.reviews.length; i++){
-          this.rating += this.reviews[i].rating;
-        }
-        if (this.reviews.length==0)
-          this.rating="No ratings yet";
-        else
-          this.rating = this.rating/this.reviews.length;
       }
     );
   }

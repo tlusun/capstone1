@@ -9,7 +9,9 @@ import { UpdateInvoice } from '../../providers/update-invoice';
 import { BusinessProfileService } from '../../providers/business-profile-service';
 import { StripePayPage } from '../stripe-pay/stripe-pay';
 import {UpdateCompanyProfile} from '../../providers/update-company-profile';
+import {MessagesPage} from '../messages/messages';
 
+import { ModalController } from 'ionic-regular';
 
 /*
   Generated class for the Userorders page.
@@ -28,6 +30,8 @@ export class UserOrdersPage {
   newreview: any;
   rating: any;
   company: any;
+
+
   getOrders(user){
     this.orders = [];
     this.getOrdersForCustomer.getOrdersForCustomer(this.user).then(
@@ -40,6 +44,18 @@ export class UserOrdersPage {
     this.newreview=[];
     console.log('this.orders in userorders.ts', this.orders);
   }
+
+  ionViewWillEnter() {
+    console.log("ionViewWillEnter() has been called!");
+    console.log("this.user before: ", this.user);
+    this.getOrders(this.user);
+  }
+
+  ionViewWillLeave() {
+    console.log("ionViewWillLeave() has been called!");
+    console.log("this.user after: ", this.user);
+  }
+
   constructor(public navCtrl: NavController, private updateCompany:UpdateCompanyProfile, private getBusiness: BusinessProfileService, public navParams: NavParams, public toastCtrl: ToastController, private getOrdersForCustomer: GetOrdersForCustomer, private reviewServ: ReviewsService, public alertCtrl: AlertController, private updateInvoiceService: UpdateInvoice) {
     this.user = navParams.get('item');
     console.log("this.user: ", this.user);
@@ -99,7 +115,7 @@ export class UserOrdersPage {
               this.newreview = {
                 companyEmail : order.businessEmail,
                 customerEmail : this.user.email,
-                rating : data.rating,
+                rating : (Math.round(parseFloat(data.rating)*10)/10).toFixed(1),
                 review : data.review,
               };
               //TODO: ADD SERVICE HERE
@@ -119,12 +135,13 @@ export class UserOrdersPage {
                         this.rating="No ratings yet";
                       else {
                         this.rating = this.rating / this.reviews.length;
-                        parseFloat(this.rating).toFixed(1);
+                        parseFloat(this.rating).toFixed(2);
                       }
 
                     this.getBusiness.getBusiness(companyCredentials).then(
                       data =>{
                         this.company=data;
+                        this.rating = (Math.round(parseFloat(this.rating)*10)/10).toFixed(1)
                         this.company.rating=this.rating;
                         this.updateCompany.updateCompanyRating(this.company._id,this.rating).then(
                           data => {
@@ -157,6 +174,16 @@ export class UserOrdersPage {
     });
     this.getOrders(this.user);
     prompt.present();
+
+  }
+
+
+  message(order){
+this.navCtrl.push(MessagesPage,{
+  order: order,
+  user: this.user
+})
+
 
   }
 
